@@ -1,0 +1,28 @@
+2024-06-24T05:51:10.902Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-06-24T12:58:45.930Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-24T13:01:01.815Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-24T13:18:29.799Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-24T13:22:52.332Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-24T13:27:45.431Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-24T13:29:12.729Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-24T13:30:50.954Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-24T13:35:23.271Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-24T13:38:32.860Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-24T13:39:06.096Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
+2024-06-25T07:04:59.006Z error: Error retrieving token: access_token is not defined
+2024-06-25T12:34:19.139Z error: Error retrieving users: The operation would yield an incorrect node tree. Document already has a document element node. Node is document:Document.
+2024-07-01T08:30:21.506Z error: Error converting JSON to XML: convertToxml is not defined
+2024-07-01T08:30:23.265Z error: Error converting JSON to XML: convertToxml is not defined
+2024-07-01T08:31:02.999Z error: Error converting JSON to XML: convertToxml is not defined
+2024-07-01T08:31:04.198Z error: Error converting JSON to XML: convertToxml is not defined
+2024-07-01T12:43:58.092Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-01T13:01:59.435Z error: Error retrieving token: logger is not defined
+2024-07-01T13:02:36.816Z error: Refresh: Error creating token: axios is not defined
+2024-07-01T13:03:21.473Z error: Refresh: Error creating token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-01T13:41:09.133Z error: Error converting JSON to XML: xmlData is not defined
+2024-07-01T13:41:09.140Z error: Error converting JSON to XML: xmlData is not defined
+2024-07-01T13:42:09.743Z error: Error converting JSON to XML: xmlData is not defined
+2024-07-01T13:42:09.749Z error: Error converting JSON to XML: xmlData is not defined
+2024-07-01T13:44:28.980Z error: Error converting JSON to XML: xmlData is not defined
+2024-07-02T10:43:23.329Z error: Refresh: Error creating token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-03T07:22:36.173Z error: Error retrieving token: GenerateAccessToken is not a function

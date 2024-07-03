@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: testdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: abaybank/ips:1.01
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=10.1.3.53
+      - DB_USER=abay
+      - DB_PASS=PassWord.1
+      - DB_NAME=IPS
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./public:/usr/src/app/public
+      - ./server.js:/usr/src/app/server.js
+      - ./config:/usr/src/app/config
+      - ./controller:/usr/src/app/controller
+      - ./model:/usr/src/app/model
+      - ./utils:/usr/src/app/utils
+      # Add any other directories or files that you need to update
+      # Ensure you do not mount over the `node_modules` directory
+volumes:
+  db-data:

@@ -1,0 +1,10 @@
+```
+CREATE DATABASE IPS;
+
+```
+
+```
+CREATE USER 'abay'@'%' IDENTIFIED BY 'PassWord.1';
+GRANT ALL PRIVILEGES ON IPS.* TO 'abay'@'%';
+FLUSH PRIVILEGES;
+```
