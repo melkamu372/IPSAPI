@@ -10,6 +10,7 @@ services:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
+
   app:
     build:
       context: .
@@ -20,7 +21,7 @@ services:
     depends_on:
       - db
     environment:
-      - DB_HOST=10.1.3.53
+      - DB_HOST=db
       - DB_USER=abay
       - DB_PASS=PassWord.1
       - DB_NAME=IPS
@@ -32,7 +33,7 @@ services:
       - ./controller:/usr/src/app/controller
       - ./model:/usr/src/app/model
       - ./utils:/usr/src/app/utils
-      # Add any other directories or files that you need to update
       # Ensure you do not mount over the `node_modules` directory
+
 volumes:
   db-data:
