@@ -1,7 +1,7 @@
 const { create } = require('xmlbuilder2');
 
 const generateXmlDocument = (jsonInput) => {
-  const xmlDoc = create({ version: '1.0' })
+  const xmlDoc = create({ version: '1.0', encoding: 'UTF-8', standalone: true })
     .ele('FPEnvelope', {
       'xmlns:header': 'urn:iso:std:iso:20022:tech:xsd:head.001.001.03',
       'xmlns:document': 'urn:iso:std:iso:20022:tech:xsd:acmt.023.001.03',
@@ -44,10 +44,13 @@ const generateXmlDocument = (jsonInput) => {
     .ele('document:Othr')
     .ele('document:Id').txt(jsonInput.account_number).up()
     .ele('document:SchmeNm')
-    .ele('document:Prtry').txt(jsonInput.bank)
-    .end({ prettyPrint: true });
-  
-  return xmlDoc;
+    .ele('document:Prtry').txt(jsonInput.bank);
+
+  // Convert the XML document to string format with XML declaration
+  const xmlString = xmlDoc.end({ prettyPrint: true });
+
+  // Return the XML string with the XML declaration
+  return xmlString;
 };
 
 module.exports = {

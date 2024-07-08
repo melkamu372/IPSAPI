@@ -15,6 +15,7 @@ router.get('/access/get-json', AccessController.getjson);
 router.get('/verify/test', VerificationController.testAPI);
 router.post('/verify/convert', VerificationController.convertAPI);
 router.post('/verify/digest', VerificationController.digestAPI);
-router.post('/verify/verify', VerificationController.Verification);
+router.post('/verify/account', VerificationController.AccountVerification);
+router.post('/verify/xml/account', VerificationController.xmlAccountVerification);
 
 module.exports = router;

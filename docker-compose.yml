@@ -1,39 +1,29 @@
-version: '3.8'
-
 services:
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: testdb
-    ports:
-      - "3306:3306"
-    volumes:
-      - db-data:/var/lib/mysql
-
-  app:
+  api:
     build:
       context: .
-      dockerfile: Dockerfile
-    image: abaybank/ips:1.01
+      # target: production  # Remove this line if not using multi-stage builds
+    image: ips:001
     ports:
-      - "3000:3000"
-    depends_on:
-      - db
+      - "80:3000"
     environment:
-      - DB_HOST=db
-      - DB_USER=abay
-      - DB_PASS=PassWord.1
-      - DB_NAME=IPS
+      - NODE_ENV=production
+      - MYSQL_HOST=database
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASS}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_RANDOM_ROOT_PASSWORD
+    depends_on:
+      - database
+    restart: always
+
+  database:
+    image: mysql:8.0
+    env_file:
+      - .env
     volumes:
-      - ./src:/usr/src/app/src
-      - ./public:/usr/src/app/public
-      - ./server.js:/usr/src/app/server.js
-      - ./config:/usr/src/app/config
-      - ./controller:/usr/src/app/controller
-      - ./model:/usr/src/app/model
-      - ./utils:/usr/src/app/utils
-      # Ensure you do not mount over the `node_modules` directory
+      - mysql-data:/var/lib/mysql
+    restart: always
 
 volumes:
-  db-data:
+  mysql-data:

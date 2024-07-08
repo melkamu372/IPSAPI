@@ -1,441 +1,275 @@
-2024-06-22T06:53:45.199Z info: Server is running on port 3000
-2024-06-22T06:55:12.017Z info: Server is running on port 3000
-2024-06-22T06:59:34.000Z info: Retrieved users
-2024-06-22T07:00:43.126Z info: Retrieved users
-2024-06-22T07:06:44.659Z info: Retrieved users
-2024-06-22T08:42:06.177Z info: Server is running on port 3000
-2024-06-22T08:43:00.209Z info: check connection
-2024-06-22T08:43:34.496Z info: Server is running on port 3000
-2024-06-22T08:43:43.018Z info: check connection
-2024-06-22T08:43:54.412Z info: check connection
-2024-06-22T08:43:55.328Z info: check connection
-2024-06-22T08:43:56.014Z info: check connection
-2024-06-22T08:44:17.245Z info: check connection
-2024-06-22T08:44:55.225Z info: Retrieved users
-2024-06-24T05:02:57.124Z info: Server is running on port 3000
-2024-06-24T05:23:27.313Z info: check connection
-2024-06-24T05:40:42.247Z info: check connection
-2024-06-24T05:49:15.355Z info: check connection
-2024-06-24T05:50:46.070Z info: Server is running on port 3000
-2024-06-24T05:51:10.902Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
-2024-06-24T05:51:36.234Z info: check connection
-2024-06-24T08:37:28.778Z info: Server is running on port 3000
-2024-06-24T12:58:45.930Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:01:01.815Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:18:29.799Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:22:52.332Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:27:45.431Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:29:12.729Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:30:50.954Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:35:23.271Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:38:32.860Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:39:06.096Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:41:23.713Z info: Server is running on port 3306
-2024-06-24T13:42:19.820Z info: Server is running on port 8000
-2024-06-24T13:43:31.551Z info: Server is running on port 8000
-2024-06-24T13:47:17.884Z info: Server is running on port 8000
-2024-06-24T13:55:42.373Z info: Server is running on port 8000
-2024-06-24T14:01:56.849Z info: Server is running on port 8000
-2024-06-24T14:02:26.554Z info: check connection
-2024-06-24T14:02:57.436Z info: Token obtained successfully:
-2024-06-24T14:06:17.979Z info: Server is running on port 8000
-2024-06-24T14:06:22.153Z info: Token obtained successfully:
-2024-06-25T05:04:07.888Z info: Token obtained successfully:
-2024-06-25T05:04:46.517Z info: Server is running on port 8000
-2024-06-25T07:02:08.743Z info: Server is running on port 8000
-2024-06-25T07:04:42.035Z info: Server is running on port 8000
-2024-06-25T07:04:54.580Z info: Server is running on port 8000
-2024-06-25T07:04:59.006Z error: Error retrieving token: access_token is not defined
-2024-06-25T07:08:15.688Z info: Server is running on port 8000
-2024-06-25T07:47:50.526Z info: Server is running on port 8000
-2024-06-25T07:55:20.132Z info: check connection
-2024-06-25T07:56:27.712Z info: Server is running on port 8000
-2024-06-25T07:58:12.402Z info: Server is running on port 8000
-2024-06-25T07:58:49.829Z info: Server is running on port 8000
-2024-06-25T07:59:54.336Z info: Server is running on port 8000
-2024-06-25T08:14:16.745Z info: Server is running on port 8000
-2024-06-25T08:16:37.003Z info: Server is running on port 8000
-2024-06-25T08:18:14.458Z info: Server is running on port 8000
-2024-06-25T08:22:15.581Z info: Server is running on port 8000
-2024-06-25T08:27:15.207Z info: Server is running on port 8000
-2024-06-25T08:34:42.820Z info: Server is running on port 8000
-2024-06-25T08:35:40.568Z info: check connection
-2024-06-25T08:41:29.413Z info: Server is running on port 8000
-2024-06-25T08:51:05.314Z info: Server is running on port 8000
-2024-06-25T10:44:12.900Z info: Server is running on port 8000
-2024-06-25T10:46:45.606Z info: Server is running on port 8000
-2024-06-25T10:52:26.987Z info: Server is running on port 8000
-2024-06-25T10:54:13.735Z info: Server is running on port 8000
-2024-06-25T11:08:14.622Z info: Server is running on port 8000
-2024-06-25T11:09:19.875Z info: Server is running on port 8000
-2024-06-25T11:15:08.967Z info: Server is running on port 8000
-2024-06-25T11:15:19.235Z info: Server is running on port 8000
-2024-06-25T11:16:08.042Z info: Server is running on port 8000
-2024-06-25T11:17:07.930Z info: check verfication
-2024-06-25T11:18:31.980Z info: Server is running on port 8000
-2024-06-25T11:18:53.714Z info: check connection
-2024-06-25T12:34:15.470Z info: Server is running on port 8000
-2024-06-25T12:34:19.139Z error: Error retrieving users: The operation would yield an incorrect node tree. Document already has a document element node. Node is document:Document.
-2024-06-25T12:36:57.309Z info: Server is running on port 8000
-2024-06-25T12:37:00.930Z info: Converted JSON to XML
-2024-06-25T12:54:40.131Z info: Server is running on port 8000
-2024-06-25T12:55:15.248Z info: Server is running on port 8000
-2024-06-25T12:57:35.670Z info: Server is running on port 8000
-2024-06-25T12:58:13.122Z info: Server is running on port 8000
-2024-06-25T12:58:24.465Z info: Server is running on port 8000
-2024-06-25T12:58:27.440Z info: Converted JSON to XML
-2024-06-25T12:58:28.889Z info: Converted JSON to XML
-2024-06-25T12:58:30.523Z info: Converted JSON to XML
-2024-06-25T12:58:36.119Z info: Converted JSON to XML
-2024-06-25T13:11:44.966Z info: Server is running on port 8000
-2024-06-25T13:19:17.844Z info: Server is running on port 8000
-2024-06-25T13:24:17.161Z info: Server is running on port 8000
-2024-06-25T13:28:11.732Z info: Server is running on port 8000
-2024-06-25T13:28:36.287Z info: Server is running on port 8000
-2024-06-25T13:28:42.101Z info: Converted JSON to XML
-2024-06-25T13:29:27.334Z info: Server is running on port 8000
-2024-06-25T13:30:05.486Z info: Server is running on port 8000
-2024-06-28T11:36:04.554Z info: Server is running on port 8000
-2024-06-28T11:39:24.847Z info: check verfication
-2024-06-28T11:39:44.520Z info: Converted JSON to XML
-2024-07-01T05:37:40.405Z info: Server is running on port 8000
-2024-07-01T05:37:40.771Z info: check verfication
-2024-07-01T05:37:47.005Z info: Converted JSON to XML
-2024-07-01T05:41:15.248Z info: Converted JSON to XML
-2024-07-01T05:43:31.646Z info: Server is running on port 8000
-2024-07-01T05:43:33.066Z info: Converted JSON to XML
-2024-07-01T05:52:15.838Z info: Server is running on port 8000
-2024-07-01T05:52:23.831Z info: Converted JSON to XML
-2024-07-01T06:20:24.650Z info: Server is running on port 8000
-2024-07-01T06:21:09.764Z info: Server is running on port 8000
-2024-07-01T06:22:30.950Z info: Server is running on port 8000
-2024-07-01T06:25:16.755Z info: Server is running on port 8000
-2024-07-01T06:25:24.535Z info: Converted JSON to XML
-2024-07-01T06:26:52.064Z info: Server is running on port 8000
-2024-07-01T06:27:05.542Z info: Converted JSON to XML
-2024-07-01T06:29:22.428Z info: Server is running on port 8000
-2024-07-01T06:29:27.036Z info: Converted JSON to XML
-2024-07-01T06:39:26.452Z info: Server is running on port 8000
-2024-07-01T06:40:48.362Z info: Server is running on port 8000
-2024-07-01T06:49:39.302Z info: Server is running on port 8000
-2024-07-01T06:49:50.517Z info: Converted JSON to XML
-2024-07-01T07:02:45.845Z info: Server is running on port 8000
-2024-07-01T07:02:56.858Z info: Server is running on port 8000
-2024-07-01T07:04:29.947Z info: Server is running on port 8000
-2024-07-01T07:17:27.016Z info: Converted JSON to XML
-2024-07-01T07:20:35.254Z info: Server is running on port 8000
-2024-07-01T07:20:40.034Z info: Converted JSON to XML
-2024-07-01T07:20:50.712Z info: Server is running on port 8000
-2024-07-01T07:20:56.722Z info: Converted JSON to XML
-2024-07-01T07:22:23.009Z info: Server is running on port 8000
-2024-07-01T07:22:27.113Z info: Converted JSON to XML
-2024-07-01T07:23:07.853Z info: Converted JSON to XML
-2024-07-01T07:28:25.807Z info: Server is running on port 8000
-2024-07-01T07:36:06.559Z info: Server is running on port 8000
-2024-07-01T07:37:29.724Z info: Server is running on port 8000
-2024-07-01T07:37:36.803Z info: Converted JSON to XML
-2024-07-01T07:38:38.523Z info: Server is running on port 8000
-2024-07-01T07:45:16.996Z info: Server is running on port 8000
-2024-07-01T07:45:20.141Z info: Server is running on port 8000
-2024-07-01T07:45:22.893Z info: Converted JSON to XML
-2024-07-01T07:46:26.008Z info: Server is running on port 8000
-2024-07-01T07:46:32.116Z info: Server is running on port 8000
-2024-07-01T07:46:36.422Z info: Converted JSON to XML
-2024-07-01T07:46:38.257Z info: Converted JSON to XML
-2024-07-01T07:49:23.396Z info: Server is running on port 8000
-2024-07-01T07:49:52.300Z info: Server is running on port 8000
-2024-07-01T07:50:15.450Z info: Server is running on port 8000
-2024-07-01T07:50:24.816Z info: Converted JSON to XML
-2024-07-01T07:51:33.520Z info: Server is running on port 8000
-2024-07-01T07:51:35.900Z info: Converted JSON to XML
-2024-07-01T07:52:39.050Z info: Server is running on port 8000
-2024-07-01T07:52:51.056Z info: Server is running on port 8000
-2024-07-01T07:54:55.049Z info: Server is running on port 8000
-2024-07-01T07:55:03.752Z info: Server is running on port 8000
-2024-07-01T07:56:21.534Z info: Server is running on port 8000
-2024-07-01T07:56:24.864Z info: Converted JSON to XML
-2024-07-01T07:58:55.774Z info: Server is running on port 8000
-2024-07-01T07:59:03.538Z info: Server is running on port 8000
-2024-07-01T08:05:28.360Z info: Server is running on port 8000
-2024-07-01T08:09:26.067Z info: Server is running on port 8000
-2024-07-01T08:10:16.296Z info: Server is running on port 8000
-2024-07-01T08:26:58.030Z info: Server is running on port 8000
-2024-07-01T08:30:15.896Z info: Server is running on port 8000
-2024-07-01T08:30:21.506Z error: Error converting JSON to XML: convertToxml is not defined
-2024-07-01T08:30:23.265Z error: Error converting JSON to XML: convertToxml is not defined
-2024-07-01T08:30:36.292Z info: Server is running on port 8000
-2024-07-01T08:31:02.999Z error: Error converting JSON to XML: convertToxml is not defined
-2024-07-01T08:31:04.198Z error: Error converting JSON to XML: convertToxml is not defined
-2024-07-01T08:38:13.974Z info: Server is running on port 8000
-2024-07-01T08:38:16.014Z info: Converted JSON to XML
-2024-07-01T08:39:29.457Z info: Server is running on port 8000
-2024-07-01T08:39:53.767Z info: Converted JSON to XML
-2024-07-01T08:39:54.805Z info: Converted JSON to XML
-2024-07-01T08:39:55.759Z info: Converted JSON to XML
-2024-07-01T08:40:31.439Z info: Server is running on port 8000
-2024-07-01T08:43:14.556Z info: Converted JSON to XML
-2024-07-01T08:45:15.785Z info: Server is running on port 8000
-2024-07-01T08:46:59.807Z info: Server is running on port 8000
-2024-07-01T08:47:14.226Z info: Converted JSON to XML
-2024-07-01T10:20:04.715Z info: Server is running on port 8000
-2024-07-01T10:20:19.843Z info: Server is running on port 8000
-2024-07-01T10:20:37.225Z info: Converted JSON to XML
-2024-07-01T10:34:26.039Z info: Server is running on port 8000
-2024-07-01T10:35:52.084Z info: Server is running on port 8000
-2024-07-01T10:36:24.863Z info: Server is running on port 8000
-2024-07-01T10:38:44.036Z info: Server is running on port 8000
-2024-07-01T11:06:33.522Z info: Server is running on port 8000
-2024-07-01T11:07:06.404Z info: Server is running on port 8000
-2024-07-01T11:10:34.052Z info: Server is running on port 8000
-2024-07-01T11:12:52.721Z info: Server is running on port 8000
-2024-07-01T11:23:20.606Z info: Server is running on port 8000
-2024-07-01T11:27:22.694Z info: Server is running on port 8000
-2024-07-01T11:29:19.565Z info: Server is running on port 8000
-2024-07-01T11:31:03.973Z info: Server is running on port 8000
-2024-07-01T11:34:14.129Z info: Server is running on port 8000
-2024-07-01T11:35:41.585Z info: Server is running on port 8000
-2024-07-01T11:38:18.992Z info: Server is running on port 8000
-2024-07-01T11:38:24.688Z info: Server is running on port 8000
-2024-07-01T11:39:55.060Z info: Server is running on port 8000
-2024-07-01T11:40:54.423Z info: Server is running on port 8000
-2024-07-01T11:41:31.942Z info: Server is running on port 8000
-2024-07-01T11:42:09.607Z info: Server is running on port 8000
-2024-07-01T11:43:19.938Z info: Server is running on port 8000
-2024-07-01T11:43:35.861Z info: Server is running on port 8000
-2024-07-01T11:43:48.625Z info: Server is running on port 8000
-2024-07-01T11:44:18.893Z info: Server is running on port 8000
-2024-07-01T11:44:41.636Z info: Server is running on port 8000
-2024-07-01T11:46:41.286Z info: Server is running on port 8000
-2024-07-01T11:47:15.999Z info: Server is running on port 8000
-2024-07-01T11:48:40.646Z info: Server is running on port 8000
-2024-07-01T11:49:31.914Z info: Server is running on port 8000
-2024-07-01T11:50:09.339Z info: Server is running on port 8000
-2024-07-01T11:51:16.658Z info: Server is running on port 8000
-2024-07-01T11:51:49.693Z info: Server is running on port 8000
-2024-07-01T11:52:07.643Z info: Server is running on port 8000
-2024-07-01T11:52:53.573Z info: Server is running on port 8000
-2024-07-01T11:54:39.829Z info: Server is running on port 8000
-2024-07-01T11:56:32.283Z info: Server is running on port 8000
-2024-07-01T11:56:57.692Z info: Server is running on port 8000
-2024-07-01T11:57:17.319Z info: Server is running on port 8000
-2024-07-01T11:58:49.975Z info: Server is running on port 8000
-2024-07-01T12:00:07.637Z info: Server is running on port 8000
-2024-07-01T12:02:13.083Z info: Server is running on port 8000
-2024-07-01T12:05:17.511Z info: Server is running on port 8000
-2024-07-01T12:06:02.830Z info: Server is running on port 8000
-2024-07-01T12:11:23.324Z info: Server is running on port 8000
-2024-07-01T12:12:31.054Z info: Server is running on port 8000
-2024-07-01T12:25:14.583Z info: Server is running on port 8000
-2024-07-01T12:25:31.727Z info: Server is running on port 8000
-2024-07-01T12:28:12.733Z info: Server is running on port 8000
-2024-07-01T12:31:43.718Z info: Server is running on port 8000
-2024-07-01T12:33:09.213Z info: Server is running on port 8000
-2024-07-01T12:34:40.779Z info: Server is running on port 8000
-2024-07-01T12:34:48.288Z info: Server is running on port 8000
-2024-07-01T12:35:30.814Z info: Server is running on port 8000
-2024-07-01T12:38:19.024Z info: Server is running on port 8000
-2024-07-01T12:39:53.038Z info: Server is running on port 8000
-2024-07-01T12:40:51.724Z info: Server is running on port 8000
-2024-07-01T12:42:25.907Z info: Server is running on port 8000
-2024-07-01T12:43:58.092Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
-2024-07-01T12:45:54.022Z info: Server is running on port 8000
-2024-07-01T12:47:26.932Z info: Server is running on port 8000
-2024-07-01T12:48:26.793Z info: Server is running on port 8000
-2024-07-01T12:48:34.231Z info: Server is running on port 8000
-2024-07-01T12:51:15.091Z info: Server is running on port 8000
-2024-07-01T12:57:49.890Z info: Server is running on port 8000
-2024-07-01T12:58:09.367Z info: Server is running on port 8000
-2024-07-01T12:58:23.360Z info: Server is running on port 8000
-2024-07-01T13:01:09.523Z info: Server is running on port 8000
-2024-07-01T13:01:39.251Z info: Server is running on port 8000
-2024-07-01T13:01:59.435Z error: Error retrieving token: logger is not defined
-2024-07-01T13:02:34.722Z info: Server is running on port 8000
-2024-07-01T13:02:36.816Z error: Refresh: Error creating token: axios is not defined
-2024-07-01T13:02:58.312Z info: Server is running on port 8000
-2024-07-01T13:03:21.473Z error: Refresh: Error creating token: connect ETIMEDOUT 192.168.20.45:9001
-2024-07-01T13:03:44.797Z info: Server is running on port 8000
-2024-07-01T13:06:02.302Z info: Server is running on port 8000
-2024-07-01T13:17:06.948Z info: Server is running on port 8000
-2024-07-01T13:18:18.047Z info: Server is running on port 8000
-2024-07-01T13:19:44.261Z info: Server is running on port 8000
-2024-07-01T13:21:35.988Z info: Server is running on port 8000
-2024-07-01T13:21:38.882Z info: Server is running on port 8000
-2024-07-01T13:23:13.640Z info: Server is running on port 8000
-2024-07-01T13:23:52.164Z info: Server is running on port 8000
-2024-07-01T13:24:19.341Z info: Server is running on port 8000
-2024-07-01T13:30:46.693Z info: Server is running on port 8000
-2024-07-01T13:31:25.594Z info: Server is running on port 8000
-2024-07-01T13:32:03.495Z info: Server is running on port 8000
-2024-07-01T13:32:12.830Z info: Server is running on port 8000
-2024-07-01T13:33:04.981Z info: Server is running on port 8000
-2024-07-01T13:33:38.235Z info: Server is running on port 8000
-2024-07-01T13:34:37.273Z info: Server is running on port 8000
-2024-07-01T13:37:16.297Z info: Server is running on port 8000
-2024-07-01T13:38:59.492Z info: Server is running on port 8000
-2024-07-01T13:39:39.262Z info: Server is running on port 8000
-2024-07-01T13:40:24.956Z info: Server is running on port 8000
-2024-07-01T13:41:07.077Z info: Server is running on port 8000
-2024-07-01T13:41:09.133Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-01T13:41:09.140Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-01T13:41:41.983Z info: Server is running on port 8000
-2024-07-01T13:42:06.913Z info: Server is running on port 8000
-2024-07-01T13:42:09.743Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-01T13:42:09.749Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-01T13:44:26.408Z info: Server is running on port 8000
-2024-07-01T13:44:28.980Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-01T13:45:24.347Z info: Server is running on port 8000
-2024-07-01T13:46:49.338Z info: Server is running on port 8000
-2024-07-01T13:54:01.828Z info: Server is running on port 8000
-2024-07-01T13:54:24.913Z info: Server is running on port 8000
-2024-07-01T13:54:47.341Z info: Server is running on port 8000
-2024-07-01T13:56:30.053Z info: Server is running on port 8000
-2024-07-01T13:56:53.529Z info: Server is running on port 8000
-2024-07-01T14:00:52.827Z info: Server is running on port 8000
-2024-07-01T14:03:22.384Z info: Server is running on port 8000
-2024-07-01T14:03:28.102Z info: Server is running on port 8000
-2024-07-01T14:04:28.120Z info: Server is running on port 8000
-2024-07-01T14:05:26.714Z info: Server is running on port 8000
-2024-07-01T14:06:04.748Z info: Server is running on port 8000
-2024-07-02T06:49:12.037Z info: Server is running on port 8000
-2024-07-02T06:51:41.065Z info: Server is running on port 8000
-2024-07-02T06:52:12.708Z info: Server is running on port 8000
-2024-07-02T06:53:19.168Z info: Server is running on port 8000
-2024-07-02T06:53:55.494Z info: Server is running on port 8000
-2024-07-02T06:54:43.321Z info: Server is running on port 8000
-2024-07-02T07:02:45.523Z info: Server is running on port 8000
-2024-07-02T07:03:00.230Z info: Server is running on port 8000
-2024-07-02T07:04:52.552Z info: Server is running on port 8000
-2024-07-02T07:05:19.859Z info: Server is running on port 8000
-2024-07-02T07:08:08.548Z info: Server is running on port 8000
-2024-07-02T07:09:15.101Z info: Server is running on port 8000
-2024-07-02T07:09:28.257Z info: Server is running on port 8000
-2024-07-02T07:11:45.253Z info: Server is running on port 8000
-2024-07-02T07:45:33.713Z info: Server is running on port 8000
-2024-07-02T07:46:31.880Z info: Server is running on port 8000
-2024-07-02T07:46:48.148Z info: Server is running on port 8000
-2024-07-02T07:49:00.739Z info: Server is running on port 8000
-2024-07-02T07:50:39.020Z info: Server is running on port 8000
-2024-07-02T07:55:53.094Z info: Server is running on port 8000
-2024-07-02T07:56:34.283Z info: Server is running on port 8000
-2024-07-02T07:56:42.908Z info: Server is running on port 8000
-2024-07-02T07:57:56.636Z info: Server is running on port 8000
-2024-07-02T07:58:12.410Z info: Server is running on port 8000
-2024-07-02T08:02:13.671Z info: Server is running on port 8000
-2024-07-02T10:36:27.616Z info: Server is running on port 8000
-2024-07-02T10:37:05.998Z info: check connection
-2024-07-02T10:37:33.449Z info: Server is running on port 9000
-2024-07-02T10:38:00.764Z info: check connection
-2024-07-02T10:38:02.066Z info: check connection
-2024-07-02T10:41:39.974Z info: check connection
-2024-07-02T10:41:41.107Z info: check connection
-2024-07-02T10:43:22.790Z info: check verfication
-2024-07-02T10:43:23.329Z error: Refresh: Error creating token: connect ETIMEDOUT 192.168.20.45:9001
-2024-07-02T10:43:32.151Z info: Converted JSON to XML
-2024-07-02T10:44:26.351Z info: Server is running on port 9000
-2024-07-02T10:44:31.927Z info: Server is running on port 9000
-2024-07-02T11:06:10.293Z info: check verfication
-2024-07-02T11:09:23.976Z info: Server is running on port 9000
-2024-07-02T11:10:35.703Z info: Server is running on port 9000
-2024-07-02T11:11:48.449Z info: Server is running on port 9000
-2024-07-03T07:03:12.500Z info: Server is running on port 9000
-2024-07-03T07:03:53.373Z info: check connection
-2024-07-03T07:07:00.571Z info: Server is running on port 9000
-2024-07-03T07:10:26.765Z info: Server is running on port 9000
-2024-07-03T07:10:43.313Z info: Server is running on port 9000
-2024-07-03T07:12:36.050Z info: Server is running on port 9000
-2024-07-03T07:13:35.304Z info: Server is running on port 9000
-2024-07-03T07:15:59.852Z info: Server is running on port 9000
-2024-07-03T07:18:41.068Z info: Server is running on port 9000
-2024-07-03T07:18:56.547Z info: Server is running on port 9000
-2024-07-03T07:20:02.490Z info: Server is running on port 9000
-2024-07-03T07:21:39.028Z info: Server is running on port 9000
-2024-07-03T07:22:14.153Z info: Server is running on port 9000
-2024-07-03T07:22:27.069Z info: Server is running on port 9000
-2024-07-03T07:22:36.173Z error: Error retrieving token: GenerateAccessToken is not a function
-2024-07-03T07:25:24.162Z info: Server is running on port 9000
-2024-07-03T07:32:24.292Z info: Server is running on port 9000
-2024-07-03T07:54:04.839Z info: Server is running on port 9000
-2024-07-03T07:56:05.013Z info: Server is running on port 9000
-2024-07-03T07:56:52.897Z info: Server is running on port 9000
-2024-07-03T07:57:26.806Z info: Server is running on port 9000
-2024-07-03T08:00:05.133Z info: Server is running on port 9000
-2024-07-03T08:02:04.719Z info: Server is running on port 9000
-2024-07-03T08:03:53.091Z info: Server is running on port 9000
-2024-07-03T08:07:55.429Z info: Server is running on port 9000
-2024-07-03T08:10:14.906Z info: Server is running on port 9000
-2024-07-03T08:11:02.207Z info: Server is running on port 9000
-2024-07-03T08:11:42.437Z info: Server is running on port 9000
-2024-07-03T08:12:55.065Z info: Server is running on port 9000
-2024-07-03T08:16:38.671Z info: Server is running on port 9000
-2024-07-03T08:18:06.962Z info: Server is running on port 9000
-2024-07-03T08:18:58.224Z info: Server is running on port 9000
-2024-07-03T08:19:38.996Z info: Server is running on port 9000
-2024-07-03T08:21:21.809Z info: Server is running on port 9000
-2024-07-03T08:22:25.077Z info: Server is running on port 9000
-2024-07-03T08:23:06.446Z info: Server is running on port 9000
-2024-07-03T08:23:24.963Z info: Server is running on port 9000
-2024-07-03T08:25:33.968Z info: Server is running on port 9000
-2024-07-03T08:26:32.134Z info: Server is running on port 9000
-2024-07-03T08:26:40.457Z info: Server is running on port 9000
-2024-07-03T08:28:17.190Z info: Server is running on port 9000
-2024-07-03T08:34:47.577Z info: Server is running on port 9000
-2024-07-03T08:34:56.877Z info: Server is running on port 9000
-2024-07-03T08:35:45.459Z info: Server is running on port 9000
-2024-07-03T08:36:09.463Z info: Server is running on port 9000
-2024-07-03T08:36:22.351Z info: Server is running on port 9000
-2024-07-03T08:36:32.845Z info: Server is running on port 9000
-2024-07-03T08:40:39.434Z info: Server is running on port 9000
-2024-07-03T08:43:29.598Z info: Server is running on port 9000
-2024-07-03T08:58:17.616Z info: Server is running on port 9000
-2024-07-03T09:00:30.126Z info: Server is running on port 9000
-2024-07-03T09:01:06.298Z info: Server is running on port 9000
-2024-07-03T09:01:56.395Z info: Server is running on port 9000
-2024-07-03T09:02:14.449Z info: Server is running on port 9000
-2024-07-03T09:04:21.394Z info: Server is running on port 9000
-2024-07-03T09:04:48.389Z info: Server is running on port 9000
-2024-07-03T10:02:44.124Z info: Server is running on port 9000
-2024-07-03T10:02:56.489Z info: Server is running on port 9000
-2024-07-03T10:03:35.011Z info: Server is running on port 9000
-2024-07-03T10:05:12.223Z info: Server is running on port 9000
-2024-07-03T10:07:58.831Z info: Server is running on port 9000
-2024-07-03T10:08:04.417Z info: Server is running on port 9000
-2024-07-03T10:18:44.524Z info: Server is running on port 9000
-2024-07-03T10:19:07.514Z info: Server is running on port 9000
-2024-07-03T10:22:11.426Z info: Server is running on port 9000
-2024-07-03T10:22:54.959Z info: Server is running on port 9000
-2024-07-03T10:24:08.520Z info: Server is running on port 9000
-2024-07-03T10:24:23.687Z info: Server is running on port 9000
-2024-07-03T10:25:35.494Z info: Server is running on port 9000
-2024-07-03T10:27:18.150Z info: Server is running on port 9000
-2024-07-03T10:27:32.490Z info: Server is running on port 9000
-2024-07-03T10:28:08.541Z info: Server is running on port 9000
-2024-07-03T10:29:14.103Z info: Server is running on port 9000
-2024-07-03T10:37:16.197Z info: Server is running on port 9000
-2024-07-03T10:39:57.356Z info: Server is running on port 9000
-2024-07-03T10:40:46.655Z info: Server is running on port 9000
-2024-07-03T10:40:59.154Z info: Server is running on port 9000
-2024-07-03T10:42:40.567Z info: Server is running on port 9000
-2024-07-03T10:47:02.508Z info: Server is running on port 9000
-2024-07-03T10:47:42.458Z info: Server is running on port 9000
-2024-07-03T10:49:20.801Z info: Server is running on port 9000
-2024-07-03T10:49:49.216Z info: Server is running on port 9000
-2024-07-03T10:50:32.234Z info: Server is running on port 9000
-2024-07-03T10:51:20.904Z info: Server is running on port 9000
-2024-07-03T10:51:35.095Z info: Server is running on port 9000
-2024-07-03T10:51:54.743Z info: Server is running on port 9000
-2024-07-03T10:52:06.710Z info: Server is running on port 9000
-2024-07-03T10:52:44.255Z info: Server is running on port 9000
-2024-07-03T10:53:35.871Z info: Server is running on port 9000
-2024-07-03T10:53:45.939Z info: Server is running on port 9000
-2024-07-03T10:54:10.507Z info: Server is running on port 9000
-2024-07-03T10:58:50.414Z info: Server is running on port 9000
-2024-07-03T11:00:31.390Z info: Server is running on port 9000
-2024-07-03T11:01:12.944Z info: Server is running on port 9000
-2024-07-03T11:03:28.982Z info: Server is running on port 9000
-2024-07-03T11:06:13.875Z info: Server is running on port 9000
-2024-07-03T11:06:50.384Z info: Server is running on port 9000
-2024-07-03T11:07:03.767Z info: check verfication
-2024-07-03T11:47:43.753Z info: Server is running on port 3000
-2024-07-03T11:52:28.891Z info: Server is running on port 3000
-2024-07-03T12:19:20.442Z info: Server is running on port 3000
-2024-07-03T12:21:15.491Z info: Server is running on port 3000
+2024-07-04T07:24:12.880Z info: Server is running on port 3000
+2024-07-04T07:25:37.040Z info: check verfication
+2024-07-04T08:48:39.604Z error: Failed to sync database: connect ETIMEDOUT
+2024-07-04T12:18:26.147Z info: Server is running on port 3000
+2024-07-04T12:18:38.556Z info: check verfication
+2024-07-04T12:18:50.847Z error: Error: Failed to send XML data
+2024-07-04T12:26:20.083Z info: Server is running on port 3000
+2024-07-04T12:28:53.894Z error: Refresh: Error creating token: Request failed with status code 401
+2024-07-04T12:28:55.587Z error: Refresh: Error creating token: Request failed with status code 401
+2024-07-04T12:39:24.602Z info: Server is running on port 3000
+2024-07-04T12:41:21.066Z info: Server is running on port 3000
+2024-07-04T12:45:33.517Z info: Server is running on port 3000
+2024-07-04T12:52:01.449Z info: Server is running on port 3000
+2024-07-04T12:53:47.966Z info: Server is running on port 3000
+2024-07-04T12:56:35.030Z info: Server is running on port 3000
+2024-07-04T12:58:38.757Z info: Server is running on port 3000
+2024-07-04T12:58:42.153Z error: Error retrieving token: Converting circular structure to JSON
+    --> starting at object with constructor 'ClientRequest'
+    |     property 'res' -> object with constructor 'IncomingMessage'
+    --- property 'req' closes the circle
+2024-07-04T13:00:42.531Z info: Server is running on port 3000
+2024-07-04T13:01:29.802Z error: Error: Failed to send XML data
+2024-07-04T13:01:31.575Z error: Error: Failed to send XML data
+2024-07-04T13:03:52.850Z info: Server is running on port 3000
+2024-07-04T13:04:24.289Z error: Refresh: Error creating token: notNull Violation: token_list.accessToken cannot be null,
+notNull Violation: token_list.refreshToken cannot be null
+2024-07-04T13:05:59.022Z info: Server is running on port 3000
+2024-07-04T13:06:04.411Z error: Refresh: Error creating token: notNull Violation: token_list.accessToken cannot be null,
+notNull Violation: token_list.refreshToken cannot be null
+2024-07-04T13:06:05.933Z error: Refresh: Error creating token: notNull Violation: token_list.accessToken cannot be null,
+notNull Violation: token_list.refreshToken cannot be null
+2024-07-04T13:06:07.711Z error: Refresh: Error creating token: notNull Violation: token_list.accessToken cannot be null,
+notNull Violation: token_list.refreshToken cannot be null
+2024-07-04T13:07:48.834Z info: Server is running on port 3000
+2024-07-04T13:14:39.959Z info: Server is running on port 3000
+2024-07-04T13:15:56.752Z info: Server is running on port 3000
+2024-07-04T13:16:31.495Z info: Server is running on port 3000
+2024-07-04T13:17:39.191Z info: Server is running on port 3000
+2024-07-04T13:18:15.761Z info: Server is running on port 3000
+2024-07-04T13:20:00.125Z info: Server is running on port 3000
+2024-07-04T13:21:06.529Z info: Server is running on port 3000
+2024-07-04T13:22:57.497Z info: Server is running on port 3000
+2024-07-04T13:24:41.024Z info: Server is running on port 3000
+2024-07-04T13:25:25.637Z info: Server is running on port 3000
+2024-07-04T13:26:41.816Z info: Server is running on port 3000
+2024-07-04T13:31:26.499Z info: Server is running on port 3000
+2024-07-04T13:34:23.388Z info: Server is running on port 3000
+2024-07-04T13:35:08.482Z info: Server is running on port 3000
+2024-07-04T13:40:28.684Z info: Server is running on port 3000
+2024-07-04T13:41:52.171Z info: Server is running on port 3000
+2024-07-04T13:43:40.746Z info: Server is running on port 3000
+2024-07-04T13:44:36.814Z info: Server is running on port 3000
+2024-07-04T13:44:43.545Z error: Error: Failed to send XML data
+2024-07-04T13:53:02.314Z info: Server is running on port 3000
+2024-07-04T13:53:07.545Z error: Error: Failed to send XML data
+2024-07-04T13:54:25.802Z info: Server is running on port 3000
+2024-07-04T13:54:32.662Z error: Error: Failed to send XML data
+2024-07-04T13:55:34.762Z info: Server is running on port 3000
+2024-07-04T13:55:42.866Z error: Error: Failed to send XML data
+2024-07-04T13:56:58.312Z info: Server is running on port 3000
+2024-07-04T13:57:02.499Z error: Error: Failed to send XML data
+2024-07-04T13:57:38.846Z info: Server is running on port 3000
+2024-07-04T13:58:24.781Z info: Server is running on port 3000
+2024-07-04T13:58:28.178Z error: Error: Failed to send XML data
+2024-07-04T13:59:23.994Z info: Server is running on port 3000
+2024-07-04T13:59:33.064Z error: Error: Failed to send XML data
+2024-07-04T13:59:43.517Z info: Server is running on port 3000
+2024-07-04T13:59:48.351Z error: Error: Failed to send XML data
+2024-07-04T14:01:17.404Z info: Server is running on port 3000
+2024-07-04T14:01:20.125Z error: Error: Failed to send XML data
+2024-07-04T14:02:26.936Z info: Server is running on port 3000
+2024-07-04T14:02:33.445Z error: Error: Failed to send XML data
+2024-07-04T14:04:53.905Z info: Server is running on port 3000
+2024-07-04T14:04:58.705Z error: Error: Failed to send XML data
+2024-07-04T14:10:15.392Z info: Server is running on port 3000
+2024-07-04T14:10:20.601Z error: Error: Failed to send XML data
+2024-07-04T14:15:47.879Z info: Server is running on port 3000
+2024-07-04T14:15:52.914Z error: Error: Failed to send XML data
+2024-07-04T14:17:11.107Z info: Server is running on port 3000
+2024-07-04T14:17:27.108Z info: Server is running on port 3000
+2024-07-04T14:17:33.231Z error: Error: Failed to send XML data
+2024-07-04T14:19:00.877Z info: Server is running on port 3000
+2024-07-04T14:20:18.945Z info: Server is running on port 3000
+2024-07-04T14:20:21.157Z error: Error: Failed to send XML data
+2024-07-04T14:21:27.768Z info: Server is running on port 3000
+2024-07-04T14:21:32.330Z error: Error: Failed to send XML data
+2024-07-04T14:22:32.947Z error: Error: Failed to send XML data
+2024-07-04T14:23:19.413Z info: Server is running on port 3000
+2024-07-04T14:24:34.494Z error: Error: Failed to send XML data
+2024-07-04T14:27:51.260Z info: Server is running on port 3000
+2024-07-04T14:27:55.309Z error: Error: Failed to send XML data
+2024-07-04T14:28:54.048Z info: Server is running on port 3000
+2024-07-04T14:28:58.203Z error: Error: Failed to send XML data
+2024-07-04T14:30:04.198Z info: Server is running on port 3000
+2024-07-04T14:30:08.057Z error: Error: Failed to send XML data
+2024-07-04T14:32:03.076Z info: Server is running on port 3000
+2024-07-04T14:32:09.127Z error: Error: Failed to send XML data
+2024-07-04T14:33:59.548Z info: Server is running on port 3000
+2024-07-04T14:34:21.518Z info: Server is running on port 3000
+2024-07-04T14:34:25.439Z error: Error: Failed to send XML data
+2024-07-04T14:35:41.433Z info: Server is running on port 3000
+2024-07-04T14:36:10.619Z info: Server is running on port 3000
+2024-07-04T14:37:36.264Z info: Server is running on port 3000
+2024-07-04T14:37:41.149Z error: Error: Failed to send XML data
+2024-07-04T14:39:39.161Z info: Server is running on port 3000
+2024-07-04T14:39:44.329Z error: Error: Failed to send XML data
+2024-07-04T14:42:32.348Z info: Server is running on port 3000
+2024-07-04T14:44:08.674Z info: Server is running on port 3000
+2024-07-04T14:44:15.399Z error: Error: Failed to send XML data
+2024-07-04T14:49:44.116Z info: Server is running on port 3000
+2024-07-04T14:49:49.596Z error: Error: Failed to send XML data
+2024-07-04T14:53:15.065Z info: Server is running on port 3000
+2024-07-04T14:53:36.360Z info: Server is running on port 3000
+2024-07-04T14:54:32.577Z info: Server is running on port 3000
+2024-07-04T14:56:25.998Z info: Server is running on port 3000
+2024-07-04T14:56:29.681Z error: Error: Failed to send XML data
+2024-07-04T14:58:51.160Z info: Server is running on port 3000
+2024-07-04T14:58:58.081Z error: Error: Failed to send XML data
+2024-07-04T15:07:45.297Z info: Server is running on port 3000
+2024-07-04T15:07:59.589Z error: Error: Failed to send XML data
+2024-07-04T15:08:52.952Z info: Server is running on port 3000
+2024-07-04T15:08:59.257Z error: Error: Failed to send XML data
+2024-07-04T15:09:38.071Z info: Server is running on port 3000
+2024-07-04T15:09:59.800Z error: Error: Failed to send XML data
+2024-07-04T15:11:21.204Z info: Server is running on port 3000
+2024-07-04T15:12:07.702Z error: Error: Failed to send XML data
+2024-07-04T15:12:31.866Z info: Server is running on port 3000
+2024-07-04T15:12:45.415Z error: Error: Failed to send XML data
+2024-07-04T15:15:20.810Z info: Server is running on port 3000
+2024-07-04T15:16:33.352Z info: Server is running on port 3000
+2024-07-04T15:16:36.697Z error: Error: Failed to send XML data
+2024-07-04T15:18:09.757Z info: Server is running on port 3000
+2024-07-04T15:18:26.721Z error: Error: Failed to send XML data
+2024-07-04T15:19:23.176Z info: Server is running on port 3000
+2024-07-04T15:19:27.628Z error: Error: Failed to send XML data
+2024-07-04T15:20:14.165Z info: Server is running on port 3000
+2024-07-04T15:20:33.019Z info: Server is running on port 3000
+2024-07-04T15:20:40.104Z error: Error: Failed to send XML data
+2024-07-04T15:21:23.100Z info: Server is running on port 3000
+2024-07-04T15:21:26.803Z error: Error: Failed to send XML data
+2024-07-04T15:24:16.873Z info: Server is running on port 3000
+2024-07-04T15:24:22.913Z error: Error: Failed to send XML data
+2024-07-04T15:26:42.044Z info: Server is running on port 3000
+2024-07-04T15:30:03.219Z info: Server is running on port 3000
+2024-07-04T15:30:09.631Z error: Error: Failed to send XML data
+2024-07-04T15:35:58.810Z info: Server is running on port 3000
+2024-07-04T15:36:03.305Z error: Error: Failed to send XML data
+2024-07-04T15:39:42.490Z info: Server is running on port 3000
+2024-07-04T15:40:00.173Z info: Server is running on port 3000
+2024-07-04T15:40:26.991Z info: Server is running on port 3000
+2024-07-04T15:41:25.514Z info: Server is running on port 3000
+2024-07-04T15:42:04.239Z error: Error: Failed to send XML data
+2024-07-04T15:43:00.279Z error: Error: Failed to send XML data
+2024-07-04T15:44:17.618Z info: Server is running on port 3000
+2024-07-04T15:45:00.765Z error: Error: Failed to send XML data
+2024-07-04T15:47:24.857Z info: Server is running on port 3000
+2024-07-04T15:48:00.952Z error: Error: Failed to send XML data
+2024-07-04T15:51:17.734Z info: Server is running on port 3000
+2024-07-04T15:51:53.004Z error: Error: Failed to send XML data
+2024-07-04T15:53:25.207Z info: Server is running on port 3000
+2024-07-04T15:53:52.580Z info: Server is running on port 3000
+2024-07-04T15:54:29.211Z error: Error: Failed to send XML data
+2024-07-04T15:54:31.115Z info: Server is running on port 3000
+2024-07-04T15:54:49.174Z error: Error: Failed to send XML data
+2024-07-04T15:54:51.549Z error: Error: Failed to send XML data
+2024-07-05T04:57:19.071Z info: Server is running on port 3000
+2024-07-05T04:58:22.455Z error: Error: Failed to send XML data
+2024-07-05T05:21:50.151Z error: Error: Failed to send XML data
+2024-07-05T05:22:12.743Z info: Server is running on port 3000
+2024-07-05T05:22:27.833Z info: Server is running on port 3000
+2024-07-05T05:22:36.396Z error: Error: Failed to send XML data
+2024-07-05T05:24:33.408Z info: Server is running on port 3000
+2024-07-05T05:24:42.179Z error: Error: Failed to send XML data
+2024-07-05T05:25:00.363Z info: Server is running on port 3000
+2024-07-05T05:25:05.942Z error: Error: Failed to send XML data
+2024-07-05T05:26:17.634Z info: Server is running on port 3000
+2024-07-05T05:27:08.795Z info: Server is running on port 3000
+2024-07-05T05:27:19.515Z error: Error: Failed to send XML data
+2024-07-05T05:43:49.141Z info: Server is running on port 3000
+2024-07-05T05:44:05.971Z error: Error: Failed to send XML data
+2024-07-05T05:47:01.635Z info: Server is running on port 3000
+2024-07-05T05:49:49.336Z info: Server is running on port 3000
+2024-07-05T05:49:54.556Z error: Error: Failed to send XML data
+2024-07-05T05:51:53.146Z info: Server is running on port 3000
+2024-07-05T05:52:11.476Z error: Error: Failed to send XML data
+2024-07-05T05:53:20.307Z info: Server is running on port 3000
+2024-07-05T05:53:21.693Z error: Error: Failed to send XML data
+2024-07-05T05:57:42.482Z info: Server is running on port 3000
+2024-07-05T05:57:50.835Z error: Error: Failed to send XML data
+2024-07-05T06:06:34.087Z error: Error: Failed to send XML data
+2024-07-05T06:06:37.420Z error: Error: Failed to send XML data
+2024-07-05T06:08:33.967Z error: Error: Failed to send XML data
+2024-07-05T06:09:49.563Z info: Server is running on port 3000
+2024-07-05T06:17:05.812Z info: Server is running on port 3000
+2024-07-05T06:18:53.720Z info: Server is running on port 3000
+2024-07-05T06:19:59.557Z info: Server is running on port 3000
+2024-07-05T06:21:24.833Z info: Server is running on port 3000
+2024-07-05T06:22:19.925Z info: Server is running on port 3000
+2024-07-05T06:23:13.976Z info: Server is running on port 3000
+2024-07-05T06:25:24.563Z info: Server is running on port 3000
+2024-07-05T06:25:51.987Z info: Server is running on port 3000
+2024-07-05T06:29:13.427Z info: Server is running on port 3000
+2024-07-05T06:30:22.894Z info: Server is running on port 3000
+2024-07-05T06:34:51.349Z info: Server is running on port 3000
+2024-07-05T06:36:02.522Z info: Server is running on port 3000
+2024-07-05T06:37:50.000Z info: Server is running on port 3000
+2024-07-05T06:45:19.560Z info: Server is running on port 3000
+2024-07-05T06:53:19.562Z info: Server is running on port 3000
+2024-07-05T06:54:09.441Z info: Server is running on port 3000
+2024-07-05T06:55:31.021Z info: Server is running on port 3000
+2024-07-05T06:59:34.361Z info: Server is running on port 3000
+2024-07-05T07:02:34.268Z info: Server is running on port 3000
+2024-07-05T07:02:53.827Z info: Server is running on port 3000
+2024-07-05T07:03:06.558Z info: Server is running on port 3000
+2024-07-05T07:13:25.062Z info: Server is running on port 3000
+2024-07-05T07:14:17.847Z info: Server is running on port 3000
+2024-07-05T07:15:12.716Z info: Server is running on port 3000
+2024-07-05T07:15:22.468Z info: Server is running on port 3000
+2024-07-05T07:18:42.372Z info: Server is running on port 3000
+2024-07-05T07:19:33.339Z info: Server is running on port 3000
+2024-07-05T07:20:02.265Z info: Server is running on port 3000
+2024-07-05T07:20:14.420Z info: Server is running on port 3000
+2024-07-05T07:32:59.680Z info: Server is running on port 3000
+2024-07-05T07:35:11.933Z info: Server is running on port 3000
+2024-07-05T07:37:16.153Z error: Refresh: Error creating token: Request failed with status code 401
+2024-07-05T08:40:25.423Z info: Server is running on port 3000
+2024-07-05T08:43:25.360Z info: Server is running on port 3000
+2024-07-05T08:47:33.463Z info: Server is running on port 3000
+2024-07-05T08:56:40.715Z info: Server is running on port 3000
+2024-07-05T12:20:48.238Z info: Server is running on port 3000
+2024-07-05T12:23:16.996Z info: Server is running on port 3000
+2024-07-05T13:37:02.394Z info: Server is running on port 3000
+2024-07-05T13:48:00.860Z info: Server is running on port 3000
+2024-07-05T13:51:44.558Z info: Server is running on port 3000
+2024-07-05T13:58:02.660Z info: Server is running on port 3000
+2024-07-05T14:00:13.003Z info: Server is running on port 3000
+2024-07-05T14:02:00.911Z info: Server is running on port 3000
+2024-07-05T14:03:53.704Z info: Server is running on port 3000
+2024-07-05T14:04:04.673Z info: Server is running on port 3000
+2024-07-05T14:05:31.820Z info: Server is running on port 3000
+2024-07-05T14:07:59.965Z info: Server is running on port 3000
+2024-07-05T14:08:25.598Z info: Server is running on port 3000
+2024-07-06T04:54:35.650Z info: Server is running on port 3000
+2024-07-06T04:57:56.984Z info: Server is running on port 3000
+2024-07-06T04:58:32.132Z info: Server is running on port 3000
+2024-07-06T05:22:07.532Z info: Server is running on port 3000
+2024-07-06T05:23:32.206Z info: Server is running on port 3000
+2024-07-06T05:33:58.406Z info: Server is running on port 3000
+2024-07-06T05:38:14.552Z info: Server is running on port 3000
+2024-07-06T05:39:07.604Z info: Server is running on port 3000
+2024-07-06T05:41:22.972Z info: Server is running on port 3000
+2024-07-06T05:42:12.920Z info: Server is running on port 3000
+2024-07-06T05:42:59.884Z info: Server is running on port 3000
+2024-07-06T05:43:38.225Z info: Server is running on port 3000
+2024-07-06T05:44:26.383Z info: Server is running on port 3000
+2024-07-06T05:46:14.472Z info: Server is running on port 3000
+2024-07-06T05:53:37.114Z info: Server is running on port 3000
+2024-07-06T05:55:29.921Z info: Server is running on port 3000
+2024-07-06T05:56:26.012Z info: Server is running on port 3000
+2024-07-06T06:07:30.742Z info: Server is running on port 3000
+2024-07-06T06:15:50.052Z info: Server is running on port 3000
+2024-07-06T06:16:20.584Z info: Server is running on port 3000
+2024-07-06T06:16:53.924Z info: Server is running on port 3000
+2024-07-06T06:17:58.678Z info: Server is running on port 3000
+2024-07-06T06:20:59.125Z info: Server is running on port 3000
+2024-07-06T06:21:52.156Z info: Server is running on port 3000
+2024-07-06T06:22:33.636Z info: Server is running on port 3000
+2024-07-06T06:23:53.606Z info: Server is running on port 3000
+2024-07-06T06:26:39.970Z info: Server is running on port 3000
+2024-07-06T06:27:26.769Z info: Server is running on port 3000
+2024-07-06T06:29:40.367Z info: Server is running on port 3000
+2024-07-06T06:30:25.456Z info: Server is running on port 3000
+2024-07-06T06:33:14.429Z info: Server is running on port 3000
+2024-07-06T06:34:20.849Z info: Server is running on port 3000
+2024-07-08T10:53:13.768Z info: Server is running on port 3000

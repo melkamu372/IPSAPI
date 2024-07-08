@@ -4,9 +4,12 @@ const {XmltoJson} =require("../utils/XmltoJson");
 exports.GenerateAccesToken = async (req, res) => {
   try {
       const response = await GenerateAccessToken();
+      console.log("get response controller");
+      console.log(response);
       res.status(200).json(response);
   } catch (error) {
     logger.error(`Error retrieving token: ${error.message}`);
+    console.log(error);
     res.status(400).json({status: false, message: error.message });
   }
 };

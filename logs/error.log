@@ -1,28 +1,83 @@
-2024-06-24T05:51:10.902Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
-2024-06-24T12:58:45.930Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:01:01.815Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:18:29.799Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:22:52.332Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:27:45.431Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:29:12.729Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:30:50.954Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:35:23.271Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:38:32.860Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-24T13:39:06.096Z error: Failed to sync database: connect ECONNREFUSED ::1:3306
-2024-06-25T07:04:59.006Z error: Error retrieving token: access_token is not defined
-2024-06-25T12:34:19.139Z error: Error retrieving users: The operation would yield an incorrect node tree. Document already has a document element node. Node is document:Document.
-2024-07-01T08:30:21.506Z error: Error converting JSON to XML: convertToxml is not defined
-2024-07-01T08:30:23.265Z error: Error converting JSON to XML: convertToxml is not defined
-2024-07-01T08:31:02.999Z error: Error converting JSON to XML: convertToxml is not defined
-2024-07-01T08:31:04.198Z error: Error converting JSON to XML: convertToxml is not defined
-2024-07-01T12:43:58.092Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
-2024-07-01T13:01:59.435Z error: Error retrieving token: logger is not defined
-2024-07-01T13:02:36.816Z error: Refresh: Error creating token: axios is not defined
-2024-07-01T13:03:21.473Z error: Refresh: Error creating token: connect ETIMEDOUT 192.168.20.45:9001
-2024-07-01T13:41:09.133Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-01T13:41:09.140Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-01T13:42:09.743Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-01T13:42:09.749Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-01T13:44:28.980Z error: Error converting JSON to XML: xmlData is not defined
-2024-07-02T10:43:23.329Z error: Refresh: Error creating token: connect ETIMEDOUT 192.168.20.45:9001
-2024-07-03T07:22:36.173Z error: Error retrieving token: GenerateAccessToken is not a function
+2024-07-04T08:48:39.604Z error: Failed to sync database: connect ETIMEDOUT
+2024-07-04T12:18:50.847Z error: Error: Failed to send XML data
+2024-07-04T12:28:53.894Z error: Refresh: Error creating token: Request failed with status code 401
+2024-07-04T12:28:55.587Z error: Refresh: Error creating token: Request failed with status code 401
+2024-07-04T12:58:42.153Z error: Error retrieving token: Converting circular structure to JSON
+    --> starting at object with constructor 'ClientRequest'
+    |     property 'res' -> object with constructor 'IncomingMessage'
+    --- property 'req' closes the circle
+2024-07-04T13:01:29.802Z error: Error: Failed to send XML data
+2024-07-04T13:01:31.575Z error: Error: Failed to send XML data
+2024-07-04T13:04:24.289Z error: Refresh: Error creating token: notNull Violation: token_list.accessToken cannot be null,
+notNull Violation: token_list.refreshToken cannot be null
+2024-07-04T13:06:04.411Z error: Refresh: Error creating token: notNull Violation: token_list.accessToken cannot be null,
+notNull Violation: token_list.refreshToken cannot be null
+2024-07-04T13:06:05.933Z error: Refresh: Error creating token: notNull Violation: token_list.accessToken cannot be null,
+notNull Violation: token_list.refreshToken cannot be null
+2024-07-04T13:06:07.711Z error: Refresh: Error creating token: notNull Violation: token_list.accessToken cannot be null,
+notNull Violation: token_list.refreshToken cannot be null
+2024-07-04T13:44:43.545Z error: Error: Failed to send XML data
+2024-07-04T13:53:07.545Z error: Error: Failed to send XML data
+2024-07-04T13:54:32.662Z error: Error: Failed to send XML data
+2024-07-04T13:55:42.866Z error: Error: Failed to send XML data
+2024-07-04T13:57:02.499Z error: Error: Failed to send XML data
+2024-07-04T13:58:28.178Z error: Error: Failed to send XML data
+2024-07-04T13:59:33.064Z error: Error: Failed to send XML data
+2024-07-04T13:59:48.351Z error: Error: Failed to send XML data
+2024-07-04T14:01:20.125Z error: Error: Failed to send XML data
+2024-07-04T14:02:33.445Z error: Error: Failed to send XML data
+2024-07-04T14:04:58.705Z error: Error: Failed to send XML data
+2024-07-04T14:10:20.601Z error: Error: Failed to send XML data
+2024-07-04T14:15:52.914Z error: Error: Failed to send XML data
+2024-07-04T14:17:33.231Z error: Error: Failed to send XML data
+2024-07-04T14:20:21.157Z error: Error: Failed to send XML data
+2024-07-04T14:21:32.330Z error: Error: Failed to send XML data
+2024-07-04T14:22:32.947Z error: Error: Failed to send XML data
+2024-07-04T14:24:34.494Z error: Error: Failed to send XML data
+2024-07-04T14:27:55.309Z error: Error: Failed to send XML data
+2024-07-04T14:28:58.203Z error: Error: Failed to send XML data
+2024-07-04T14:30:08.057Z error: Error: Failed to send XML data
+2024-07-04T14:32:09.127Z error: Error: Failed to send XML data
+2024-07-04T14:34:25.439Z error: Error: Failed to send XML data
+2024-07-04T14:37:41.149Z error: Error: Failed to send XML data
+2024-07-04T14:39:44.329Z error: Error: Failed to send XML data
+2024-07-04T14:44:15.399Z error: Error: Failed to send XML data
+2024-07-04T14:49:49.596Z error: Error: Failed to send XML data
+2024-07-04T14:56:29.681Z error: Error: Failed to send XML data
+2024-07-04T14:58:58.081Z error: Error: Failed to send XML data
+2024-07-04T15:07:59.589Z error: Error: Failed to send XML data
+2024-07-04T15:08:59.257Z error: Error: Failed to send XML data
+2024-07-04T15:09:59.800Z error: Error: Failed to send XML data
+2024-07-04T15:12:07.702Z error: Error: Failed to send XML data
+2024-07-04T15:12:45.415Z error: Error: Failed to send XML data
+2024-07-04T15:16:36.697Z error: Error: Failed to send XML data
+2024-07-04T15:18:26.721Z error: Error: Failed to send XML data
+2024-07-04T15:19:27.628Z error: Error: Failed to send XML data
+2024-07-04T15:20:40.104Z error: Error: Failed to send XML data
+2024-07-04T15:21:26.803Z error: Error: Failed to send XML data
+2024-07-04T15:24:22.913Z error: Error: Failed to send XML data
+2024-07-04T15:30:09.631Z error: Error: Failed to send XML data
+2024-07-04T15:36:03.305Z error: Error: Failed to send XML data
+2024-07-04T15:42:04.239Z error: Error: Failed to send XML data
+2024-07-04T15:43:00.279Z error: Error: Failed to send XML data
+2024-07-04T15:45:00.765Z error: Error: Failed to send XML data
+2024-07-04T15:48:00.952Z error: Error: Failed to send XML data
+2024-07-04T15:51:53.004Z error: Error: Failed to send XML data
+2024-07-04T15:54:29.211Z error: Error: Failed to send XML data
+2024-07-04T15:54:49.174Z error: Error: Failed to send XML data
+2024-07-04T15:54:51.549Z error: Error: Failed to send XML data
+2024-07-05T04:58:22.455Z error: Error: Failed to send XML data
+2024-07-05T05:21:50.151Z error: Error: Failed to send XML data
+2024-07-05T05:22:36.396Z error: Error: Failed to send XML data
+2024-07-05T05:24:42.179Z error: Error: Failed to send XML data
+2024-07-05T05:25:05.942Z error: Error: Failed to send XML data
+2024-07-05T05:27:19.515Z error: Error: Failed to send XML data
+2024-07-05T05:44:05.971Z error: Error: Failed to send XML data
+2024-07-05T05:49:54.556Z error: Error: Failed to send XML data
+2024-07-05T05:52:11.476Z error: Error: Failed to send XML data
+2024-07-05T05:53:21.693Z error: Error: Failed to send XML data
+2024-07-05T05:57:50.835Z error: Error: Failed to send XML data
+2024-07-05T06:06:34.087Z error: Error: Failed to send XML data
+2024-07-05T06:06:37.420Z error: Error: Failed to send XML data
+2024-07-05T06:08:33.967Z error: Error: Failed to send XML data
+2024-07-05T07:37:16.153Z error: Refresh: Error creating token: Request failed with status code 401

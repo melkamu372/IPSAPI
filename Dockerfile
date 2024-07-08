@@ -1,21 +1,29 @@
-FROM node:14
+# Use a Node.js image with version 16
+FROM node:16-alpine
 
-# Install Java SDK
-RUN apt-get update && \
-    apt-get install -y openjdk-11-jdk
+# Install dependencies
+RUN apk add --no-cache \
+    curl \
+    openjdk11-jdk
 
 # Set JAVA_HOME environment variable
-ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
+
+# Copy wait-for-it script
+COPY wait-for-it.sh /app/
 
 # Install app dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install --production
 
-# Bundle app source
+# Copy the rest of the application code
 COPY . .
 
+# Expose port
 EXPOSE 3000
-CMD [ "node", "server.js" ]
+
+# Command to run the application
+CMD ["node", "server.js"]

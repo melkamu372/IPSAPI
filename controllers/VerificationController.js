@@ -1,5 +1,6 @@
 const axios = require('axios');
 const logger = require('../logs/logger');
+const xml2js = require('xml2js');
 
 const {verification_url,digest_url}=require ('../utils/urls');
 const { generateXmlDocument } = require('../utils/xmlRequestUtils');
@@ -8,10 +9,7 @@ const { generateBizMsgIdr,GenerateVerificationMsgId } = require('../utils/MsgIdU
 const {getAccessToken}=require("../services/token-service");
 const {XsdsValidation} =require("../xmlValidator/xmlValidator");
 const path = require('path');
-
-
 // Construct the absolute path using __dirname
-
 //verification controller 
 exports.testAPI = async (req, res) => {
   try {
@@ -42,33 +40,112 @@ exports.VerificationTest = async (req, res) => {
       }
   };
   
-exports.Verification = async (req, res) => {
-  const xmlData=convertToxml(req.body);
+exports.AccountVerification= async (req, res) => {
+  const xmlData=convertToxml(req.body);  
   const XSD_PATH = path.resolve(__dirname, '../XSDs/verification_request.xsd');
   try {
     const isValid = await XsdsValidation(xmlData,XSD_PATH);
       if (!isValid) {
         return res.status(400).json({ error: 'XML is not valid against XSD.' });    
       } 
+      
+   const Signedxml= await digestXml(xmlData); 
+    const isSignedxmlValid = await XsdsValidation(Signedxml,XSD_PATH);
+    
+      if (!isSignedxmlValid) {
+        return res.status(400).json({ error: 'Signed xml is not valid against XSD.' });    
+      }
+        
     const tokenResult = await getAccessToken();
      if(!tokenResult.status){
       res.status(400).json({ error: tokenResult.message });
-         }    
+         }         
     const accessToken = tokenResult.token;
-    const xmlResponse=digestXml(xmlData);
-    const response = await axios.post(verification_url, xmlResponse, {
-        headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Content-Type': 'application/xml',
-        },
-    });
+    const headers = {
+      'Content-Type': 'application/xml',
+      'Connection': 'keep-alive',
+      'Authorization': `Bearer ${accessToken}`
+         };
+         
+    const response = await axios.post(verification_url,Signedxml,{headers}); 
+      
+      //xml to json converter  
+     const jsondata = await xmltojson(response.data); 
+    console.log(jsondata);
+    if(response.status==200){
+    res.status(200).send(jsondata);
+    }
+    else{
+    res.status(response.status).json({ error:response.statusText});
+    }
+    
+   // res.set('Content-Type', 'application/xml');
+    //res.status(200).send({ message: 'XML data sent successfully', response: response.data });
+} catch (error) {
+    //logger.error('Error: Failed to send XML data', error.message);   
+    
+    if (error.response) {
+        res.status(error.response.status).json({ error: error.response.data});
+        //console.error('Error headers:', error.response.headers);
+    } else if (error.request) {
+       res.status(400).json({ error: error.request});
+        //console.error('Error request:', error.request);
+    } else {
+        res.status(400).json({ error:error.message});
+       // console.error('Error message:', error.message);
+      }
+    }
+};
+
+exports.xmlAccountVerification = async (req, res) => {
+
+ const xmlData=req.body.data; 
+  const XSD_PATH = path.resolve(__dirname, '../XSDs/verification_request.xsd');
+  try {
+    const isValid = await XsdsValidation(xmlData,XSD_PATH);
+      if (!isValid) {
+        return res.status(400).json({ error: 'XML is not valid against XSD.' });    
+      } 
+      
+   const Signedxml= await digestXml(xmlData);
+    
+    const isSignedxmlValid = await XsdsValidation(Signedxml,XSD_PATH);
+    
+      if (!isSignedxmlValid) {
+        return res.status(400).json({ error: 'Signed xml is not valid against XSD.' });    
+      }
+        
+    const tokenResult = await getAccessToken();
+     if(!tokenResult.status){
+      res.status(400).json({ error: tokenResult.message });
+         }         
+    const accessToken = tokenResult.token;
+    const headers = {
+      'Content-Type': 'application/xml',
+      'Content-Length': '1625', // Content-Length should be a string
+      'Connection': 'keep-alive',
+      'Authorization': `Bearer ${accessToken}`
+         };
+    
+    const response = await axios.post(verification_url,Signedxml,{headers});  
    res.set('Content-Type', 'application/xml');
    res.status(200).send({ message: 'XML data sent successfully', response: response.data });
 } catch (error) {
-    logger.error('Error: Failed to send XML data', error.message);
-   res.status(500).json({ error: 'Failed to send XML data' });
+    //logger.error('Error: Failed to send XML data', error.message);   
+    
+    if (error.response) {
+        res.status(error.response.status).json({ error: error.response.data});
+        //console.error('Error headers:', error.response.headers);
+    } else if (error.request) {
+       res.status(400).json({ error: error.request});
+        //console.error('Error request:', error.request);
+    } else {
+        res.status(400).json({ error:error.message});
+       // console.error('Error message:', error.message);
+      }
     }
 };
+
 
 // Verification controller
 exports.convertAPI = async (req, res) => {
@@ -101,7 +178,7 @@ exports.digestAPI = async (req, res) => {
 // functions 
 function convertToxml(jsonInput) {
    const FromFinInstnId="ABAYETAA";
-    const ToFinInstnId="ETSETAAXX";
+    const ToFinInstnId="ETSETAA";
     const BizMsgIdr= generateBizMsgIdr();
     const CreDt=getCurrentDateInISO8601();
     const MsgDefIdr="acmt.023.001.03";
@@ -135,3 +212,83 @@ async function digestXml(xmlData) {
     throw error;
   }
 }
+
+
+
+
+async function xmltojson(xmlResponse) {
+  try {
+    return new Promise((resolve, reject) => {
+      xml2js.parseString(xmlResponse, (err, result) => {
+        if (err) {
+          console.error('Error parsing XML:', err);
+          reject({
+            status: false,
+            message: 'Error parsing XML',
+            data: err
+          });
+        } else {
+          const msgDefIdr = result['FPEnvelope']['header:AppHdr'][0]['header:MsgDefIdr'][0];
+          const frId = result['FPEnvelope']['header:AppHdr'][0]['header:Fr'][0]['header:FIId'][0]['header:FinInstnId'][0]['header:Othr'][0]['header:Id'][0];
+          const toId = result['FPEnvelope']['header:AppHdr'][0]['header:To'][0]['header:FIId'][0]['header:FinInstnId'][0]['header:Othr'][0]['header:Id'][0];
+          const bizMsgIdr = result['FPEnvelope']['header:AppHdr'][0]['header:BizMsgIdr'][0];
+          const creDt = result['FPEnvelope']['header:AppHdr'][0]['header:CreDt'][0];
+  
+          const rltdFrId = result['FPEnvelope']['header:AppHdr'][0]['header:Rltd'][0]['header:Fr'][0]['header:FIId'][0]['header:FinInstnId'][0]['header:Othr'][0]['header:Id'][0];
+          const rltdToId = result['FPEnvelope']['header:AppHdr'][0]['header:Rltd'][0]['header:To'][0]['header:FIId'][0]['header:FinInstnId'][0]['header:Othr'][0]['header:Id'][0];
+          const rltdBizMsgIdr = result['FPEnvelope']['header:AppHdr'][0]['header:Rltd'][0]['header:BizMsgIdr'][0];
+          const rltdMsgDefIdr = result['FPEnvelope']['header:AppHdr'][0]['header:Rltd'][0]['header:MsgDefIdr'][0];
+          const rltdCreDt = result['FPEnvelope']['header:AppHdr'][0]['header:Rltd'][0]['header:CreDt'][0];
+  
+          const assgnmtMsgId = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Assgnmt'][0]['document:MsgId'][0];
+          const assgnmtCreDtTm = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Assgnmt'][0]['document:CreDtTm'][0];
+          const assgnmtAssgnrId = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Assgnmt'][0]['document:Assgnr'][0]['document:Agt'][0]['document:FinInstnId'][0]['document:Othr'][0]['document:Id'][0];
+          const assgnmtAssgneId = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Assgnmt'][0]['document:Assgne'][0]['document:Agt'][0]['document:FinInstnId'][0]['document:Othr'][0]['document:Id'][0];
+  
+          const orgnlAssgnmtMsgId = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:OrgnlAssgnmt'][0]['document:MsgId'][0];
+          const orgnlAssgnmtCreDtTm = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:OrgnlAssgnmt'][0]['document:CreDtTm'][0];
+  
+          const rptOrgnlId = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Rpt'][0]['document:OrgnlId'][0];
+          const rptVrfctn = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Rpt'][0]['document:Vrfctn'][0];
+          const rptRsn = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Rpt'][0]['document:Rsn'][0]['document:Prtry'][0];
+  
+          const data = {
+            MsgDefIdr: msgDefIdr,
+            Fr_Id: frId,
+            To_Id: toId,
+            BizMsgIdr: bizMsgIdr,
+            CreDt: creDt,
+            Rltd_Fr_Id: rltdFrId,
+            Rltd_To_Id: rltdToId,
+            Rltd_BizMsgIdr: rltdBizMsgIdr,
+            Rltd_MsgDefIdr: rltdMsgDefIdr,
+            Rltd_CreDt: rltdCreDt,
+            Assgnmt_MsgId: assgnmtMsgId,
+            Assgnmt_CreDtTm: assgnmtCreDtTm,
+            Assgnmt_Assgnr_Id: assgnmtAssgnrId,
+            Assgnmt_Assgne_Id: assgnmtAssgneId,
+            OrgnlAssgnmt_MsgId: orgnlAssgnmtMsgId,
+            OrgnlAssgnmt_CreDtTm: orgnlAssgnmtCreDtTm,
+            Rpt_OrgnlId: rptOrgnlId,
+            Rpt_Vrfctn: rptVrfctn,
+            Rpt_Rsn: rptRsn
+          };
+  
+          resolve({
+            status: true,
+            message: 'The xml response converted as expected',
+            data: data
+          });
+        }
+      });
+    });
+  } catch (error) {
+    console.error('Error converting xml response to json:', error);
+    return {
+      status: false,
+      message: 'Error converting xml response to json',
+      data: error
+    };
+  }
+}
+
