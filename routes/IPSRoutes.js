@@ -13,8 +13,6 @@ router.get('/access/get-json', AccessController.getjson);
 
 // verification
 router.get('/verify/test', VerificationController.testAPI);
-router.post('/verify/convert', VerificationController.convertAPI);
-router.post('/verify/digest', VerificationController.digestAPI);
 router.post('/verify/account', VerificationController.AccountVerification);
 router.post('/verify/xml/account', VerificationController.xmlAccountVerification);
 

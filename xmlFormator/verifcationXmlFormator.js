@@ -1,6 +1,6 @@
 const { create } = require('xmlbuilder2');
 
-const generateXmlDocument = (jsonInput) => {
+const generateVerifcationRequestXml= (jsonInput) => {
   const xmlDoc = create({ version: '1.0', encoding: 'UTF-8', standalone: true })
     .ele('FPEnvelope', {
       'xmlns:header': 'urn:iso:std:iso:20022:tech:xsd:head.001.001.03',
@@ -54,5 +54,5 @@ const generateXmlDocument = (jsonInput) => {
 };
 
 module.exports = {
-  generateXmlDocument
+  generateVerifcationRequestXml
 };

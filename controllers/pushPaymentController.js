@@ -2,12 +2,12 @@ const axios = require('axios');
 const logger = require('../logs/logger');
 
 const {xmlVerificationResponseTojson}=require('../xmlToJson/xmlResponseConverter');
-const {verification_url}=require ('../utils/urls');
+const {verification_url,digest_url}=require ('../utils/urls');
 const { generateVerifcationRequestXml} = require('../xmlFormator/verifcationXmlFormator');
-const { getISO8601Date,getEastAfricanISO8601,generateBizMsgIdr,generateMsgId} = require('../utils/xmlIdGenerator');
+const { getCurrentDateInISO8601,getCurrentDateINEastAfricanISO8601} = require('../utils/IsoDateUtils');
+const { generateBizMsgIdr,GenerateVerificationMsgId } = require('../utils/MsgIdUtils');
 const {getAccessToken}=require("../services/token-service");
 const {XsdsValidation} =require("../xmlValidator/xmlValidator");
-const {digestXml}=require("../services/digestXml");
 const path = require('path');
 
 exports.testAPI = async (req, res) => {
@@ -24,17 +24,33 @@ exports.testAPI = async (req, res) => {
   }
 };
 
-exports.AccountVerification= async (req, res) => {
-    const xmlData=convertToxml(req.body);  
+exports.VerificationTest = async (req, res) => {
+   const xmlData=convertToxml(req.body);
     const XSD_PATH = path.resolve(__dirname, '../XSDs/verification_request.xsd');
     try {
       const isValid = await XsdsValidation(xmlData,XSD_PATH);
-        if (!isValid) {
-          return res.status(400).json({ error: 'XML is not valid against XSD.' });    
-        } 
+      if (!isValid) {
+        return res.status(400).json({ error: 'XML is not valid against XSD.' });    
+      } 
+      return res.status(200).json({ message: 'XML is valid against XSD.' });
+  } catch (error) {
+      logger.error('Error:', error.message);
+     res.status(500).json({ error: 'Failed to send XML data'+ error.message });
+      }
+  };
+  
+exports.AccountVerification= async (req, res) => {
+  const xmlData=convertToxml(req.body);  
+  const XSD_PATH = path.resolve(__dirname, '../XSDs/verification_request.xsd');
+  try {
+    const isValid = await XsdsValidation(xmlData,XSD_PATH);
+      if (!isValid) {
+        return res.status(400).json({ error: 'XML is not valid against XSD.' });    
+      } 
       
-    const Signedxml= await digestXml(xmlData); 
+   const Signedxml= await digestXml(xmlData); 
     const isSignedxmlValid = await XsdsValidation(Signedxml,XSD_PATH);
+    
       if (!isSignedxmlValid) {
         return res.status(400).json({ error: 'Signed xml is not valid against XSD.' });    
       }
@@ -50,8 +66,10 @@ exports.AccountVerification= async (req, res) => {
       'Authorization': `Bearer ${accessToken}`
          };
          
-    const response = await axios.post(verification_url,Signedxml,{headers});   
-    const jsondata = await xmlVerificationResponseTojson(response.data); 
+    const response = await axios.post(verification_url,Signedxml,{headers}); 
+      
+      //xml to json converter  
+     const jsondata = await xmlVerificationResponseTojson(response.data); 
     console.log(jsondata);
     if(response.status==200){
     res.status(200).send(jsondata);
@@ -59,10 +77,12 @@ exports.AccountVerification= async (req, res) => {
     else{
     res.status(response.status).json({ error:response.statusText});
     }
+    
    // res.set('Content-Type', 'application/xml');
     //res.status(200).send({ message: 'XML data sent successfully', response: response.data });
 } catch (error) {
     //logger.error('Error: Failed to send XML data', error.message);   
+    
     if (error.response) {
         res.status(error.response.status).json({ error: error.response.data});
         //console.error('Error headers:', error.response.headers);
@@ -125,15 +145,44 @@ exports.xmlAccountVerification = async (req, res) => {
     }
 };
 
+
+// Verification controller
+exports.convertAPI = async (req, res) => {
+  try {
+    const xmlDoc=convertToxml(req.body);
+    //const xmlDoc = generateVerifcationRequestXmljsonInput);    
+    logger.info('Converted JSON to XML');
+    res.set('Content-Type', 'application/xml');
+    res.status(200).send(xmlDoc);
+  } catch (error) {
+    logger.error(`Error converting JSON to XML: ${error.message}`);
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// fakedigestapi
+exports.digestAPI = async (req, res) => {
+  try {
+    const xmlDoc=convertToxml(req.body);
+   // const xmlData= digestXml(xmlDoc);
+    res.set('Content-Type', 'application/xml');
+   // res.status(200).send(xmlData);
+   res.status(200).send(xmlDoc);
+  } catch (error) {
+    logger.error(`Error converting JSON to XML: ${error.message}`);
+    res.status(400).json({ error: error.message });
+  }
+};
+
 // functions 
 function convertToxml(jsonInput) {
    const FromFinInstnId="ABAYETAA";
     const ToFinInstnId="ETSETAA";
     const BizMsgIdr= generateBizMsgIdr();
-    const CreDt=getISO8601Date();
+    const CreDt=getCurrentDateInISO8601();
     const MsgDefIdr="acmt.023.001.03";
-    const CreDtTm=getEastAfricanISO8601();
-    const VrfctnId=generateMsgId();
+    const CreDtTm=getCurrentDateINEastAfricanISO8601();
+    const VrfctnId=GenerateVerificationMsgId();
     // Headers
     jsonInput. FromFinInstnId=FromFinInstnId;
     jsonInput.ToFinInstnId=ToFinInstnId;
@@ -149,7 +198,19 @@ function convertToxml(jsonInput) {
     return xmlDoc;
 };
 
-
+async function digestXml(xmlData) {
+  try {
+    const response = await axios.post(digest_url, xmlData, {
+      headers: {
+        'Content-Type': 'application/xml',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error digesting XML:', error);
+    throw error;
+  }
+}
 
 
 
