@@ -1,3 +1,4 @@
+const axios = require('axios');
 const {digest_url}=require ('../utils/urls');
 async function digestXml(xmlData) {
     try {
@@ -8,8 +9,8 @@ async function digestXml(xmlData) {
       });
       return response.data;
     } catch (error) {
-      console.error('Error digesting XML:', error);
-      throw error;
+      //console.error('Error digesting XML:', error);
+      return "";
     }
   }
 

@@ -1,6 +1,22 @@
 const logger = require('../logs/logger');
 const {GenerateAccessToken,RefreshToken,getLastToken,isTokenExpired,getAccessToken}=require("../services/token-service");
 const {XmltoJson} =require("../utils/XmltoJson");
+
+
+exports.testAPI = async (req, res) => {
+  try {
+    const testPlayload = {
+      name:"access api test",
+      connection:"test success "
+    };
+    logger.info('check access controller work');
+    res.status(200).json(testPlayload);
+  } catch (error) {
+    logger.error(`Error retrieving users: ${error.message}`);
+    res.status(400).json({ error: error.message });
+  }
+};
+
 exports.GenerateAccesToken = async (req, res) => {
   try {
       const response = await GenerateAccessToken();

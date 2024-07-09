@@ -14,7 +14,7 @@ exports.getEastAfricanISO8601 = () => {
 
 
 exports.generateBizMsgIdr = () => {
-  const prefix = "ABAYETAAXXX";
+  const prefix = "ABAYETAA";
   const date = new Date();
   const year = date.getUTCFullYear();
   const month = String(date.getUTCMonth() + 1).padStart(2, '0');
@@ -27,7 +27,7 @@ exports.generateBizMsgIdr = () => {
 };
 
 exports.generateMsgId = () => {
-  const prefix = "ABAYETAAXXX";
+  const prefix = "ABAYETAA";
   const date = new Date();
   const year = date.getUTCFullYear();
   const month = String(date.getUTCMonth() + 1).padStart(2, '0');

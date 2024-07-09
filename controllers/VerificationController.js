@@ -2,8 +2,8 @@ const axios = require('axios');
 const logger = require('../logs/logger');
 
 const {xmlVerificationResponseTojson}=require('../xmlToJson/xmlResponseConverter');
-const {verification_url}=require ('../utils/urls');
-const { generateVerifcationRequestXml} = require('../xmlFormator/verifcationXmlFormator');
+const {ips_payment_url}=require ('../utils/urls');
+const { generateVerifcationRequestXml} = require('../xmlFormator/requestXmlFormator');
 const { getISO8601Date,getEastAfricanISO8601,generateBizMsgIdr,generateMsgId} = require('../utils/xmlIdGenerator');
 const {getAccessToken}=require("../services/token-service");
 const {XsdsValidation} =require("../xmlValidator/xmlValidator");
@@ -25,7 +25,10 @@ exports.testAPI = async (req, res) => {
 };
 
 exports.AccountVerification= async (req, res) => {
-    const xmlData=convertToxml(req.body);  
+  if (!req.body || Object.keys(req.body).length === 0) {
+    return res.status(400).json({ error: 'Bad Request: your input is invalid' });
+  }  
+  const xmlData=convertToxml(req.body);  
     const XSD_PATH = path.resolve(__dirname, '../XSDs/verification_request.xsd');
     try {
       const isValid = await XsdsValidation(xmlData,XSD_PATH);
@@ -34,6 +37,10 @@ exports.AccountVerification= async (req, res) => {
         } 
       
     const Signedxml= await digestXml(xmlData); 
+
+    if(!Signedxml){
+      return res.status(400).json({ error: 'sign xml is not work properly check your connection.' });
+        }
     const isSignedxmlValid = await XsdsValidation(Signedxml,XSD_PATH);
       if (!isSignedxmlValid) {
         return res.status(400).json({ error: 'Signed xml is not valid against XSD.' });    
@@ -50,7 +57,7 @@ exports.AccountVerification= async (req, res) => {
       'Authorization': `Bearer ${accessToken}`
          };
          
-    const response = await axios.post(verification_url,Signedxml,{headers});   
+    const response = await axios.post(ips_payment_url,Signedxml,{headers});   
     const jsondata = await xmlVerificationResponseTojson(response.data); 
     console.log(jsondata);
     if(response.status==200){
@@ -106,7 +113,7 @@ exports.xmlAccountVerification = async (req, res) => {
       'Authorization': `Bearer ${accessToken}`
          };
     
-    const response = await axios.post(verification_url,Signedxml,{headers});  
+    const response = await axios.post(ips_payment_url,Signedxml,{headers});  
    res.set('Content-Type', 'application/xml');
    res.status(200).send({ message: 'XML data sent successfully', response: response.data });
 } catch (error) {
@@ -124,6 +131,42 @@ exports.xmlAccountVerification = async (req, res) => {
       }
     }
 };
+
+exports.VerificationInputDigest= async (req, res) => {
+  const xmlData=convertToxml(req.body);  
+  const XSD_PATH = path.resolve(__dirname, '../XSDs/verification_request.xsd');
+  try {
+    const isValid = await XsdsValidation(xmlData,XSD_PATH);
+      if (!isValid) {
+        return res.status(400).json({ error: 'XML is not valid against XSD.' });    
+      } 
+    
+  const Signedxml= await digestXml(xmlData);  
+  
+  if(!Signedxml){
+    return res.status(400).json({ error: 'sign  xml is not work properly check your connection.' });
+      }
+
+  const isSignedxmlValid = await XsdsValidation(Signedxml,XSD_PATH);
+    if (!isSignedxmlValid) {
+      return res.status(400).json({ error: 'Signed xml is not valid against XSD.' });    
+    } 
+  res.set('Content-Type', 'application/xml');
+  res.status(200).send({ message: 'XML data sent successfully', response: response.data });
+} catch (error) {   
+  if (error.response) {
+      res.status(error.response.status).json({ error: error.response.data});
+      //console.error('Error headers:', error.response.headers);
+  } else if (error.request) {
+     res.status(400).json({ error: error.request});
+      //console.error('Error request:', error.request);
+  } else {
+      res.status(400).json({ error:error.message});
+     // console.error('Error message:', error.message);
+    }
+  }
+};
+
 
 // functions 
 function convertToxml(jsonInput) {

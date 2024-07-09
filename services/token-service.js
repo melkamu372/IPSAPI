@@ -43,8 +43,6 @@ exports.GenerateAccessToken = async()=> {
       }
     });
  
-    
-   // const token ={"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJfeGlQSDB2bXRKck9qT3JFQ0c2VFlNRk5zUFNuaExZN0duaUlaYTJtS2owIn0.eyJleHAiOjE3MTkyNzM0OTUsImlhdCI6MTcxOTIzNzQ5NSwianRpIjoiMGNiMDJjOWYtNTIyZC00YWVmLTkzZjktNWUyYzEzYmU3YmNkIiwiaXNzIjoiaHR0cDovLzE5Mi4xNjguMjAuNDU6ODA4MC9hdXRoL3JlYWxtcy9BcGkiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiNjU3NmMwN2MtNWI5MC00MmMxLWE0MzYtN2Y1NmQwMTRjZjQ1IiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiUlBfUHJvY2Vzc2luZyIsInNlc3Npb25fc3RhdGUiOiI1MzM2NTM5OS05NGNlLTQ0MzAtYTY1MS0yNTExNjQ0NzFhMDEiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYXBpIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjUzMzY1Mzk5LTk0Y2UtNDQzMC1hNjUxLTI1MTE2NDQ3MWEwMSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhYmF5IiwiYmljIjoiQUJBWUVUQUEiLCJpbnN0aXR1dGlvbl9pZCI6IjI3MjAifQ.hZ_inWzu-A_qAX7XmytduMwDX_6Bs69QkqZaN6Ntzf6A3_9h1FoOheWFipCHz9OtEJNrGAGp9kMCoOSdRF3ukebHWH3YWz2GPQOJdcd_1bTdo7LbCSMPCd5_NHOZSPqQ5GjVnbWp0XAO0cgpRcBlZI-WGV_ElxZaUqxA-bakhbug7XBZCyYVs5SSewpmcqVjo67EszHpYqMC1sZvjTxuwYlZXyGYAcrYP1_se7uENtYrlvVvQA1pN6P0XRPlv5SaOvjwTVdMHjmCBy8U9DeCETTWqgW5IMwFbppJ4wux8VbNrimfteS7YHnyNxoe215mY-5xAVkpXTibctToMq8TrQ","expires_in":36000,"refresh_expires_in":1800,"refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIxNTRhYWMzOS00YTUyLTQ5NmUtODBlYi00MThjM2Y2NzcxOTMifQ.eyJleHAiOjE3MTkyMzkyOTUsImlhdCI6MTcxOTIzNzQ5NSwianRpIjoiYjI5MjZiODQtMmUwZS00YzExLWJjMzUtMzA3Y2VhZDFmNmIwIiwiaXNzIjoiaHR0cDovLzE5Mi4xNjguMjAuNDU6ODA4MC9hdXRoL3JlYWxtcy9BcGkiLCJhdWQiOiJodHRwOi8vMTkyLjE2OC4yMC40NTo4MDgwL2F1dGgvcmVhbG1zL0FwaSIsInN1YiI6IjY1NzZjMDdjLTViOTAtNDJjMS1hNDM2LTdmNTZkMDE0Y2Y0NSIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJSUF9Qcm9jZXNzaW5nIiwic2Vzc2lvbl9zdGF0ZSI6IjUzMzY1Mzk5LTk0Y2UtNDQzMC1hNjUxLTI1MTE2NDQ3MWEwMSIsInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjUzMzY1Mzk5LTk0Y2UtNDQzMC1hNjUxLTI1MTE2NDQ3MWEwMSJ9.OSkOB7kdjpXCOhATdcP_PeJQ_7y75CI0XF-k8AKEGiU","token_type":"Bearer","not-before-policy":0,"session_state":"53365399-94ce-4430-a651-251164471a01","scope":"profile email"};
     if(!token){
         return { status:false, message:"Unable to access IPS server" };
       }
@@ -65,7 +63,7 @@ exports.GenerateAccessToken = async()=> {
         return { status: false,message: 'Failed to create token' };
     }
   } catch (error) {
-    console.error(`Error retrieving token: ${error.message}`);
+    logger.error(`Error retrieving token: ${error.message}`);
     return { status: false,message: error.message };
   }
 };
@@ -165,7 +163,7 @@ exports.getAccessToken=async()=> {
        }    
        const now = new Date();
        const expirationTime = token.expiresAt.getTime();
-       const bufferTime = 3.5 * 60 * 1000; // 30 minutes buffer time in milliseconds
+       const bufferTime = 3.5 * 60 * 1000; // 3.5 minutes buffer time in milliseconds
        const willExpireIn30Minutes = expirationTime - now.getTime() <= bufferTime;
        
        if (willExpireIn30Minutes) {
@@ -225,7 +223,7 @@ exports.getAccessToken=async()=> {
           return { status: false,message: 'Failed to create token' };
       }
     } catch (error) {
-      console.error(`Error retrieving token: ${error.message}`);
+      logger.error(`Error retrieving token: ${error.message}`);
       return { status: false,message: error.message };
     }
   };
