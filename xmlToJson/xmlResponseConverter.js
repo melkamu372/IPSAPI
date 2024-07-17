@@ -95,7 +95,8 @@ async function xmlVerificationResponseTojson(xmlResponse) {
           } else {
                    
           const TransactionStatus =  result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:TxSts'][0];
-           let status="FAILED";
+          const orgnlTxId = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxId'][0]; 
+          let status="FAILED";
            let message="transaction rejected"; 
            
            if(TransactionStatus=="ACSC"){

@@ -643,3 +643,5 @@ notNull Violation: token_list.refreshToken cannot be null
 2024-07-11T11:59:34.520Z info: Server is running on port 3000
 2024-07-11T12:00:32.465Z info: Server is running on port 3000
 2024-07-16T05:48:03.287Z info: Server is running on port 3000
+2024-07-17T11:59:47.573Z info: Server is running on port 3000
+2024-07-17T13:56:12.912Z info: Server is running on port 3000

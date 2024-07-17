@@ -3,7 +3,7 @@ const logger = require('../logs/logger');
 const {xmlPushPaymentResponseTojson}=require('../xmlToJson/xmlResponseConverter');
 const {ips_payment_url}=require ('../utils/urls');
 const {digestXml}=require("../services/digestXml");
-const {generatePaymentRequestXml} = require('../xmlFormator/requestXmlFormator');
+const {generatePaymentStatusRequestXml} = require('../xmlFormator/requestXmlFormator');
 const {getISO8601Date,getEastAfricanISO8601,generateBizMsgIdr,generateMsgId} = require('../utils/xmlIdGenerator');
 const {getAccessToken}=require("../services/token-service");
 const {XsdsValidation} =require("../xmlValidator/xmlValidator");
@@ -12,7 +12,7 @@ const path = require('path');
 exports.testAPI = async (req, res) => {
   try {
     const testPlayload = {
-      name:"Push Payment api test",
+      name:"Payment status request api test",
       connection:"test success "
     };
     logger.info('check push payment api ');
@@ -23,19 +23,16 @@ exports.testAPI = async (req, res) => {
   }
 };
 
-exports.PushPaymentInputTest = async (req, res) => {
+exports.PushStatusInputTest = async (req, res) => {
   if (!req.body || Object.keys(req.body).length === 0) {
     return res.status(400).json({ error: 'Bad Request: your input is invalid' });
   }
     const xmlData=convertToXml(req.body);
-    // res.set('Content-Type', 'application/xml');
-    // res.status(200).send(xmlData);
-    // return;
-    const XSD_PATH = path.resolve(__dirname, '../XSDs/payment_request.xsd');
+    const XSD_PATH = path.resolve(__dirname, '../XSDs/paymentStatus_request.xsd');
     try {
       const isValid = await XsdsValidation(xmlData,XSD_PATH);
       if (!isValid) {
-        return res.status(400).json({ error: 'XML payment request is not valid against XSD.' });    
+        return res.status(400).json({ error: 'XML payment status  request is not valid against XSD.' });    
       } 
 
       return res.status(200).json({ message: 'XML is valid against XSD.' });
@@ -45,18 +42,17 @@ exports.PushPaymentInputTest = async (req, res) => {
       }
   };
   
-  exports.Credit = async (req, res) => {
+  exports.PaymentStatus = async (req, res) => {
     const xmlData = convertToXml(req.body); 
     if (!req.body || Object.keys(req.body).length === 0) {
       return res.status(400).json({ error: 'Bad Request: your input is invalid' });
     } 
-    const XSD_PATH = path.resolve(__dirname, '../XSDs/payment_request.xsd');
+    const XSD_PATH = path.resolve(__dirname, '../XSDs/paymentStatus_request.xsd');
     try {
       const isValid = await XsdsValidation(xmlData, XSD_PATH);
       if (!isValid) {
-        return res.status(400).json({ error: 'XML payment request is not valid against XSD' });    
+        return res.status(400).json({ error: 'XML payment status request is not valid against XSD' });    
       } 
-  
       const Signedxml = await digestXml(xmlData); 
       const isSignedxmlValid = await XsdsValidation(Signedxml, XSD_PATH);
       if (!isSignedxmlValid) {
@@ -67,7 +63,6 @@ exports.PushPaymentInputTest = async (req, res) => {
       if (!tokenResult.status) {
         return res.status(400).json({ error: tokenResult.message });
       }         
-  
       const accessToken = tokenResult.token;
       const headers = {
         'Content-Type': 'application/xml',
@@ -103,11 +98,7 @@ exports.PushPaymentInputTest = async (req, res) => {
   };
   
 
-
-
-
-exports.xmlCredit = async (req, res) => {
-
+exports.xmlPaymentStatusRequest = async (req, res) => {
  const xmlData=req.body;  
  console.log(req.body);
   if (!req.body || Object.keys(req.body).length === 0) {
@@ -164,6 +155,7 @@ exports.xmlCredit = async (req, res) => {
 
 // functions 
 const convertToXml = (jsonInput) => {
+    console.log(jsonInput);
   const BIC="ABAYETAA";
   const CreDtTm = getEastAfricanISO8601();
   const MsgId = generateMsgId();
@@ -171,31 +163,11 @@ const convertToXml = (jsonInput) => {
   jsonInput.ToFinInstnId = jsonInput.bankCode;
   jsonInput.BizMsgIdr = generateBizMsgIdr();
   jsonInput.CreDt = getISO8601Date();
-  jsonInput.MsgDefIdr = "pacs.008.001.10";
+  jsonInput.MsgDefIdr = "pacs.028.001.05";
   jsonInput.MsgId = MsgId;
   jsonInput.CreDtTm = CreDtTm;
-  jsonInput.NbOfTxs = 1;
-  jsonInput.SttlmMtd = "CLRG";
-  jsonInput.ClrSysPrtry = "FP";
-  jsonInput.PmtTpInfPrtry = "CRTRM";//INTR P2P
-  jsonInput.EndToEndId = MsgId;
-  jsonInput.AccptncDtTm = CreDtTm;
-  jsonInput.ChrgBr = "SLEV";
-  jsonInput.CcyFrom='ETB';
-  jsonInput.CcyTo='ETB';
-  jsonInput.DbtrNm = jsonInput.name; 
-  jsonInput.AdrLine = "Addis Ababa,Ethiopia"; 
-  jsonInput.DbtrAcctId =jsonInput.accountNumber; 
-  jsonInput.DbtrAcctIssr = 'ATM';
-  jsonInput.DbtrAcctPrtry = "ACCT"; 
-  jsonInput.DbtrAgtId = BIC;
-  jsonInput.DbtrAgtIssr = 'C';
-  jsonInput.CdtrAgtId = jsonInput.bankCode; 
-  jsonInput.CdtrNm = jsonInput.name; 
-  jsonInput.CdtrAcctId = jsonInput.accountNumber; 
-  jsonInput.CdtrAcctPrtry = "ACCT";
-  jsonInput.RmtInfUstrd = "Transferring my funds";
-  const xmlDoc = generatePaymentRequestXml(jsonInput);
+  jsonInput. OrgnlTxId = jsonInput.transactionRef;
+  const xmlDoc = generatePaymentStatusRequestXml(jsonInput);
   return xmlDoc;
 };
 

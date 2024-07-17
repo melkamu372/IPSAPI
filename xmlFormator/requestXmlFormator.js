@@ -178,6 +178,54 @@ const generatePaymentRequestXml = (PaymentInfo) => {
     return xmlDoc;
 };
 
+const generatePaymentStatusRequestXml = (PaymentStatusInfo) => {
+    const xmlDoc = create({ version: '1.0', encoding: 'UTF-8', standalone: true })
+        .ele('FPEnvelope', {
+            xmlns: 'urn:iso:std:iso:20022:tech:xsd:paymentStatus_request',
+            'xmlns:header': 'urn:iso:std:iso:20022:tech:xsd:head.001.001.03',
+            'xmlns:document': 'urn:iso:std:iso:20022:tech:xsd:pacs.028.001.05'
+        })
+        .ele('header:AppHdr')
+            .ele('header:Fr')
+                .ele('header:FIId')
+                    .ele('header:FinInstnId')
+                        .ele('header:Othr')
+                            .ele('header:Id').txt(PaymentStatusInfo.FromFinInstnId).up()
+                        .up()
+                    .up()
+                .up()
+            .up()
+            .ele('header:To')
+                .ele('header:FIId')
+                    .ele('header:FinInstnId')
+                        .ele('header:Othr')
+                            .ele('header:Id').txt(PaymentStatusInfo.ToFinInstnId).up()
+                        .up()
+                    .up()
+                .up()
+            .up()
+            .ele('header:BizMsgIdr').txt(PaymentStatusInfo.BizMsgIdr).up()
+            .ele('header:MsgDefIdr').txt(PaymentStatusInfo.MsgDefIdr).up()
+            .ele('header:CreDt').txt(PaymentStatusInfo.CreDt).up()
+        .up()
+        .ele('document:Document')
+            .ele('document:FIToFIPmtStsReq')
+                .ele('document:GrpHdr')
+                    .ele('document:MsgId').txt(PaymentStatusInfo.MsgId).up()
+                    .ele('document:CreDtTm').txt(PaymentStatusInfo.CreDtTm).up()
+                .up()
+                .ele('document:TxInf')
+                    .ele('document:OrgnlTxId').txt(PaymentStatusInfo.OrgnlTxId).up()
+                .up()
+            .up()
+        .up()
+    .end({ prettyPrint: true });
+
+    return xmlDoc;
+};
+
+
+
 module.exports = {
-  generateVerifcationRequestXml,generatePaymentRequestXml
+  generateVerifcationRequestXml,generatePaymentRequestXml,generatePaymentStatusRequestXml
 };

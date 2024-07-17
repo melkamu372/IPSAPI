@@ -3,7 +3,7 @@ const router = express.Router();
 const AccessController = require('../controllers/AccessController');
 const VerificationController = require('../controllers/VerificationController');
 const PushPaymentController = require('../controllers/pushPaymentController');
-
+const PaymentRequestController = require('../controllers/PaymentStatusController');
 router.get('/access/test', AccessController.testAPI);
 router.get('/access/get-recent-token', AccessController.getLastToken);
 router.get('/access/generate-token', AccessController.GenerateAccesToken);
@@ -23,4 +23,8 @@ router.get('/pushpayment/test', PushPaymentController.testAPI);
 router.post('/pushpayment/input/xsdtest', PushPaymentController.PushPaymentInputTest);
 router.post('/pushpayment/credit', PushPaymentController.Credit);
 router.post('/pushpayment/xml/credit', PushPaymentController.xmlCredit);
+// Push Payment Status Request
+router.get('/paymentstatus/test', PaymentRequestController.testAPI);
+router.post('/paymentstatus/xsdtest', PaymentRequestController.PushStatusInputTest);
+router.post('/paymentstatus/request', PaymentRequestController.PaymentStatus);
 module.exports = router;
