@@ -45,10 +45,10 @@ exports.AccountVerification= async (req, res) => {
       if (!isSignedxmlValid) {
         return res.status(400).json({ error: 'Signed xml is not valid against XSD.' });    
       }
-        
+       
     const tokenResult = await getAccessToken();
      if(!tokenResult.status){
-      res.status(400).json({ error: tokenResult.message });
+        return res.status(400).json({ error: tokenResult.message });
          }         
     const accessToken = tokenResult.token;
     const headers = {
@@ -56,29 +56,52 @@ exports.AccountVerification= async (req, res) => {
       'Connection': 'keep-alive',
       'Authorization': `Bearer ${accessToken}`
          };
-         
+
     const response = await axios.post(ips_payment_url,Signedxml,{headers});   
     const jsondata = await xmlVerificationResponseTojson(response.data); 
-    console.log(jsondata);
+    
     if(response.status==200){
-    res.status(200).send(jsondata);
+    res.status(200).send(jsondata.data);
     }
     else{
     res.status(response.status).json({ error:response.statusText});
     }
-   // res.set('Content-Type', 'application/xml');
-    //res.status(200).send({ message: 'XML data sent successfully', response: response.data });
+    
+    /*
+      res.set('Content-Type', 'application/xml');
+      res.status(200).send(response.data);
+      */
+      
 } catch (error) {
     //logger.error('Error: Failed to send XML data', error.message);   
     if (error.response) {
-        res.status(error.response.status).json({ error: error.response.data});
-        //console.error('Error headers:', error.response.headers);
+        // res.set('Content-Type', 'application/xml');
+        // res.status(error.response.status).json(error.response.data);
+        const data= {
+                    status: "FAILED",
+                    message: "Non-verified Bank",
+                    beneficiaryName: ""
+                    };
+        res.status(400).send(data);
+        
     } else if (error.request) {
-       res.status(400).json({ error: error.request});
-        //console.error('Error request:', error.request);
+    
+      //console.error('Error request:', error.request);
+          const data= {
+                    status: "FAILED",
+                    message: "Invalid Request Data",
+                    beneficiaryName: ""
+                    };
+            res.status(400).send(data);
     } else {
-        res.status(400).json({ error:error.message});
-       // console.error('Error message:', error.message);
+       // res.status(400).json({ error:error.message});
+          const data= {
+                    status: "FAILED",
+                    message: "Unknown Error",
+                    beneficiaryName: ""
+                    };
+        res.status(400).send(data);
+       
       }
     }
 };
@@ -108,7 +131,6 @@ exports.xmlAccountVerification = async (req, res) => {
     const accessToken = tokenResult.token;
     const headers = {
       'Content-Type': 'application/xml',
-      'Content-Length': '1625', // Content-Length should be a string
       'Connection': 'keep-alive',
       'Authorization': `Bearer ${accessToken}`
          };
@@ -170,8 +192,8 @@ exports.VerificationInputDigest= async (req, res) => {
 
 // functions 
 function convertToxml(jsonInput) {
-   const FromFinInstnId="ABAYETAA";
-    const ToFinInstnId="ETSETAA";
+    const FromFinInstnId="ABAYETAA";
+    const ToFinInstnId=jsonInput.bank;
     const BizMsgIdr= generateBizMsgIdr();
     const CreDt=getISO8601Date();
     const MsgDefIdr="acmt.023.001.03";

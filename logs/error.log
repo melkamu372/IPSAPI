@@ -91,3 +91,20 @@ notNull Violation: token_list.refreshToken cannot be null
 2024-07-09T10:38:58.210Z error: Error:
 2024-07-09T10:49:46.582Z error: Error:
 2024-07-09T10:51:28.890Z error: Error:
+2024-07-09T13:41:58.567Z error: Error retrieving token: 
+2024-07-09T13:48:46.300Z error: Error retrieving token: 
+2024-07-09T13:50:33.035Z error: Error retrieving token: 
+2024-07-09T13:53:05.250Z error: Error retrieving token: 
+2024-07-09T13:54:32.136Z error: Error retrieving token: 
+2024-07-09T13:55:50.074Z error: Error retrieving token: 
+2024-07-09T13:57:54.323Z error: Error retrieving token: 
+2024-07-09T14:00:59.869Z error: Error retrieving token: 
+2024-07-09T14:03:47.432Z error: Error retrieving token: 
+2024-07-09T14:05:42.707Z error: Error retrieving token: 
+2024-07-09T14:06:45.137Z error: Error retrieving token: 
+2024-07-10T05:17:48.681Z error: Error retrieving token: 
+2024-07-10T05:18:40.170Z error: Error retrieving token: 
+2024-07-10T05:19:31.595Z error: Error retrieving token: 
+2024-07-10T05:22:04.376Z error: Error retrieving token: 
+2024-07-10T05:25:55.761Z error: Error retrieving token: 
+2024-07-10T05:26:59.378Z error: Error retrieving token: 

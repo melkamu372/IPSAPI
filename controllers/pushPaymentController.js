@@ -1,10 +1,10 @@
 const axios = require('axios');
 const logger = require('../logs/logger');
-const {xmlVerificationResponseTojson}=require('../xmlToJson/xmlResponseConverter');
+const {xmlPushPaymentResponseTojson}=require('../xmlToJson/xmlResponseConverter');
 const {ips_payment_url}=require ('../utils/urls');
 const {digestXml}=require("../services/digestXml");
 const {generatePaymentRequestXml} = require('../xmlFormator/requestXmlFormator');
-const { getISO8601Date,getEastAfricanISO8601,generateBizMsgIdr,generateMsgId} = require('../utils/xmlIdGenerator');
+const {getISO8601Date,getEastAfricanISO8601,generateBizMsgIdr,generateMsgId} = require('../utils/xmlIdGenerator');
 const {getAccessToken}=require("../services/token-service");
 const {XsdsValidation} =require("../xmlValidator/xmlValidator");
 const path = require('path');
@@ -52,18 +52,20 @@ exports.Credit= async (req, res) => {
   } 
   const XSD_PATH = path.resolve(__dirname, '../XSDs/payment_request.xsd');
   try {
+  
     const isValid = await XsdsValidation(xmlData,XSD_PATH);
       if (!isValid) {
         return res.status(400).json({ error: 'XML payment request is not valid against XSD' });    
       } 
       
-   const Signedxml= await digestXml(xmlData); 
+    const Signedxml= await digestXml(xmlData); 
     const isSignedxmlValid = await XsdsValidation(Signedxml,XSD_PATH);
-    
+      
       if (!isSignedxmlValid) {
         return res.status(400).json({ error: 'Signed payment request xml is not valid against XSD.' });    
       }
         
+   
     const tokenResult = await getAccessToken();
      if(!tokenResult.status){
       res.status(400).json({ error: tokenResult.message });
@@ -74,23 +76,26 @@ exports.Credit= async (req, res) => {
       'Connection': 'keep-alive',
       'Authorization': `Bearer ${accessToken}`
          };
-         
     const response = await axios.post(ips_payment_url,Signedxml,{headers}); 
-      
+   
       //xml to json converter  
-     const jsondata = await xmlVerificationResponseTojson(response.data); 
-     // console.log(jsondata);
+    const jsondata = await xmlPushPaymentResponseTojson(response.data); 
     if(response.status==200){
-    res.status(200).send(jsondata);
+    res.status(200).send(jsondata.data);
     }
     else{
     res.status(response.status).json({ error:response.statusText});
     }
     
-   // res.set('Content-Type', 'application/xml');
-    //res.status(200).send({ message: 'XML data sent successfully', response: response.data });
+    /*
+    
+    res.set('Content-Type', 'application/xml');
+    res.status(200).send(response.data);
+    */
 } catch (error) {
-    //logger.error('Error: Failed to send XML data', error.message);   
+    //logger.error('Error: Failed to send XML data', error.message); 
+    
+    console.log(error);  
     
     if (error.response) {
         res.status(error.response.status).json({ error: error.response.data});
@@ -105,10 +110,19 @@ exports.Credit= async (req, res) => {
     }
 };
 
+
+
+
+
 exports.xmlCredit = async (req, res) => {
 
- const xmlData=req.body.data; 
-  const XSD_PATH = path.resolve(__dirname, '../XSDs/payment_request.xsd');
+ const xmlData=req.body;  
+ console.log(req.body);
+  if (!req.body || Object.keys(req.body).length === 0) {
+    return res.status(400).json({ error: 'Bad Request: your input is invalid' });
+  }
+  
+ const XSD_PATH = path.resolve(__dirname, '../XSDs/payment_request.xsd');
   try {
     const isValid = await XsdsValidation(xmlData,XSD_PATH);
       if (!isValid) {
@@ -118,6 +132,8 @@ exports.xmlCredit = async (req, res) => {
    const Signedxml= await digestXml(xmlData);
     
     const isSignedxmlValid = await XsdsValidation(Signedxml,XSD_PATH);
+    
+   
     
       if (!isSignedxmlValid) {
         return res.status(400).json({ error: 'Signed xml is not valid against XSD.' });    
@@ -130,14 +146,13 @@ exports.xmlCredit = async (req, res) => {
     const accessToken = tokenResult.token;
     const headers = {
       'Content-Type': 'application/xml',
-      'Content-Length': '1625', // Content-Length should be a string
       'Connection': 'keep-alive',
       'Authorization': `Bearer ${accessToken}`
          };
     
     const response = await axios.post(ips_payment_url,Signedxml,{headers});  
    res.set('Content-Type', 'application/xml');
-   res.status(200).send({ message: 'XML data sent successfully', response: response.data });
+   res.status(200).send(response.data);
 } catch (error) {
     //logger.error('Error: Failed to send XML data', error.message);   
     
@@ -157,11 +172,11 @@ exports.xmlCredit = async (req, res) => {
 
 // functions 
 const convertToXml = (jsonInput) => {
+  const BIC="ABAYETAA";
   const CreDtTm = getEastAfricanISO8601();
   const MsgId = generateMsgId();
-  // Populate JSON input with required fields
-  jsonInput.FromFinInstnId = "ABAYETAA";
-  jsonInput.ToFinInstnId = "ETSETAA";
+  jsonInput.FromFinInstnId = BIC;
+  jsonInput.ToFinInstnId = jsonInput.bankCode;
   jsonInput.BizMsgIdr = generateBizMsgIdr();
   jsonInput.CreDt = getISO8601Date();
   jsonInput.MsgDefIdr = "pacs.008.001.10";
@@ -176,17 +191,17 @@ const convertToXml = (jsonInput) => {
   jsonInput.ChrgBr = "SLEV";
   jsonInput.CcyFrom='ETB';
   jsonInput.CcyTo='ETB';
-  jsonInput.DbtrNm = jsonInput.name; // Assuming name is provided in jsonInput
-  jsonInput.AdrLine = jsonInput.address; // Assuming address is provided in jsonInput
-  jsonInput.DbtrAcctId = jsonInput.accountNumber; // Assuming accountNumber is provided in jsonInput
-  jsonInput.DbtrAcctIssr = 'ATM';// USSD,Mobile Banking 
-  jsonInput.DbtrAcctPrtry = "ACCT"; //CHK,SAV,ACCT
-  jsonInput.DbtrAgtId = "DBTRAGT123";// AbayBank Debiter ID
-  jsonInput.DbtrAgtIssr = 'C'; // Assuming bankCode is provided in jsonInput
-  jsonInput.CdtrAgtId = jsonInput.bankCode; // Assuming bankCode is provided in jsonInput
-  jsonInput.CdtrNm = jsonInput.name; // Assuming name is provided in jsonInput
-  jsonInput.CdtrAcctId = jsonInput.accountNumber; // Assuming accountNumber is provided in jsonInput
-  jsonInput.CdtrAcctPrtry = "ACCT"; // ACCT SAV
+  jsonInput.DbtrNm = jsonInput.name; 
+  jsonInput.AdrLine = jsonInput.address; 
+  jsonInput.DbtrAcctId =jsonInput.accountNumber; 
+  jsonInput.DbtrAcctIssr = 'ATM';
+  jsonInput.DbtrAcctPrtry = "ACCT"; 
+  jsonInput.DbtrAgtId = BIC;
+  jsonInput.DbtrAgtIssr = 'C';
+  jsonInput.CdtrAgtId = jsonInput.bankCode; 
+  jsonInput.CdtrNm = jsonInput.name; 
+  jsonInput.CdtrAcctId = jsonInput.accountNumber; 
+  jsonInput.CdtrAcctPrtry = "ACCT";
   jsonInput.RmtInfUstrd = "Transferring my funds";
   const xmlDoc = generatePaymentRequestXml(jsonInput);
   return xmlDoc;

@@ -35,27 +35,28 @@ async function xmlVerificationResponseTojson(xmlResponse) {
             const rptOrgnlId = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Rpt'][0]['document:OrgnlId'][0];
             const rptVrfctn = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Rpt'][0]['document:Vrfctn'][0];
             const rptRsn = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Rpt'][0]['document:Rsn'][0]['document:Prtry'][0];
-    
+           let name="";
+           let status="FAILED";
+           let message="Invalid Account";
+        if(rptVrfctn=='true'){
+          status="SUCCESS";
+          name = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Rpt'][0]['document:UpdtdPtyAndAcctId'][0]['document:Pty'][0]['document:Nm'][0];
+         message = result['FPEnvelope']['document:Document'][0]['document:IdVrfctnRpt'][0]['document:Rpt'][0]['document:UpdtdPtyAndAcctId'][0]['document:Acct'][0]['document:Id'][0]['document:Othr'][0]['document:Id'][0];
+           
+                } 
+           else {
+           
+           if(rptRsn=="WBIC"){
+           message="Financial Institution does not registered in a Bank Identifier Code (BIC)";
+           
+           }
+               
+           }        
+                 
             const data = {
-              MsgDefIdr: msgDefIdr,
-              Fr_Id: frId,
-              To_Id: toId,
-              BizMsgIdr: bizMsgIdr,
-              CreDt: creDt,
-              Rltd_Fr_Id: rltdFrId,
-              Rltd_To_Id: rltdToId,
-              Rltd_BizMsgIdr: rltdBizMsgIdr,
-              Rltd_MsgDefIdr: rltdMsgDefIdr,
-              Rltd_CreDt: rltdCreDt,
-              Assgnmt_MsgId: assgnmtMsgId,
-              Assgnmt_CreDtTm: assgnmtCreDtTm,
-              Assgnmt_Assgnr_Id: assgnmtAssgnrId,
-              Assgnmt_Assgne_Id: assgnmtAssgneId,
-              OrgnlAssgnmt_MsgId: orgnlAssgnmtMsgId,
-              OrgnlAssgnmt_CreDtTm: orgnlAssgnmtCreDtTm,
-              Rpt_OrgnlId: rptOrgnlId,
-              Rpt_Vrfctn: rptVrfctn,
-              Rpt_Rsn: rptRsn
+              status: status,
+              message:message,
+              beneficiaryName: name
             };
     
             resolve({
@@ -67,7 +68,7 @@ async function xmlVerificationResponseTojson(xmlResponse) {
         });
       });
     } catch (error) {
-      console.error('Error converting xml response to json:', error);
+      //console.error('Error converting xml response to json:', error);
       return {
         status: false,
         message: 'Error converting xml response to json',
@@ -76,6 +77,54 @@ async function xmlVerificationResponseTojson(xmlResponse) {
     }
   }
 
+
+
+
+
+  async function xmlPushPaymentResponseTojson(xmlResponse) {
+    try {
+      return new Promise((resolve, reject) => {
+        xml2js.parseString(xmlResponse, (err, result) => {
+          if (err) {
+            console.error('Error parsing XML:', err);
+            reject({
+              status: false,
+              message: 'Error parsing XML',
+              data: err
+            });
+          } else {
+                   
+          const TransactionStatus =  result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:TxSts'][0];
+           let status="FAILED";
+           let message="transaction rejected"; 
+           
+           if(TransactionStatus=="ACSC"){
+              status="SUCCESS";
+              message="transaction is successfully completed";
+           }
+
+            const data = {
+              status: status,
+              message:message,
+              
+            };
+            resolve({
+              status: true,
+              message: 'The xml response converted as expected',
+              data: data
+            });
+          }
+        });
+      });
+    } catch (error) {
+      //console.error('Error converting xml response to json:', error);
+      return {
+        status: false,
+        message: 'Error converting xml response to json',
+        data: error
+      };
+    }
+  }
   module.exports = {
-    xmlVerificationResponseTojson
+    xmlVerificationResponseTojson,xmlPushPaymentResponseTojson
   };

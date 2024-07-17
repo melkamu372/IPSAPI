@@ -44,7 +44,7 @@ const generateVerifcationRequestXml= (jsonInput) => {
     .ele('document:Othr')
     .ele('document:Id').txt(jsonInput.account_number).up()
     .ele('document:SchmeNm')
-    .ele('document:Prtry').txt(jsonInput.bank);
+    .ele('document:Prtry').txt(jsonInput.ToFinInstnId);
 
   // Convert the XML document to string format with XML declaration
   const xmlString = xmlDoc.end({ prettyPrint: true });

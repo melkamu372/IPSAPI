@@ -498,3 +498,148 @@ notNull Violation: token_list.refreshToken cannot be null
 2024-07-09T13:25:55.882Z info: Server is running on port 3000
 2024-07-09T13:27:29.877Z info: Server is running on port 3000
 2024-07-09T13:29:43.138Z info: Server is running on port 3000
+2024-07-09T13:37:19.204Z info: Server is running on port 3000
+2024-07-09T13:41:58.567Z error: Error retrieving token: 
+2024-07-09T13:48:10.916Z info: Server is running on port 3000
+2024-07-09T13:48:46.300Z error: Error retrieving token: 
+2024-07-09T13:50:29.283Z info: Server is running on port 3000
+2024-07-09T13:50:33.035Z error: Error retrieving token: 
+2024-07-09T13:53:02.453Z info: Server is running on port 3000
+2024-07-09T13:53:05.250Z error: Error retrieving token: 
+2024-07-09T13:54:16.216Z info: Server is running on port 3000
+2024-07-09T13:54:25.972Z info: Server is running on port 3000
+2024-07-09T13:54:32.136Z error: Error retrieving token: 
+2024-07-09T13:55:48.305Z info: Server is running on port 3000
+2024-07-09T13:55:50.074Z error: Error retrieving token: 
+2024-07-09T13:57:52.149Z info: Server is running on port 3000
+2024-07-09T13:57:54.323Z error: Error retrieving token: 
+2024-07-09T14:00:59.869Z error: Error retrieving token: 
+2024-07-09T14:01:46.826Z info: Server is running on port 3000
+2024-07-09T14:03:44.431Z info: Server is running on port 3000
+2024-07-09T14:03:47.432Z error: Error retrieving token: 
+2024-07-09T14:05:40.367Z info: Server is running on port 3000
+2024-07-09T14:05:42.707Z error: Error retrieving token: 
+2024-07-09T14:06:33.425Z info: Server is running on port 3000
+2024-07-09T14:06:45.137Z error: Error retrieving token: 
+2024-07-10T05:17:48.681Z error: Error retrieving token: 
+2024-07-10T05:18:39.315Z info: Server is running on port 3000
+2024-07-10T05:18:40.170Z error: Error retrieving token: 
+2024-07-10T05:19:23.645Z info: Server is running on port 3000
+2024-07-10T05:19:31.595Z error: Error retrieving token: 
+2024-07-10T05:21:34.748Z info: Server is running on port 3000
+2024-07-10T05:21:53.656Z info: Server is running on port 3000
+2024-07-10T05:22:04.376Z error: Error retrieving token: 
+2024-07-10T05:25:21.630Z info: Server is running on port 3000
+2024-07-10T05:25:48.948Z info: Server is running on port 3000
+2024-07-10T05:25:55.761Z error: Error retrieving token: 
+2024-07-10T05:26:51.803Z info: Server is running on port 3000
+2024-07-10T05:26:59.378Z error: Error retrieving token: 
+2024-07-10T05:32:34.487Z info: Server is running on port 3000
+2024-07-10T05:38:25.644Z info: Server is running on port 3000
+2024-07-10T05:39:15.439Z info: Server is running on port 3000
+2024-07-10T05:43:28.251Z info: Server is running on port 3000
+2024-07-10T05:50:42.984Z info: Server is running on port 3000
+2024-07-10T05:53:30.107Z info: Server is running on port 3000
+2024-07-10T05:54:43.846Z info: Server is running on port 3000
+2024-07-10T05:55:22.943Z info: Server is running on port 3000
+2024-07-10T05:56:51.095Z info: Server is running on port 3000
+2024-07-10T06:00:12.640Z info: Server is running on port 3000
+2024-07-10T06:02:36.062Z info: Server is running on port 3000
+2024-07-10T06:06:13.140Z info: Server is running on port 3000
+2024-07-10T06:08:47.413Z info: Server is running on port 3000
+2024-07-10T06:15:50.922Z info: Server is running on port 3000
+2024-07-10T06:19:03.147Z info: Server is running on port 3000
+2024-07-10T06:20:19.937Z info: Server is running on port 3000
+2024-07-10T06:20:36.363Z info: Server is running on port 3000
+2024-07-10T06:24:21.317Z info: Server is running on port 3000
+2024-07-10T06:30:05.840Z info: Server is running on port 3000
+2024-07-10T06:33:27.090Z info: Server is running on port 3000
+2024-07-10T06:34:26.769Z info: Server is running on port 3000
+2024-07-10T06:41:15.944Z info: Server is running on port 3000
+2024-07-10T08:43:53.002Z info: Server is running on port 3000
+2024-07-10T08:56:16.524Z info: Server is running on port 3000
+2024-07-10T10:59:42.033Z info: Server is running on port 3000
+2024-07-10T12:01:35.571Z info: Server is running on port 3000
+2024-07-10T12:03:23.599Z info: Server is running on port 3000
+2024-07-10T12:18:15.644Z info: Server is running on port 3000
+2024-07-10T12:19:47.191Z info: Server is running on port 3000
+2024-07-10T12:31:51.488Z info: Server is running on port 3000
+2024-07-10T12:36:43.185Z info: Server is running on port 3000
+2024-07-10T12:43:00.039Z info: Server is running on port 3000
+2024-07-10T12:44:55.871Z info: Server is running on port 3000
+2024-07-10T13:03:53.616Z info: Server is running on port 3000
+2024-07-10T13:09:06.235Z info: Server is running on port 3000
+2024-07-10T13:20:27.120Z info: Server is running on port 3000
+2024-07-11T06:33:41.058Z info: Server is running on port 3000
+2024-07-11T06:36:51.360Z info: Server is running on port 3000
+2024-07-11T06:39:04.551Z info: Server is running on port 3000
+2024-07-11T07:00:52.119Z info: Server is running on port 3000
+2024-07-11T07:01:35.291Z info: Server is running on port 3000
+2024-07-11T07:07:58.410Z info: Server is running on port 3000
+2024-07-11T07:19:12.997Z info: Server is running on port 3000
+2024-07-11T07:20:30.404Z info: Server is running on port 3000
+2024-07-11T07:22:59.819Z info: Server is running on port 3000
+2024-07-11T07:24:10.622Z info: Server is running on port 3000
+2024-07-11T07:25:22.007Z info: Server is running on port 3000
+2024-07-11T07:26:43.746Z info: Server is running on port 3000
+2024-07-11T07:28:16.995Z info: Server is running on port 3000
+2024-07-11T07:35:32.206Z info: Server is running on port 3000
+2024-07-11T07:36:33.195Z info: Server is running on port 3000
+2024-07-11T07:37:20.137Z info: Server is running on port 3000
+2024-07-11T07:40:23.717Z info: Server is running on port 3000
+2024-07-11T07:42:06.742Z info: Server is running on port 3000
+2024-07-11T07:43:02.911Z info: Server is running on port 3000
+2024-07-11T07:45:00.564Z info: Server is running on port 3000
+2024-07-11T07:55:31.542Z info: Server is running on port 3000
+2024-07-11T07:56:02.576Z info: Server is running on port 3000
+2024-07-11T08:04:45.793Z info: Server is running on port 3000
+2024-07-11T08:06:06.244Z info: Server is running on port 3000
+2024-07-11T08:06:09.267Z info: Server is running on port 3000
+2024-07-11T08:07:42.600Z info: Server is running on port 3000
+2024-07-11T08:09:46.554Z info: Server is running on port 3000
+2024-07-11T08:10:15.835Z info: Server is running on port 3000
+2024-07-11T08:11:15.039Z info: Server is running on port 3000
+2024-07-11T08:11:54.067Z info: Server is running on port 3000
+2024-07-11T08:12:48.966Z info: Server is running on port 3000
+2024-07-11T08:14:57.860Z info: Server is running on port 3000
+2024-07-11T08:15:28.305Z info: Server is running on port 3000
+2024-07-11T08:15:52.181Z info: Server is running on port 3000
+2024-07-11T08:18:07.597Z info: Server is running on port 3000
+2024-07-11T08:23:54.034Z info: Server is running on port 3000
+2024-07-11T08:27:19.463Z info: Server is running on port 3000
+2024-07-11T08:33:39.529Z info: Server is running on port 3000
+2024-07-11T08:34:03.902Z info: Server is running on port 3000
+2024-07-11T08:42:27.796Z info: Server is running on port 3000
+2024-07-11T08:45:30.238Z info: Server is running on port 3000
+2024-07-11T08:53:50.765Z info: Server is running on port 3000
+2024-07-11T09:03:17.365Z info: Server is running on port 3000
+2024-07-11T09:04:15.150Z info: Server is running on port 3000
+2024-07-11T09:04:42.593Z info: Server is running on port 3000
+2024-07-11T10:12:16.453Z info: Server is running on port 3000
+2024-07-11T10:14:22.204Z info: Server is running on port 3000
+2024-07-11T10:22:38.101Z info: Server is running on port 3000
+2024-07-11T10:24:08.272Z info: Server is running on port 3000
+2024-07-11T10:24:57.665Z info: Server is running on port 3000
+2024-07-11T10:27:17.954Z info: Server is running on port 3000
+2024-07-11T10:27:48.442Z info: Server is running on port 3000
+2024-07-11T10:32:54.606Z info: Server is running on port 3000
+2024-07-11T10:36:57.550Z info: Server is running on port 3000
+2024-07-11T10:38:56.918Z info: Server is running on port 3000
+2024-07-11T10:41:07.400Z info: Server is running on port 3000
+2024-07-11T10:42:00.492Z info: Server is running on port 3000
+2024-07-11T11:34:42.299Z info: Server is running on port 3000
+2024-07-11T11:35:46.273Z info: Server is running on port 3000
+2024-07-11T11:40:18.814Z info: Server is running on port 3000
+2024-07-11T11:45:08.547Z info: Server is running on port 3000
+2024-07-11T11:45:54.860Z info: Server is running on port 3000
+2024-07-11T11:46:25.303Z info: Server is running on port 3000
+2024-07-11T11:48:39.413Z info: Server is running on port 3000
+2024-07-11T11:48:52.213Z info: Server is running on port 3000
+2024-07-11T11:50:12.734Z info: Server is running on port 3000
+2024-07-11T11:52:29.087Z info: Server is running on port 3000
+2024-07-11T11:52:54.994Z info: Server is running on port 3000
+2024-07-11T11:54:27.071Z info: Server is running on port 3000
+2024-07-11T11:58:26.694Z info: Server is running on port 3000
+2024-07-11T11:59:34.520Z info: Server is running on port 3000
+2024-07-11T12:00:32.465Z info: Server is running on port 3000
+2024-07-16T05:48:03.287Z info: Server is running on port 3000

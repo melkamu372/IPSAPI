@@ -20,7 +20,7 @@ router.post('/verify/xml/account', VerificationController.xmlAccountVerification
 
 // push Payment
 router.get('/pushpayment/test', PushPaymentController.testAPI);
-router.get('/pushpayment/input/xsdtest', PushPaymentController.PushPaymentInputTest);
+router.post('/pushpayment/input/xsdtest', PushPaymentController.PushPaymentInputTest);
 router.post('/pushpayment/credit', PushPaymentController.Credit);
 router.post('/pushpayment/xml/credit', PushPaymentController.xmlCredit);
 module.exports = router;
