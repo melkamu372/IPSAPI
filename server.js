@@ -3,20 +3,19 @@ const bodyParser = require('body-parser');
 const bodyParserXml = require('body-parser-xml');
 const dotenv = require('dotenv');
 const logger = require('./logs/logger');
+
 dotenv.config();
 
-bodyParserXml(bodyParser);
-const testRoutes = require('./routes/IPSRoutes');
-const {sequelize} = require('./config/db_con_pool');
-const {token_model}=require('./models/db_models/access_tables');
 const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware for JSON requests
 app.use(express.json());
 
 // Middleware for parsing XML
-
-
+bodyParserXml(bodyParser);
 app.use(bodyParser.xml({
-  limit: '1MB',   // Reject payloads larger than 1MB
+  limit: '1MB',   // Limit XML payload size
   xmlParseOptions: {
     normalize: true,     // Trim whitespace inside text nodes
     normalizeTags: true, // Transform tags to lowercase
@@ -24,13 +23,17 @@ app.use(bodyParser.xml({
   }
 }));
 
+// Additional middleware for raw XML text
+app.use(express.text({ type: 'application/xml' }));
 
-app.use('/api', testRoutes);
-const PORT = process.env.PORT || 3000;
-sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    logger.info(`Server is running on port ${PORT}`);
-  });
-}).catch(error => {
-  logger.error(`Failed to sync database: ${error.message}`);
+// Routes
+const testRoutes = require('./routes/IPSRoutes'); // JSON routes
+const incomingRoutes = require('./routes/IPSXmlRoutes'); // XML routes
+
+app.use('/api', testRoutes);  // Mount JSON routes
+app.use('/incoming', incomingRoutes);  // Mount XML routes
+
+// Start server
+app.listen(PORT, () => {
+  logger.info(`Server is running on port ${PORT}`);
 });
