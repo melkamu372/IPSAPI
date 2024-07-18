@@ -1,0 +1,162 @@
+<FPEnvelope xmlns="urn:iso:std:iso:20022:tech:xsd:payment_response" xmlns:document="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.12" xmlns:header="urn:iso:std:iso:20022:tech:xsd:head.001.001.03">
+    <header:AppHdr>
+        <header:Fr>
+            <header:FIId>
+                <header:FinInstnId>
+                    <header:Othr>
+                        <header:Id>ETSETAA</header:Id>
+                    </header:Othr>
+                </header:FinInstnId>
+            </header:FIId>
+        </header:Fr>
+        <header:To>
+            <header:FIId>
+                <header:FinInstnId>
+                    <header:Othr>
+                        <header:Id>FP</header:Id>
+                    </header:Othr>
+                </header:FinInstnId>
+            </header:FIId>
+        </header:To>
+        <header:BizMsgIdr>ABAYETAA420013266346349331715</header:BizMsgIdr>
+        <header:MsgDefIdr>pacs.002.001.12</header:MsgDefIdr>
+        <header:CreDt>ABAYETAA420013266346349331715</header:CreDt>
+        <header:Rltd>
+            <header:Fr>
+                <header:FIId>
+                    <header:FinInstnId>
+                        <header:Othr>
+                            <header:Id>ABAYETAA</header:Id>
+                        </header:Othr>
+                    </header:FinInstnId>
+                </header:FIId>
+            </header:Fr>
+            <header:To>
+                <header:FIId>
+                    <header:FinInstnId>
+                        <header:Othr>
+                            <header:Id>ETSETAA</header:Id>
+                        </header:Othr>
+                    </header:FinInstnId>
+                </header:FIId>
+            </header:To>
+            <header:BizMsgIdr>m_b848c01a13a446dabe1f5844b8f0e8d4</header:BizMsgIdr>
+            <header:MsgDefIdr>pacs.008.001.10</header:MsgDefIdr>
+            <header:CreDt>2024-07-18T12:37:51.677066413+02:00</header:CreDt>
+        </header:Rltd>
+        <document:Sgntr xmlns:document="urn:iso:std:iso:20022:tech:xsd:head.001.001.03">
+            <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:SignedInfo>
+                    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                    <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                    <ds:Reference URI="#_5bed5e8c-fe7c-4aae-a8af-c15196ae86de">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>RQw63cn5hfHHXTgATURFV9lEOxlctKxYd/MZZquKIxA=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference Type="http://uri.etsi.org/01903/v1.3.2#SignedProperties" URI="#_3dbb3338-49af-4000-89c8-db7a4895ae0a-signedprops">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>z1rge7VfSU6dshuQR9/j59YkldhWFvTOKGjeirRLji4=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference>
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>IqLPDbX+nyQxNtG/ToYErfuMxYhpOG1m/VG3H17aqbc=</ds:DigestValue>
+                    </ds:Reference>
+                </ds:SignedInfo>
+                <ds:SignatureValue>uNwFqXwP4c/K+RwGbyVIxDuYZzAXwU16IstNSUo380omToCdrZEy4ep0rtOsnvW8JO+GBqRs2lJegI30JEcHtPwsYR8FZ/l08tiQ87IMJErXwXRdeeSrjGbQD7hHsGodvGAxLjWZavn8o2VSGa+H/HIREvHTiOJsPV8xVBFNJ5xq0ytEvvMfEiYji7TwYzVzuqeufFMVBnw4L8pUuG6ggHVC1SnaMb6CRQ36siw9FUcNc0gkujo8TeABDQKyRJ7U44C16tz1Jfy2ldCct+uP16ov6FFIyR1BEq/1Vspc+CT2Kjb7wwlSYMnZCZKW4SKliVWwX6kmsplMllsW1Wx9Bg==</ds:SignatureValue>
+                <ds:KeyInfo Id="_5bed5e8c-fe7c-4aae-a8af-c15196ae86de">
+                    <ds:X509Data>
+                        <ds:X509IssuerSerial>
+                            <ds:X509IssuerName>CN=TEST ETS IPS Issuing CA, O=EthSwitch, C=ET</ds:X509IssuerName>
+                            <ds:X509SerialNumber>423714158862607712816606001552602548978843665</ds:X509SerialNumber>
+                        </ds:X509IssuerSerial>
+                    </ds:X509Data>
+                </ds:KeyInfo>
+                <ds:Object>
+                    <xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#">
+                        <xades:SignedProperties Id="_3dbb3338-49af-4000-89c8-db7a4895ae0a-signedprops">
+                            <xades:SignedSignatureProperties>
+                                <xades:SigningTime>2024-07-18T10:39:42Z</xades:SigningTime>
+                            </xades:SignedSignatureProperties>
+                        </xades:SignedProperties>
+                    </xades:QualifyingProperties>
+                </ds:Object>
+            </ds:Signature>
+        </document:Sgntr>
+    </header:AppHdr>
+    <document:Document>
+        <document:FIToFIPmtStsRpt>
+            <document:GrpHdr>
+                <document:MsgId>m_d313defe41b147a3adbdfe7313a369f9</document:MsgId>
+                <document:CreDtTm>2024-07-18T10:37:51.677931334Z</document:CreDtTm>
+                <document:InstgAgt>
+                    <document:FinInstnId>
+                        <document:Othr>
+                            <document:Id>ABAYETAA</document:Id>
+                        </document:Othr>
+                    </document:FinInstnId>
+                </document:InstgAgt>
+                <document:InstdAgt>
+                    <document:FinInstnId>
+                        <document:Othr>
+                            <document:Id>ETSETAA</document:Id>
+                        </document:Othr>
+                    </document:FinInstnId>
+                </document:InstdAgt>
+            </document:GrpHdr>
+            <document:OrgnlGrpInfAndSts>
+                <document:OrgnlMsgId>ABAYETAA20240718103740697</document:OrgnlMsgId>
+                <document:OrgnlMsgNmId>pacs.008.001.10</document:OrgnlMsgNmId>
+                <document:OrgnlCreDtTm>2024-07-18T13:37:40.697+03:00</document:OrgnlCreDtTm>
+            </document:OrgnlGrpInfAndSts>
+            <document:TxInfAndSts>
+                <document:OrgnlEndToEndId>ABAYETAA20315208</document:OrgnlEndToEndId>
+                <document:OrgnlTxId>ABAYETAA1425478697766</document:OrgnlTxId>
+                <document:TxSts>ACSC</document:TxSts>
+                <document:AccptncDtTm>2024-07-18T10:37:51.677931334Z</document:AccptncDtTm>
+                <document:OrgnlTxRef>
+                    <document:IntrBkSttlmAmt Ccy="ETB">5</document:IntrBkSttlmAmt>
+                    <document:Amt>
+                        <document:InstdAmt Ccy="ETB">5</document:InstdAmt>
+                    </document:Amt>
+                    <document:Dbtr>
+                        <document:Pty>
+                            <document:Nm>TOMOCA COFFFEE PLC</document:Nm>
+                            <document:PstlAdr>
+                                <document:AdrLine>Addis Ababa,Ethiopia</document:AdrLine>
+                            </document:PstlAdr>
+                        </document:Pty>
+                    </document:Dbtr>
+                    <document:DbtrAcct>
+                        <document:Id>
+                            <document:Othr>
+                                <document:Id>1234567890</document:Id>
+                                <document:SchmeNm>
+                                    <document:Prtry>ACCT</document:Prtry>
+                                </document:SchmeNm>
+                            </document:Othr>
+                        </document:Id>
+                    </document:DbtrAcct>
+                    <document:CdtrAcct>
+                        <document:Id>
+                            <document:Othr>
+                                <document:Id>1234567890</document:Id>
+                                <document:SchmeNm>
+                                    <document:Prtry>ACCT</document:Prtry>
+                                </document:SchmeNm>
+                            </document:Othr>
+                        </document:Id>
+                    </document:CdtrAcct>
+                </document:OrgnlTxRef>
+            </document:TxInfAndSts>
+        </document:FIToFIPmtStsRpt>
+    </document:Document>
+</FPEnvelope>

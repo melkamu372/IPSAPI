@@ -224,8 +224,88 @@ const generatePaymentStatusRequestXml = (PaymentStatusInfo) => {
     return xmlDoc;
 };
 
+const generateReturnRequestXml = (returnRequestInfo) => {
+    const xmlDoc = create({ version: '1.0', encoding: 'UTF-8', standalone: true })
+        .ele('FPEnvelope', {
+            xmlns: 'urn:iso:std:iso:20022:tech:xsd:returnPayment_request',
+            'xmlns:header': 'urn:iso:std:iso:20022:tech:xsd:head.001.001.03',
+            'xmlns:document': 'urn:iso:std:iso:20022:tech:xsd:pacs.004.001.11'
+        })
+        .ele('header:AppHdr')
+            .ele('header:Fr')
+                .ele('header:FIId')
+                    .ele('header:FinInstnId')
+                        .ele('header:Othr')
+                            .ele('header:Id').txt(returnRequestInfo.FromFinInstnId).up()
+                        .up()
+                    .up()
+                .up()
+            .up()
+            .ele('header:To')
+                .ele('header:FIId')
+                    .ele('header:FinInstnId')
+                        .ele('header:Othr')
+                            .ele('header:Id').txt(returnRequestInfo.ToFinInstnId).up()
+                        .up()
+                    .up()
+                .up()
+            .up()
+            .ele('header:BizMsgIdr').txt(returnRequestInfo.BizMsgIdr).up()
+            .ele('header:MsgDefIdr').txt(returnRequestInfo.MsgDefIdr).up()
+            .ele('header:CreDt').txt(returnRequestInfo.CreDt).up()
+        .up()
+        .ele('document:Document')
+            .ele('document:PmtRtr')
+                .ele('document:GrpHdr')
+                    .ele('document:MsgId').txt(returnRequestInfo.MsgId).up()
+                    .ele('document:CreDtTm').txt(returnRequestInfo.CreDtTm).up()
+                    .ele('document:NbOfTxs').txt(returnRequestInfo.NbOfTxs).up()
+                    .ele('document:SttlmInf')
+                        .ele('document:SttlmMtd').txt(returnRequestInfo.SttlmMtd).up()
+                        .ele('document:ClrSys')
+                            .ele('document:Prtry').txt(returnRequestInfo.ClrSysPrtry).up()
+                        .up()
+                    .up()
+                    .ele('document:PmtTpInf')
+                        .ele('document:LclInstrm')
+                            .ele('document:Prtry').txt(returnRequestInfo.LclInstrmPrtry).up()
+                        .up()
+                    .up()
+                    .ele('document:InstgAgt')
+                        .ele('document:FinInstnId')
+                            .ele('document:Othr')
+                                .ele('document:Id').txt(returnRequestInfo.InstgAgtId).up()
+                            .up()
+                        .up()
+                    .up()
+                    .ele('document:InstdAgt')
+                        .ele('document:FinInstnId')
+                            .ele('document:Othr')
+                                .ele('document:Id').txt(returnRequestInfo.InstdAgtId).up()
+                            .up()
+                        .up()
+                    .up()
+                .up()
+                .ele('document:TxInf')
+                    .ele('document:RtrId').txt(returnRequestInfo.RtrId).up()
+                    .ele('document:OrgnlEndToEndId').txt(returnRequestInfo.OrgnlEndToEndId).up()
+                    .ele('document:OrgnlTxId').txt(returnRequestInfo.OrgnlTxId).up()
+                    .ele('document:RtrdIntrBkSttlmAmt', { Ccy: returnRequestInfo.Currency }).txt(returnRequestInfo.Amount).up()
+                    .ele('document:RtrRsnInf')
+                        .ele('document:Rsn')
+                            .ele('document:Prtry').txt(returnRequestInfo.RtrRsnPrtry).up()
+                        .up()
+                        .ele('document:AddtlInf').txt(returnRequestInfo.AddtlInf).up()
+                    .up()
+                .up()
+            .up()
+        .up()
+    .end({ prettyPrint: true });
+
+    return xmlDoc;
+};
 
 
 module.exports = {
-  generateVerifcationRequestXml,generatePaymentRequestXml,generatePaymentStatusRequestXml
+  generateVerifcationRequestXml,generatePaymentRequestXml,generatePaymentStatusRequestXml,generateReturnRequestXml
 };

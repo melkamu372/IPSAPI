@@ -31,7 +31,7 @@ const testRoutes = require('./routes/IPSRoutes'); // JSON routes
 const incomingRoutes = require('./routes/IPSXmlRoutes'); // XML routes
 
 app.use('/api', testRoutes);  // Mount JSON routes
-app.use('/incoming', incomingRoutes);  // Mount XML routes
+app.use('/abay', incomingRoutes);  // Mount XML routes
 
 // Start server
 app.listen(PORT, () => {

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FPEnvelope xmlns="urn:iso:std:iso:20022:tech:xsd:paymentStatus_request" xmlns:document="urn:iso:std:iso:20022:tech:xsd:pacs.028.001.05" xmlns:header="urn:iso:std:iso:20022:tech:xsd:head.001.001.03">
+    <header:AppHdr>
+        <header:Fr>
+            <header:FIId>
+                <header:FinInstnId>
+                    <header:Othr>
+                        <header:Id>ABAYETAA</header:Id>
+                    </header:Othr>
+                </header:FinInstnId>
+            </header:FIId>
+        </header:Fr>
+        <header:To>
+            <header:FIId>
+                <header:FinInstnId>
+                    <header:Othr>
+                        <header:Id>ETSETAA</header:Id>
+                    </header:Othr>
+                </header:FinInstnId>
+            </header:FIId>
+        </header:To>
+        <header:BizMsgIdr>ABAYETAA20240718102729036</header:BizMsgIdr>
+        <header:MsgDefIdr>pacs.028.001.05</header:MsgDefIdr>
+        <header:CreDt>2024-07-18T10:27:29.036Z</header:CreDt>
+        <document:Sgntr xmlns:document="urn:iso:std:iso:20022:tech:xsd:head.001.001.03">
+            <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:SignedInfo>
+                    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                    <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+                    <ds:Reference URI="#be1ae997-23fd-45f1-99dd-f5505c344728">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>9i4voD25RG0vqTB94yxX20j6f01Kb8pLyDmeSjHfiFE=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference Type="http://uri.etsi.org/01903/v1.3.2#SignedProperties" URI="#4d8319ae-7064-4af6-99cc-374c8bba95df">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>Tj2h5RZcDhu1xXooVykCKJaR5pWlEUYZMpLwl44+YYU=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference>
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>IXF35I2bqFL0vE4b7WojstrmP15S8Nq7Gxw4iQ7DgKY=</ds:DigestValue>
+                    </ds:Reference>
+                </ds:SignedInfo>
+                <ds:SignatureValue>
+LA2GfFnLKZ+ckYT/d/v4JqfqX8K+c1/akPEIfOeVr7aJWuYgevlzhGYgdJLzH7k2MMsSij+cNoT6
+06LkuuFlP3xHHGFGURRajRCr+A/U+9s+AKRthcWtS4kmESYSYsdH9RGpFo8yfSIini8ME8zZVvhJ
+GhTYqMl99r4pg31ineJ+Mio5Lg/nL3UCTZugMjRk/tx5yauJKM5gmIgo/DUF8dLeXn+Ziq5RrA6M
+5v4wddvIbBQzVLUjuqQT1RDY19Oi5Ktd+TzguaIvWnl4ycRShaZCsh6h0Um6+jW7MNnYDgEGu2jt
+WfbsvkWjIDPHygDJly1BI4Kwgd79Sx1BSRwciw==
+</ds:SignatureValue>
+                <ds:KeyInfo Id="be1ae997-23fd-45f1-99dd-f5505c344728">
+                    <ds:X509Data>
+                        <ds:X509IssuerSerial>
+                            <ds:X509IssuerName>CN=TEST ETS IPS Issuing CA,O=EthSwitch,C=ET</ds:X509IssuerName>
+                            <ds:X509SerialNumber>423714159153274223973204116314775942191906889</ds:X509SerialNumber>
+                        </ds:X509IssuerSerial>
+                    </ds:X509Data>
+                </ds:KeyInfo>
+                <ds:Object>
+                    <xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#">
+                        <xades:SignedProperties Id="4d8319ae-7064-4af6-99cc-374c8bba95df">
+                            <xades:SignedSignatureProperties>
+                                <xades:SigningTime>2023-11-06T11:12:25Z</xades:SigningTime>
+                            </xades:SignedSignatureProperties>
+                        </xades:SignedProperties>
+                    </xades:QualifyingProperties>
+                </ds:Object>
+            </ds:Signature>
+        </document:Sgntr>
+    </header:AppHdr>
+    <document:Document>
+        <document:FIToFIPmtStsReq>
+            <document:GrpHdr>
+                <document:MsgId>ABAYETAA20240718102729036</document:MsgId>
+                <document:CreDtTm>2024-07-18T13:27:29.036+03:00</document:CreDtTm>
+            </document:GrpHdr>
+            <document:TxInf>
+                <document:OrgnlTxId>10000254156</document:OrgnlTxId>
+            </document:TxInf>
+        </document:FIToFIPmtStsReq>
+    </document:Document>
+</FPEnvelope>
