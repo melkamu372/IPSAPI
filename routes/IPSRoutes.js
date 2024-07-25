@@ -5,7 +5,7 @@ const VerificationRequest = require('../controllers/VerificationController');
 const PushPaymentRequest = require('../controllers/pushPaymentController');
 const PaymentStatusRequest = require('../controllers/PaymentStatusController');
 const PaymentReturnRequest= require('../controllers/ReturnPaymentController');
-
+const TransactionLog= require('../controllers/logController');
 router.get('/access/test', AccessRequest.testAPI);
 router.get('/access/get-recent-token', AccessRequest.getLastToken);
 router.get('/access/generate-token', AccessRequest.GenerateAccesToken);
@@ -34,4 +34,10 @@ router.post('/paymentstatus/request', PaymentStatusRequest.PaymentStatus);
 router.get('/paymentreturn/test', PaymentReturnRequest.testAPI);
 router.post('/paymentreturn/xsdtest', PaymentReturnRequest.ReturnPaymentInputTest);
 router.post('/paymentreturn/request', PaymentReturnRequest.ReturnPayment);
+
+//log lists
+router.get('/logs/transaction', TransactionLog.getTransaction_log);
+router.get('/logs/transfer', TransactionLog.getTransfer_log);
+router.post('/logs/register/transfer', TransactionLog.RegistrationTransfer_log);
+router.post('/logs/register/incomming', TransactionLog.RegistrationTransaction_log);
 module.exports = router;
