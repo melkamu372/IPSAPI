@@ -122,6 +122,56 @@ async function xmlPushPaymentResponseTojson(xmlResponse) {
     }
   }
   
+  async function xmlReturnPaymentResponseToJson(xmlResponse) {
+    try {
+      return new Promise((resolve, reject) => {
+        xml2js.parseString(xmlResponse, (err, result) => {
+          if (err) {
+            console.error('Error parsing XML:', err);
+            reject({
+              status: false,
+              message: 'Error parsing XML',
+              data: err
+            });
+          } else {
+            const TransactionStatus = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:TxSts'][0];
+            const orgnlTxId = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxId'][0];
+            const StsRsnInf = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:StsRsnInf'][0]['document:AddtlInf'][0];
+  
+            let status = "FAILED";
+            let message = "Transaction rejected";
+  
+            if (TransactionStatus === "ACSC") {
+              status = "SUCCESS";
+              message = "Transaction is successfully completed";
+            } else if (TransactionStatus === "RJCT") {
+              status = "FAILED";
+              message = StsRsnInf || "Transaction rejected";
+            }
+  
+            const data = {
+              status: status,
+              message: message,
+              transactionRef: orgnlTxId
+            };
+  
+            resolve({
+              status: true,
+              message: 'The XML response was converted as expected',
+              data: data
+            });
+          }
+        });
+      });
+    } catch (error) {
+      return {
+        status: false,
+        message: 'Error converting XML response to JSON',
+        data: error
+      };
+    }
+  }
+  
   module.exports = {
-    xmlVerificationResponseTojson,xmlPushPaymentResponseTojson
+    xmlVerificationResponseTojson,xmlPushPaymentResponseTojson, xmlReturnPaymentResponseToJson
   };
