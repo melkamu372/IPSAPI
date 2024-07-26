@@ -72,17 +72,17 @@ exports.AccountVerification= async (req, res) => {
       res.status(200).send(response.data);
       */
       
-} catch (error) {
-    //logger.error('Error: Failed to send XML data', error.message);   
+} catch (error) {  
     if (error.response) {
         // res.set('Content-Type', 'application/xml');
         // res.status(error.response.status).json(error.response.data);
+        //console.log(error);
         const data= {
-                    status: "FAILED",
-                    message: "Non-verified Bank",
+                    status: error.response.status,
+                    message: error.response.statusText,
                     beneficiaryName: ""
                     };
-        res.status(400).send(data);
+        res.status(error.response.status).send(data);
         
     } else if (error.request) {
     
@@ -213,8 +213,3 @@ function convertToxml(jsonInput) {
     const xmlDoc = generateVerifcationRequestXml(jsonInput); 
     return xmlDoc;
 };
-
-
-
-
-

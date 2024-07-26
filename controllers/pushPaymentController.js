@@ -89,15 +89,17 @@ exports.PushPaymentInputTest = async (req, res) => {
       if (error.code === 'ECONNABORTED' || error.message.includes('Network Error') || error.message.includes('timeout')) {
         res.status(503).json({ error: 'Service Unavailable: Network error' });
       } else if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        res.status(error.response.status).json({ error: error.response.data });
+        const data= {
+          status: error.response.status,
+          message: error.response.statusText,
+          };
+        res.status(error.response.status).json(data);
       } else if (error.request) {
         // The request was made but no response was received
         res.status(500).json({ error: 'Server did not respond' });
       } else {
         // Something happened in setting up the request that triggered an Error
-        res.status(500).json({ error: error.message });
+        res.status(500).json(error.message);
       }
     }
   };
