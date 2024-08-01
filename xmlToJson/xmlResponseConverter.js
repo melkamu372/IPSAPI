@@ -89,8 +89,18 @@ async function xmlPushPaymentResponseTojson(xmlResponse) {
               data: err
             });
           } else {         
+                   
           const TransactionStatus =  result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:TxSts'][0];
           const orgnlTxId = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxId'][0]; 
+          const amount = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Amt'][0]['document:InstdAmt'][0]['_'];
+          const currency = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Amt'][0]['document:InstdAmt'][0]['$']['Ccy'];
+          const debitor = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Dbtr'][0]['document:Pty'][0]['document:Nm'][0];
+          const creditor = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Cdtr'][0]['document:Pty'][0]['document:Nm'][0];
+          const debitorAccount = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:DbtrAcct'][0]['document:Id'][0]['document:Othr'][0]['document:Id'][0];
+          const creditorAccount = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:CdtrAcct'][0]['document:Id'][0]['document:Othr'][0]['document:Id'][0];
+         const reciverBank = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:GrpHdr'][0]['document:InstdAgt'][0]['document:FinInstnId'][0]['document:Othr'][0]['document:Id'][0];
+
+          
           let status="FAILED";
            let message="transaction rejected"; 
            
@@ -102,7 +112,14 @@ async function xmlPushPaymentResponseTojson(xmlResponse) {
             const data = {
               status: status,
               message:message,
-              transactionRef:orgnlTxId
+              transactionRef:orgnlTxId,
+              amount,
+              debitor,
+              creditor,
+              debitorAccount,
+              creditorAccount,
+              bank:reciverBank
+              
             };
             resolve({
               status: true,

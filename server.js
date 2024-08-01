@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const bodyParserXml = require('body-parser-xml');
 const dotenv = require('dotenv');
 const logger = require('./logs/logger');
+const { GenerateAccessToken } = require('./services/token-service');
 
 dotenv.config();
 
@@ -34,6 +35,22 @@ app.use('/api', testRoutes);  // Mount JSON routes
 app.use('/abay', incomingRoutes);  // Mount XML routes
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   logger.info(`Server is running on port ${PORT}`);
+
+  // Call GenerateAccessToken immediately
+  try {
+    await GenerateAccessToken();
+  } catch (error) {
+  logger.error(`Error generating token on startup: ${error.message}`);
+  }
+
+  // Timer to generate token every 4 minutes
+  setInterval(async () => {
+    try {
+      await GenerateAccessToken();
+    } catch (error) {
+      logger.error(`Error generating token in interval: ${error.message}`);
+    }
+  }, 4 * 60 * 1000); // 4 minutes in milliseconds
 });
