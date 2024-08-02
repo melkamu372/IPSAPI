@@ -38,8 +38,16 @@ We will use version control workflow as the most common and recommended way to r
 Create a new repository in your GitHub and call it terraform-cloud, push your Terraform codes developed in the previous projects to 
 the repository.
 
-Choose version control workflow and you will be promped to connect your GitHub account to your workspace – follow the prompt and 
+Choose version control workflow
+![image](https://github.com/user-attachments/assets/4d995f27-6adf-4a5a-b82b-692ba6e0ef9b)
+
+
+ and you will be promped to connect your GitHub account to your workspace – follow the prompt and 
 add your newly created repository to the workspace.
+![image](https://github.com/user-attachments/assets/6558f15c-211e-4365-84b2-d6358ebc8136)
+
+create Workspace
+![image](https://github.com/user-attachments/assets/482371c3-6ba0-4497-a7c7-992905aae38f)
 
 
 Move on to "Configure settings", provide a description for your workspace and leave all the rest settings default, click "Create 
@@ -55,6 +63,9 @@ credentials will be used to privision your AWS infrastructure by Terraform Cloud
 
 After you have set these 2 environment variables – yout Terraform Cloud is all set to apply the codes from GitHub and create all 
 necessary AWS resources.
+![image](https://github.com/user-attachments/assets/51031436-a6b6-48c5-87d2-1a9d51316cb1)
+
+![image](https://github.com/user-attachments/assets/7965d668-f3dd-4a88-9003-f5263edd1544)
 
 5. Now it is time to run our Terrafrom scripts, but in our previous project which was project 18, we talked about using Packer to
 build our images, and Ansible to configure the infrastructure, so for that we are going to make few changes to our our existing 
