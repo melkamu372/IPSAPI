@@ -1,385 +1,135 @@
-# AUTOMATE INFRASTRUCTURE WITH IAC USING TERRAFORM PART 3 – REFACTORING
-
-In two previous projects we have developed AWS Infrastructure code using Terraform and tried to run it from your local workstation.
-Now it is time to introduce some more advanced concepts and enhance our code.
-
-Firstly, we will explore alternative Terraform 
-[backends](https://developer.hashicorp.com/terraform/language/settings/backends/configuration).
-
-
-## Introducing Backend on S3
-Each Terraform configuration can specify a backend, which defines where and how operations are performed, where state snapshots are 
-stored, etc.Take a peek into what the states file looks like. It is basically where terraform stores all the state of the infrastructure in json
-format.So far, we have been using the default backend, which is the local backend – it requires no configuration, and the states file is
-stored locally. This mode can be suitable for learning purposes, but it is not a robust solution, so it is better to store it in some
-more reliable and durable storage.The second problem with storing this file locally is that, in a team of multiple DevOps engineers, other engineers will not have
-access to a state file stored locally on your computer.To solve this, we will need to configure a backend where the state file can be accessed remotely other DevOps team members. There areplenty of different standard backends supported by Terraform that you can choose from. Since we are already using AWS – we can 
-choose an [S3 bucket as a backend](https://developer.hashicorp.com/terraform/language/settings/backends/s3).
-
-Another useful option that is supported by S3 backend is State Locking – it is used to lock your state for all operations that could
-write state. This prevents others from acquiring the lock and potentially corrupting your state. 
-[State Locking](https://developer.hashicorp.com/terraform/language/state/locking) feature for S3 backend is optional and requires 
-another AWS service – DynamoDB.
+# Automate infrastructure with iac using Terraform part 4 – (Terraform Cloud)
 
-Let us configure it! Here is our plan to Re-initialize Terraform to use S3 backend:
+**What Terraform Cloud is and why use it**
 
-- Add S3 and DynamoDB resource blocks before deleting the local state file
-- Update terraform block to introduce backend and locking
-- Re-initialize terraform
-- Delete the local tfstate file and check the one in S3 bucket
-- Add outputs
-- terraform apply
-
-
-To get to know how lock in DynamoDB works, read the following [article](https://angelo-malatacca83.medium.com/aws-terraform-s3-and-dynamodb-backend-3b28431a76c1)
-
-
-Create a file and name it backend.tf. Add the below code and replace the name of the S3 bucket you created in Project-16.
-```
-resource "aws_s3_bucket" "terraform_state" {
-  bucket = "dev-terraform-bucket"
-  # Enable versioning so we can see the full revision history of our state files
-  versioning {
-    enabled = true
-  }
-  # Enable server-side encryption by default
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
-}
-```
-You must be aware that Terraform stores secret data inside the state files. Passwords, and secret keys processed by resources are 
-always stored in there. Hence, you must consider to always enable encryption. You can see how we achieved that with 
-server_side_encryption_configuration.
+By now, you should be pretty comfortable writing Terraform code to provision Cloud infrastructure using [Configuration Language (HCL)](https://developer.hashicorp.com/terraform/language). 
+Terraform is an open-source system, that you installed and ran a Virtual Machine (VM) that you had to create, maintain and keep up to 
+date. In Cloud world it is quite common to provide a managed version of an open-source software. Managed means that you do not have to 
+install, configure and maintain it yourself – you just create an account and use it as A Service.
 
-Next, we will create a DynamoDB table to handle locks and perform consistency checks. In previous projects, locks were handled with
-a local file as shown in terraform.tfstate.lock.info. Since we now have a team mindset, causing us to configure S3 as our backend
-to store state file, we will do the same to handle locking. Therefore, with a cloud storage database like DynamoDB, anyone running
-Terraform against the same infrastructure can use a central location to control a situation where Terraform is running at the same 
-time from multiple different people.
+[Terraform Cloud](https://cloud.hashicorp.com/products/terraform) is a managed service that provides you with Terraform CLI to 
+provision infrastructure, either on demand or in response to various events. By default, Terraform CLI performs operation on the server whene it is invoked, it is perfectly fine if you have a dedicated role 
+who can launch it, but if you have a team who works with Terraform – you need a consistent remote environment with remote workflow and shared state to run Terraform commands.
 
-- Dynamo DB resource for locking and consistency checking:
+Terraform Cloud executes Terraform commands on disposable virtual machines, this remote execution is also called remote operations.
 
-```
-resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "terraform-locks"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}
-```
 
-Terraform expects that both S3 bucket and DynamoDB resources are already created before we configure the backend. So, let us run
-terraform apply to provision resources.
+Migrate your .tf codes to Terraform Cloud
+Le us explore how we can migrate our codes to Terraform Cloud and manage our AWS infrastructure from there:
 
-- Configure S3 Backend
+1. Create a Terraform Cloud account
+Follow this [link](https://app.terraform.io/public/signup/account), create a new account, verify your email and you are ready to start
 
-```
-terraform {
-  backend "s3" {
-    bucket         = "dev-terraform-bucket"
-    key            = "global/s3/terraform.tfstate"
-    region         = "eu-central-1"
-    dynamodb_table = "terraform-locks"
-    encrypt        = true
-  }
-}
-```
+![image](https://github.com/user-attachments/assets/1b3e92da-2c74-454e-8cd5-b3d032459dfb)
 
-Now its time to re-initialize the backend. Run terraform init and confirm you are happy to change the backend by typing yes
+Most of the features are free, but if you want to explore the difference between free and paid plans – you can check it on this [page](https://www.hashicorp.com/products/terraform/pricing).
+2. Create an organization
+Select "Start from scratch", choose a name for your organization and create it.
+![image](https://github.com/user-attachments/assets/8021821a-d7e8-48c3-811b-86a6132a36c2)
+![image](https://github.com/user-attachments/assets/ca5a7499-7b77-483b-bb48-ac62055de240)
 
--  Verify the changes
-Before doing anything if you opened AWS now to see what happened you should be able to see the following:
+3. Configure a workspace
+Before we begin to configure our workspace – [watch this part of the video](https://www.youtube.com/watch?v=m3PlM4erixY&t=287s) 
+to better understand the difference between version control workflow, CLI-driven workflow and API-driven workflow and other 
+configurations that we are going to implement.
 
-- tfstatefile is now inside the S3 bucket
-- DynamoDB table which we create has an entry which includes state file status
+We will use version control workflow as the most common and recommended way to run Terraform commands triggered from our git repository.
 
-Navigate to the DynamoDB table inside AWS and leave the page open in your browser. Run terraform plan and while that is running, 
-refresh the browser and see how the lock is being handled:
+Create a new repository in your GitHub and call it terraform-cloud, push your Terraform codes developed in the previous projects to 
+the repository.
 
+Choose version control workflow and you will be promped to connect your GitHub account to your workspace – follow the prompt and 
+add your newly created repository to the workspace.
 
-![6098](https://user-images.githubusercontent.com/85270361/210179390-9412a572-7848-4d12-867a-c6da46cf3609.PNG)
 
+Move on to "Configure settings", provide a description for your workspace and leave all the rest settings default, click "Create 
+workspace".
 
-After terraform plan completes, refresh DynamoDB table.
+4. Configure variables
 
+Terraform Cloud supports two types of variables: environment variables and Terraform variables. Either type can be marked as sensitive,
+which prevents them from being displayed in the Terraform Cloud web UI and makes them write-only.
 
-![6099](https://user-images.githubusercontent.com/85270361/210179428-c4fe484b-817c-42d2-a6eb-6a1e338d5a2e.PNG)
+Set two environment variables: AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY, set the values that you used in Project 16. These 
+credentials will be used to privision your AWS infrastructure by Terraform Cloud.
 
+After you have set these 2 environment variables – yout Terraform Cloud is all set to apply the codes from GitHub and create all 
+necessary AWS resources.
 
-5. Add Terraform Output
-Before you run terraform apply let us add an output so that the S3 bucket Amazon Resource Names ARN and DynamoDB table name can be
-displayed.
+5. Now it is time to run our Terrafrom scripts, but in our previous project which was project 18, we talked about using Packer to
+build our images, and Ansible to configure the infrastructure, so for that we are going to make few changes to our our existing 
+[respository](https://github.com/darey-devops/PBL-project-18) from Project 18.
 
-Create a new file and name it output.tf and add below code
 
-```
-output "s3_bucket_arn" {
-  value       = aws_s3_bucket.terraform_state.arn
-  description = "The ARN of the S3 bucket"
-}
-output "dynamodb_table_name" {
-  value       = aws_dynamodb_table.terraform_locks.name
-  description = "The name of the DynamoDB table"
-}
-```
+The files that would be Addedd is;
+- AMI: for building packer images
 
-Now we have everything ready to go!
+- Ansible: for Ansible scripts to configure the infrastucture
 
-## 6. Let us run terraform apply
-Terraform will automatically read the latest state from the S3 bucket to determine the current state of the infrastructure. Even if 
-another engineer has applied changes, the state file will always be up to date.
+Before you proceed ensure you have the following tools installed on your local machine;
 
-Now, head over to the S3 console again, refresh the page, and click the grey “Show” button next to “Versions.” You should now see 
-several versions of your terraform.tfstate file in the S3 bucket:
+- [packer](https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli)
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
+Refer to this [repository](https://github.com/darey-devops/PBL-project-19) for guidiance on how to refactor your enviroment to meet 
+the new changes above and ensure you go through the README.md file.
 
-![7000](https://user-images.githubusercontent.com/85270361/210179489-0eb33480-2ac3-4a7f-830b-2ce3d10d080f.PNG)
+6. Run terraform plan and terraform apply from web console
 
+Switch to "Runs" tab and click on "Queue plan manualy" button. If planning has been successfull, you can proceed and confirm Apply
+– press "Confirm and apply", provide a comment and "Confirm plan"
 
-With help of remote backend and locking configuration that we have just configured, collaboration is no longer a problem.
+Check the logs and verify that everything has run correctly. Note that Terraform Cloud has generated a unique state version that you 
+can open and see the codes applied and the changes made since the last run.
 
-However, there is still one more problem: Isolation Of Environments. Most likely we will need to create resources for different 
-environments, such as: Dev, sit, uat, preprod, prod, etc.
+7. Test automated terraform plan
 
-This separation of environments can be achieved using one of two methods:
+By now, you have tried to launch plan and apply manually from Terraform Cloud web console. But since we have an integration with GitHub,
+the process can be triggered automatically. Try to change something in any of .tf files and look at "Runs" tab again – plan must be 
+launched automatically, but to apply you still need to approve manually.
 
-a. [Terraform Workspaces](https://developer.hashicorp.com/terraform/language/state/workspaces)
-b. Directory based separation using terraform.tfvars file
+Since provisioning of new Cloud resources might incur significant costs. Even though you can configure "Auto apply", it is always a
+good idea to verify your plan results before pushing it to apply to avoid any misconfigurations that can cause ‘bill shock’.
 
+Note: First, try to approach this projectoun your own, but if you hit any blocker and could not move forward with the project, refer
+to project 19 video.
 
+Practice Task №1
 
-## WHEN TO USE WORKSPACES OR DIRECTORY?
-To separate environments with significant configuration differences, use a directory structure. Use workspaces for environments that
-do not greatly deviate from each other, to avoid duplication of your configurations. Try both methods in the sections below to help 
-you understand which will serve your infrastructure best. 
+1. Configure 3 branches in your terraform-cloud repository for dev, test, prod environments
+2. Make necessary configuration to trigger runs automatically only for dev environment
+3. Create an Email and Slack notifications for certain events (e.g. started plan or errored run) and test it
+4. Apply destroy from Terraform Cloud web console
 
-For now, you can read more about both alternatives 
-[here](https://developer.hashicorp.com/terraform/tutorials/modules/organize-configuration) and try both methods yourself, but we will 
-explore them better in next projects. 
 
-Security Groups refactoring with dynamic block
-For repetitive blocks of code you can use [dynamic blocks](https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks) 
-in Terraform, to get to know more how to use them – [watch this video](https://youtu.be/tL58Qt-RGHY).
+Public Module Registry vs Private Module Registry
 
-Refactor Security Groups creation with dynamic blocks.
+Terraform has a quite strong community of contributors (individual developers and 3rd party companies) that along with HashiCorp 
+maintain a Public Registry, where you can find reusable configuration packages (modules). We strongly encourage you to explore modules
+shared to the public registry, specifically for this project – you can check out this AWS provider registy page.
 
-EC2 refactoring with Map and Lookup
-Remember, every piece of work you do, always try to make it dynamic to accommodate future changes. Amazon Machine Image (AMI) is a 
-regional service which means it is only available in the region it was created. But what if we change the region later, and want to
-dynamically pick up AMI IDs based on the available AMIs in that region? This is where we will introduce Map and Lookup functions.
+As your Terraform code base grows, your DevOps team might want to create you own library of reusable components – Private Registry 
+can help with that.
 
-Map uses a key and value pairs as a data structure that can be set as a default type for variables.
 
+Practice Task No2 Working with Private repository
 
-```
-variable "images" {
-    type = "map"
-    default = {
-        us-east-1 = "image-1234"
-        us-west-2 = "image-23834"
-    }
-}
-```
+1. Create a simple Terraform repository (you can clone one from [here](https://github.com/hashicorp/learn-private-module-aws-s3-webapp))
+ that will be your module
+2. Import the module into your private registry
+3. Create a configuration that uses the module
+4. Create a workspace for the configuration
+5. Deploy the infrastructure
+6. Destroy your deployment
 
-To select an appropriate AMI per region, we will use a lookup function which has following syntax: lookup(map, key, [default]).
+Note: First, try to approach this task oun your own, but if you have any difficulties with it, refer to this [tutorial](https://developer.hashicorp.com/terraform/tutorials/modules/module-private-registry-share).
 
-Note: A default value is better to be used to avoid failure whenever the map data has no key.
+### The End of Project 19
 
-```
-resource "aws_instace" "web" {
-    ami  = "${lookup(var.images, var.region), "ami-12323"}
-}
-```
+We have learned how to effectively use managed version of Terraform – Terraform Cloud. We practiced in finding modules 
+in a Public Module Registry as well as build and deploy our own modules to a Private Module Registry.
 
-Now, the lookup function will load the variable images using the first parameter. But it also needs to know which of the key-value 
-pairs to use. That is where the second parameter comes in. The key us-east-1 could be specified, but then we will not be doing 
-anything dynamic there, but if we specify the variable for region, it simply resolves to one of the keys. That is why we have used
-var.region in the second parameter.
-
-Conditional Expressions
-If you want to make some decision and choose some resource based on a condition – you shall use
-[Terraform Conditional Expressions](https://developer.hashicorp.com/terraform/language/expressions/conditionals).
-
-In general, the syntax is as following: condition ? true_val : false_val
-
-Read following snippet of code and try to understand what it means:
-
-```
-resource "aws_db_instance" "read_replica" {
-  count               = var.create_read_replica == true ? 1 : 0
-  replicate_source_db = aws_db_instance.this.id
-}
-```
-
-- true #condition equals to ‘if true’
-- ? #means, set to ‘1`
-- : #means, otherwise, set to ‘0’
-
-
-Terraform Modules and best practices to structure your .tf codes
-By this time, you might have realized how difficult is to navigate through all the Terraform blocks if they are all written in a 
-single long .tf file. As a DevOps engineer, you must produce reusable and comprehensive IaC code structure, and one of the tool that
-Terraform provides out of the box is Modules.
-
-Modules serve as containers that allow to logically group Terraform codes for similar resources in the same domain 
-(e.g., Compute, Networking, AMI, etc.). One root module can call other child modules and insert their configurations when applying
-Terraform config. This concept makes your code structure neater, and it allows different team members to work on different parts of
-configuration at the same time.
-
-You can also create and publish your modules to Terraform Registry for others to use and use someone’s modules in your projects.
-
-Module is just a collection of .tf and/or .tf.json files in a directory.
-
-You can refer to existing child modules from your root module by specifying them as a source, like this:
-
-```
-module "network" {
-  source = "./modules/network"
-}
-```
-
-Note that the path to ‘network’ module is set as relative to your working directory.
-
-Or you can also directly access resource outputs from the modules, like this:
-
-
-```
-resource "aws_elb" "example" {
-  # ...
-
-  instances = module.servers.instance_ids
-}
-```
-
-In the example above, you will have to have module ‘servers’ to have output file to expose variables for this resource.
-
-
-## REFACTOR YOUR PROJECT USING MODULES
-
-Let us review the [repository](https://github.com/darey-devops/PBL-project-17) from project 17, you will notice that we had a single 
-list of long file for creating all of our resources, but that is not the best way to go about it because it makes our code base very 
-hard to read and understand therefore making future changes can be quite stressful.
-
-QUICK TASK FOR YOU: Break down your Terraform codes to have all resources in their respective modules. Combine resources of a similar
-type into directories within a ‘modules’ directory, for example, like this:
-
-```
-- modules
-  - ALB: For Apllication Load balancer and similar resources
-  - EFS: For Elastic file system resources
-  - RDS: For Databases resources
-  - Autoscaling: For Autosacling and launch template resources
-  - compute: For EC2 and rlated resources
-  - VPC: For VPC and netowrking resources such as subnets, roles, e.t.c.
-  - security: for creating security group resources
-```
-
-
-Each module shall contain following files:
-
-```
-- main.tf (or %resource_name%.tf) file(s) with resources blocks
-- outputs.tf (optional, if you need to refer outputs from any of these resources in your root module)
-- variables.tf (as we learned before - it is a good practice not to hard code the values and use variables)
-```
-
-It is also recommended to configure providers and backends sections in separate files but should be placed in the root module.
-
-After you have given it a try, you can check out this [repository](https://github.com/darey-devops/PBL-project-18) 
-for guidiance and erors fixing.
-
-IMPORTANT: In the configuration sample from the repository, you can observe two examples of referencing the module:
-
-a. Import module as a source and have access to its variables via var keyword:
-
-```
-module "VPC" {
-  source = "./modules/VPC"
-  region = var.region
-  ...
-```
-
-
-b. Refer to a module’s output by specifying the full path to the output variable by using module.%module_name%.%output_name% 
-construction:
-
-
-```
-subnets-compute = module.network.public_subnets-1
-```
-
-
-# COMPLETE THE TERRAFORM CONFIGURATION
-
-Complete the rest of the codes yourself, the resulting configuration structure in your working directory may look like this:
-
-```
-└── PBL
-    ├── modules
-    |   ├── ALB
-    |     ├── ... (module .tf files, e.g., main.tf, outputs.tf, variables.tf)     
-    |   ├── EFS
-    |     ├── ... (module .tf files) 
-    |   ├── RDS
-    |     ├── ... (module .tf files) 
-    |   ├── autoscaling
-    |     ├── ... (module .tf files) 
-    |   ├── compute
-    |     ├── ... (module .tf files) 
-    |   ├── network
-    |     ├── ... (module .tf files)
-    |   ├── security
-    |     ├── ... (module .tf files)
-    ├── main.tf
-    ├── backends.tf
-    ├── providers.tf
-    ├── data.tf
-    ├── outputs.tf
-    ├── terraform.tfvars
-    └── variables.tf
-```
-
-Now, the code is much more well-structured and can be easily read, edited and reused by your DevOps team members.
-
-BLOCKERS: Your website would not be available because the userdata scripts we added to the launch template does not contain the 
-latest endpoints for EFS, ALB and RDS and also our AMI is not properly configured, so how do we fix this?
-
-In project 19, you would see how to use packer to create AMIs, Terrafrom to create the infrastructure and Ansible to configure the
-infrasrtucture.
-
-We will also see how to use terraform cloud for our backends.
-
-
-**Pro-tips:**
-
-1. You can validate your codes before running terraform plan with terraform validate command. It will check if your code is 
-syntactically valid and internally consistent.
-2. In order to make your configuration files more readable and follow canonical format and style – use terraform fmt command. It will 
-apply Terraform language style conventions and format your .tf files in accordance to them.
-
-
-**Congratulations**
-You have done a great job developing and refactoring AWS Infrastructure as Code with Terraform!
-
-
-
-
-
-
-
-
-
-
-
-
+Move ahead to the next project!
 
 
 
