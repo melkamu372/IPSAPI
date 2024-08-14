@@ -1,6 +1,6 @@
 const logger = require('../logs/logger');
 const js2xmlparser = require("js2xmlparser");
-
+const {IncommingXmlAccountVerification}=require('../xmlToJson/xmlRequestToJson');
 
 function sanitizeKey(key) {
   return key.replace(/[^a-zA-Z0-9_:]/g, "_");
@@ -24,7 +24,8 @@ function sanitizeObject(obj) {
 // Function to handle different ISO 20022 message types
 exports.IncomingTransaction=async (req, res)=> {
   try {
-    const document = req.body['fpenvelope'];
+   
+    const document = req.body['fpenvelope'];  
     const appHdr = document?.['header:apphdr'];
     const bizMsgIdr = appHdr?.['header:bizmsgidr'];
     const msgDefIdr = appHdr?.['header:msgdefidr'];
@@ -35,7 +36,7 @@ exports.IncomingTransaction=async (req, res)=> {
 
     switch (msgDefIdr) {
       case 'acmt.023.001.03':
-        return handleAccountVerification(res, document);
+        return  await handleAccountVerification(res,req.body);
       case 'pacs.008.001.10':
         return handlePushPayment(res, document);
       case 'pacs.028.001.05':
@@ -66,16 +67,23 @@ exports.testXml= async (req, res) =>{
   }
 }
 
-function handleAccountVerification(res,document) {
+async function handleAccountVerification(res,document) {
   console.log('Processing account verification');
-  res.set('Content-Type', 'application/xml');
-        res.status(400).send('Processing account verification');
-        return;
+   try {
+       // console.log('Full Document Structure:', JSON.stringify(document, null, 2));
+   const data= await IncommingXmlAccountVerification(document);
+   res.set('Content-Type', 'application/xml');
+   res.status(200).send(data);
+   return; 
+   } catch (error) {
+    logger.error(`Error in account verification: ${error.message}`);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
 function handlePushPayment(res,document) {
   console.log('Processing push payment');
-     res.set('Content-Type', 'application/xml');
+        res.set('Content-Type', 'application/xml');
         res.status(400).send('Processing push payment');
         return;
 }

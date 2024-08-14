@@ -46,6 +46,7 @@ exports.AccountVerification= async (req, res) => {
         return res.status(400).json({ error: 'Signed xml is not valid against XSD.' });    
       }
        
+    
     const tokenResult = await getAccessToken();
      if(!tokenResult.status){
         return res.status(400).json({ error: tokenResult.message });
@@ -59,7 +60,9 @@ exports.AccountVerification= async (req, res) => {
 
     const response = await axios.post(ips_payment_url,Signedxml,{headers});   
     const jsondata = await xmlVerificationResponseTojson(response.data); 
-    
+     // res.set('Content-Type', 'application/xml');
+      //res.status(200).send(response.data);  
+      //return;
     if(response.status==200){
     res.status(200).send(jsondata.data);
     }

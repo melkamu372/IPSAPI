@@ -28,17 +28,14 @@ exports.ReturnPaymentInputTest = async (req, res) => {
     return res.status(400).json({ error: 'Bad Request: your input is invalid' });
   }
     const xmlData=convertToXml(req.body);
-    res.set('Content-Type', 'application/xml');
-    res.status(200).send(xmlData);
-    return;
-    const XSD_PATH = path.resolve(__dirname, '../XSDs/payment_request.xsd');
+    const XSD_PATH = path.resolve(__dirname, '../XSDs/returnPayment_request.xsd');
     try {
       const isValid = await XsdsValidation(xmlData,XSD_PATH);
       if (!isValid) {
-        return res.status(400).json({ error: 'XML payment request is not valid against XSD.' });    
+        return res.status(400).json({ error: 'XML return payment request is not valid against XSD.' });    
       } 
 
-      return res.status(200).json({ message: 'XML is valid against XSD.' });
+      return res.status(200).json({ message: 'Return Request XML is valid against XSD.' });
   } catch (error) {
       logger.error('Error:', error.message);
       res.status(500).json({ error: 'Failed to send XML data'+ error.message });
@@ -54,16 +51,12 @@ exports.ReturnPaymentInputTest = async (req, res) => {
     try {
       const isValid = await XsdsValidation(xmlData, XSD_PATH);
       if (!isValid) {
-        return res.status(400).json({ error: 'XML payment request is not valid against XSD' });    
+        return res.status(400).json({ error: 'Retern XML payment request is not valid against XSD' });    
       } 
-      res.set('Content-Type', 'application/xml');
-      res.status(200).send(xmlData);
-      return;
-
       const Signedxml = await digestXml(xmlData); 
       const isSignedxmlValid = await XsdsValidation(Signedxml, XSD_PATH);
       if (!isSignedxmlValid) {
-        return res.status(400).json({ error: 'Signed payment request xml is not valid against XSD.' });    
+        return res.status(400).json({ error: 'Signed Return payment request xml is not valid against XSD.' });    
       }
   
       const tokenResult = await getAccessToken();
@@ -78,7 +71,9 @@ exports.ReturnPaymentInputTest = async (req, res) => {
         'Authorization': `Bearer ${accessToken}`
       };
       const response = await axios.post(ips_payment_url, Signedxml, { headers });
-  
+      res.set('Content-Type', 'application/xml');
+      res.status(200).send(response.data);
+      return;
       //xml to json converter  
       const jsondata = await xmlPushPaymentResponseTojson(response.data); 
       if (response.status == 200) {

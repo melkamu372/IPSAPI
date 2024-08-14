@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const VerificationController = require('../controllers/XmlVerificationController');
+const IncommingController = require('../controllers/IncommingController');
 
 // verification
-router.post('/iso20022/incoming', VerificationController.IncomingTransaction);
-router.post('/iso20022/test', VerificationController.testXml);
+router.post('/iso20022/incoming', IncommingController.IncomingTransaction);
+router.post('/iso20022/test', IncommingController.testXml);
 
 
 module.exports = router;

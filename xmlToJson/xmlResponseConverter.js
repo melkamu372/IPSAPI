@@ -140,60 +140,82 @@ async function xmlPushPaymentResponseTojson(xmlResponse) {
   }
 
   async function xmlPushPaymentStatusResponseTojson(xmlResponse) {
-    try {
-      return new Promise((resolve, reject) => {
-        xml2js.parseString(xmlResponse, (err, result) => {
-          if (err) {
-            console.error('Error parsing XML:', err);
-            reject({
-              status: false,
-              message: 'Error parsing XML',
-              data: err
-            });
-          } else {         
-                 
-          const TransactionStatus =  result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:TxSts'][0];
-          const orgnlTxId = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxId'][0]; 
-          const amount = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Amt'][0]['document:InstdAmt'][0]['_'];
-          const currency = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Amt'][0]['document:InstdAmt'][0]['$']['Ccy'];
-          const debitor = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Dbtr'][0]['document:Pty'][0]['document:Nm'][0];
-          // const creditor = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Cdtr'][0]['document:Pty'][0]['document:Nm'][0];
+  try {
+    return new Promise((resolve, reject) => {
+      xml2js.parseString(xmlResponse, (err, result) => {
+        if (err) {
+          console.error('Error parsing XML:', err);
+          reject({
+            status: false,
+            message: 'Error parsing XML',
+            data: err
+          });
+        } else {
+          try {
           
-          const debitorAccount = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:DbtrAcct'][0]['document:Id'][0]['document:Othr'][0]['document:Id'][0];
-          const creditorAccount = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:CdtrAcct'][0]['document:Id'][0]['document:Othr'][0]['document:Id'][0];
-         const reciverBank = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:GrpHdr'][0]['document:InstdAgt'][0]['document:FinInstnId'][0]['document:Othr'][0]['document:Id'][0];
-           let status="FAILED";
-           let message="transaction rejected"; 
-           if(TransactionStatus=="ACSC"){
-              status="SUCCESS";
-              message="transaction is successfully completed";
-              }
+          // console.log(JSON.stringify(result, null, 2));
+          
+            const transactionStatus = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:TxSts'][0];
+           
+            let status = "FAILED";
+            let orgnlTxId="";
+            let message = "transaction rejected";
+            let amount=0;
+            let creditorAccount="";  
+            let reciverBank="";    
+            if (transactionStatus === "ACSC") {
+            orgnlTxId = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxId'][0];
+            amount = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Amt'][0]['document:InstdAmt'][0]['_'];
+            reciverBank = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:GrpHdr'][0]['document:InstdAgt'][0]['document:FinInstnId'][0]['document:Othr'][0]['document:Id'][0];
+            const currency = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Amt'][0]['document:InstdAmt'][0]['$']['Ccy'];
+            const debitor = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Dbtr'][0]['document:Pty'][0]['document:Nm'][0];
+            // const creditor = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:Cdtr'][0]['document:Pty'][0]['document:Nm'][0];
+            
+            const debitorAccount = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:DbtrAcct'][0]['document:Id'][0]['document:Othr'][0]['document:Id'][0];
+            creditorAccount = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:OrgnlTxRef'][0]['document:CdtrAcct'][0]['document:Id'][0]['document:Othr'][0]['document:Id'][0];
+            
+              status = "SUCCESS";
+              message = "transaction is successfully completed";
+             }
+
+           else{
+     message = result['FPEnvelope']['document:Document'][0]['document:FIToFIPmtStsRpt'][0]['document:TxInfAndSts'][0]['document:StsRsnInf'][0]['document:AddtlInf'][0];
+     status=transactionStatus;
+           }
 
             const data = {
               status: status,
-              message:message,
-              transactionRef:orgnlTxId,
+              message: message,
+              transactionRef: orgnlTxId,
               amount,
               creditorAccount,
-              bank:reciverBank
+              bank: reciverBank
             };
+
             resolve({
               status: true,
               message: 'The xml response converted as expected',
               data: data
             });
+          } catch (parseError) {
+            reject({
+              status: false,
+              message: 'Error extracting data from XML',
+              data: parseError
+            });
           }
-        });
+        }
       });
-    } catch (error) {
-      //console.error('Error converting xml response to json:', error);
-      return {
-        status: false,
-        message: 'Error converting xml response to json',
-        data: error
-      };
-    }
+    });
+  } catch (error) {
+    return {
+      status: false,
+      message: 'Error converting xml response to json',
+      data: error
+    };
   }
+}
+
   
   async function xmlReturnPaymentResponseToJson(xmlResponse) {
     try {
@@ -245,6 +267,69 @@ async function xmlPushPaymentResponseTojson(xmlResponse) {
     }
   }
   
+  
+ async function xmlSignedPushRequestToJson(SignedxmlPushRequest) {
+    try {
+        return new Promise((resolve, reject) => {
+            xml2js.parseString(SignedxmlPushRequest, { tagNameProcessors: [xml2js.processors.stripPrefix] }, (err, result) => {
+                if (err) {
+                    console.error('Error parsing XML:', err);
+                    reject({
+                        status: false,
+                        message: 'Error parsing XML',
+                        data: err
+                    });
+                } else {
+                    try {
+                        // Extracting SignedXml
+                        const signedXml = result.FPEnvelope.AppHdr[0].Sgntr[0];
+
+                        // Extracting necessary fields
+                        const orgnlTxId = result.FPEnvelope.Document[0].FIToFICstmrCdtTrf[0].CdtTrfTxInf[0].PmtId[0].TxId[0];
+                        const amount = result.FPEnvelope.Document[0].FIToFICstmrCdtTrf[0].CdtTrfTxInf[0].InstdAmt[0]._;
+                        const currency = result.FPEnvelope.Document[0].FIToFICstmrCdtTrf[0].CdtTrfTxInf[0].InstdAmt[0].$.Ccy;
+                        const debitor = result.FPEnvelope.Document[0].FIToFICstmrCdtTrf[0].CdtTrfTxInf[0].Dbtr[0].Nm[0];
+                        const creditor = result.FPEnvelope.Document[0].FIToFICstmrCdtTrf[0].CdtTrfTxInf[0].Cdtr[0].Nm[0];
+                        const debitorAccount = result.FPEnvelope.Document[0].FIToFICstmrCdtTrf[0].CdtTrfTxInf[0].DbtrAcct[0].Id[0].Othr[0].Id[0];
+                        const creditorAccount = result.FPEnvelope.Document[0].FIToFICstmrCdtTrf[0].CdtTrfTxInf[0].CdtrAcct[0].Id[0].Othr[0].Id[0];
+                        const receiverBank = result.FPEnvelope.Document[0].FIToFICstmrCdtTrf[0].GrpHdr[0].InstdAgt[0].FinInstnId[0].Othr[0].Id[0];
+
+                        const data = {
+                          eth_ref: orgnlTxId,
+                          debitor_name: debitor,
+                          creditor_name: creditor,
+                          creditor_account:creditorAccount,
+                          debitor_account:debitorAccount,
+                          bank: receiverBank,
+                          amount
+                        };
+                        resolve({
+                            status: true,
+                            message: 'The XML response converted as expected',
+                            data: data
+                        });
+                    } catch (extractionError) {
+                        //console.error('Error extracting data from XML:', extractionError);
+                        reject({
+                            status: false,
+                            message: 'Error extracting data from XML',
+                            data: extractionError
+                        });
+                    }
+                }
+            });
+        });
+    } catch (error) {
+        //console.error('Error converting XML response to JSON:', error);
+        return {
+            status: false,
+            message: 'Error converting XML response to JSON',
+            data: error
+        };
+    }
+}
+
+
   module.exports = {
-    xmlVerificationResponseTojson,xmlPushPaymentResponseTojson,xmlPushPaymentStatusResponseTojson, xmlReturnPaymentResponseToJson
+    xmlVerificationResponseTojson,xmlSignedPushRequestToJson,xmlPushPaymentResponseTojson,xmlPushPaymentStatusResponseTojson, xmlReturnPaymentResponseToJson
   };

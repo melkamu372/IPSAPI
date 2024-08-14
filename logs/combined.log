@@ -645,3 +645,546 @@ notNull Violation: token_list.refreshToken cannot be null
 2024-07-16T05:48:03.287Z info: Server is running on port 3000
 2024-07-17T11:59:47.573Z info: Server is running on port 3000
 2024-07-17T13:56:12.912Z info: Server is running on port 3000
+2024-07-18T13:17:13.912Z info: Server is running on port 3000
+2024-07-18T13:21:58.177Z info: check push payment api 
+2024-07-18T13:26:42.274Z info: check return payment api 
+2024-07-18T13:40:18.448Z info: Server is running on port 3000
+2024-07-25T06:23:41.860Z info: Server is running on port 3000
+2024-07-25T07:20:46.483Z info: Server is running on port 3000
+2024-07-25T13:39:04.002Z info: Server is running on port 3000
+2024-07-25T13:39:41.321Z info: Server is running on port 3000
+2024-07-25T13:41:40.994Z info: Server is running on port 3000
+2024-07-25T13:41:58.131Z info: Server is running on port 3000
+2024-07-25T13:43:24.290Z info: Server is running on port 3000
+2024-07-25T13:43:50.324Z info: Server is running on port 3000
+2024-07-25T13:44:14.043Z info: Server is running on port 3000
+2024-07-25T13:44:32.437Z info: Server is running on port 3000
+2024-07-25T13:48:30.807Z info: Server is running on port 3000
+2024-07-25T13:59:27.417Z info: transaction_log controller
+2024-07-25T14:01:34.520Z info: transaction_log controller
+2024-07-25T14:01:36.713Z info: transaction_log controller
+2024-07-25T14:02:08.268Z info: transaction_log controller
+2024-07-25T14:02:32.333Z info: transaction_log controller
+2024-07-25T14:03:43.980Z info: transaction_log controller
+2024-07-25T14:03:51.250Z info: transaction_log controller
+2024-07-26T11:06:58.857Z info: transaction_log controller
+2024-07-26T11:10:16.430Z info: Server is running on port 3000
+2024-07-26T11:10:24.807Z info: transaction_log controller
+2024-07-26T11:10:42.178Z info: transaction_log controller
+2024-07-26T11:11:44.653Z info: Server is running on port 3000
+2024-07-26T11:11:47.860Z info: transaction_log controller
+2024-07-26T11:13:42.398Z info: Server is running on port 3000
+2024-07-26T11:13:48.904Z info: transaction_log controller
+2024-07-26T11:14:31.731Z info: Server is running on port 3000
+2024-07-26T11:14:34.405Z info: transaction_log controller
+2024-07-26T11:15:43.694Z info: Server is running on port 3000
+2024-07-26T11:15:45.869Z info: transaction_log controller
+2024-07-26T11:17:26.171Z info: Server is running on port 3000
+2024-07-26T11:17:27.199Z info: transaction_log controller
+2024-07-26T11:27:44.484Z info: Server is running on port 3000
+2024-07-26T11:28:09.399Z info: Server is running on port 3000
+2024-07-26T11:28:24.037Z info: Server is running on port 3000
+2024-07-26T11:28:26.698Z info: transaction_log controller
+2024-07-26T11:29:10.344Z info: transaction_log controller
+2024-07-26T11:34:04.954Z info: transfer_log controller
+2024-07-26T11:34:10.860Z info: transaction_log controller
+2024-07-26T11:34:52.258Z info: transaction_log controller
+2024-07-26T11:35:09.122Z info: transaction_log controller
+2024-07-26T11:35:22.234Z info: transfer_log controller
+2024-07-26T11:37:38.080Z info: transfer_log controller
+2024-07-26T11:37:42.016Z info: transaction_log controller
+2024-07-26T12:17:54.582Z info: Server is running on port 3000
+2024-07-26T12:19:25.996Z info: Server is running on port 3000
+2024-07-26T12:20:35.494Z info: Server is running on port 3000
+2024-07-26T12:22:38.610Z info: Server is running on port 3000
+2024-07-26T12:27:23.322Z info: Server is running on port 3000
+2024-07-26T12:28:28.534Z info: Server is running on port 3000
+2024-07-26T12:33:44.002Z info: Server is running on port 3000
+2024-07-26T12:33:52.445Z info: Server is running on port 3000
+2024-07-26T12:47:00.938Z info: transfer_log controller
+2024-07-26T13:01:28.617Z info: Server is running on port 3000
+2024-07-26T13:02:46.090Z info: Server is running on port 3000
+2024-07-26T13:05:17.359Z info: Server is running on port 3000
+2024-07-26T13:15:24.517Z info: Server is running on port 3000
+2024-07-26T13:27:32.058Z info: Server is running on port 3000
+2024-07-26T13:27:39.119Z info: Server is running on port 3000
+2024-07-26T13:30:25.691Z info: Server is running on port 3000
+2024-07-26T13:49:33.230Z info: Server is running on port 3000
+2024-07-26T13:53:19.977Z info: Server is running on port 3000
+2024-07-26T14:05:50.623Z info: Server is running on port 3000
+2024-07-29T11:40:08.355Z info: Server is running on port 3000
+2024-07-29T11:42:31.215Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T08:50:16.214Z info: Server is running on port 3000
+2024-07-30T10:05:32.048Z info: Server is running on port 3000
+2024-07-30T10:07:42.898Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:07:51.822Z info: Server is running on port 3000
+2024-07-30T10:10:02.162Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:16:10.799Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:20:12.462Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:24:14.124Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:28:11.695Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:32:13.356Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:36:10.925Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:40:12.591Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:44:14.253Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:48:11.823Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:52:13.484Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T10:56:11.054Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T11:00:12.720Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T11:04:14.381Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T11:08:11.950Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T11:12:13.615Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T11:16:11.180Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T11:20:12.845Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T11:24:14.510Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-30T11:28:12.077Z error: Error retrieving token: connect ETIMEDOUT 192.168.20.45:9001
+2024-07-31T05:27:13.903Z info: Server is running on port 3000
+2024-07-31T06:36:19.089Z info: Server is running on port 3000
+2024-08-01T11:22:33.088Z info: Server is running on port 3000
+2024-08-01T11:41:34.700Z info: Server is running on port 3000
+2024-08-01T11:51:18.558Z info: Server is running on port 3000
+2024-08-01T12:06:43.468Z info: Server is running on port 3000
+2024-08-01T12:08:01.433Z info: Server is running on port 3000
+2024-08-01T12:08:16.693Z info: transfer_log controller
+2024-08-01T12:08:52.683Z info: transfer_log controller
+2024-08-01T12:08:54.413Z info: transfer_log controller
+2024-08-01T12:08:59.614Z info: transaction_log controller
+2024-08-01T12:09:01.099Z info: transaction_log controller
+2024-08-01T12:09:38.337Z info: Server is running on port 3000
+2024-08-01T12:12:12.635Z info: Server is running on port 3000
+2024-08-01T12:12:24.921Z info: transfer_log controller
+2024-08-01T12:50:08.038Z info: Server is running on port 3000
+2024-08-01T12:50:55.048Z info: transfer_log controller
+2024-08-01T12:54:27.790Z info: Server is running on port 3000
+2024-08-01T13:13:04.258Z info: Server is running on port 3000
+2024-08-01T13:13:24.263Z info: Server is running on port 3000
+2024-08-01T13:14:27.176Z info: transfer_log controller
+2024-08-01T13:16:58.477Z info: Server is running on port 3000
+2024-08-01T13:17:16.306Z info: transfer_log controller
+2024-08-01T13:31:53.538Z info: Server is running on port 3000
+2024-08-01T13:32:27.243Z info: transfer_log controller
+2024-08-01T13:40:31.962Z info: Server is running on port 3000
+2024-08-01T13:40:57.103Z info: transfer_log controller
+2024-08-01T13:42:24.056Z info: Server is running on port 3000
+2024-08-01T13:42:59.116Z info: transfer_log controller
+2024-08-01T13:43:16.083Z info: transfer_log controller
+2024-08-01T13:44:29.901Z info: transfer_log controller
+2024-08-01T13:44:51.827Z info: transfer_log controller
+2024-08-01T13:48:31.813Z info: Server is running on port 3000
+2024-08-01T13:49:00.468Z info: Server is running on port 3000
+2024-08-01T13:51:17.647Z info: Server is running on port 3000
+2024-08-01T13:51:25.943Z info: transfer_log controller
+2024-08-01T14:03:08.570Z info: Server is running on port 3000
+2024-08-01T14:03:37.099Z info: transfer_log controller
+2024-08-02T11:10:36.810Z info: Server is running on port 3000
+2024-08-02T11:10:47.686Z info: transfer_log controller
+2024-08-02T11:18:47.155Z error: Error retrieving token: Request failed with status code 500
+2024-08-02T11:30:25.491Z info: Server is running on port 3000
+2024-08-02T11:34:23.750Z info: Server is running on port 3000
+2024-08-02T11:37:01.515Z info: Server is running on port 3000
+2024-08-02T11:38:11.073Z info: Server is running on port 3000
+2024-08-02T11:43:19.492Z info: Server is running on port 3000
+2024-08-02T11:47:03.161Z info: Server is running on port 3000
+2024-08-02T11:49:10.678Z info: Server is running on port 3000
+2024-08-02T11:49:20.711Z error: Error retrieving token: Request failed with status code 500
+2024-08-02T11:50:19.533Z info: Server is running on port 3000
+2024-08-02T12:03:24.136Z info: Server is running on port 3000
+2024-08-02T12:08:28.261Z info: Server is running on port 3000
+2024-08-02T12:09:40.199Z info: Server is running on port 3000
+2024-08-02T12:12:29.822Z info: Server is running on port 3000
+2024-08-02T12:15:05.327Z info: Server is running on port 3000
+2024-08-02T12:16:11.074Z info: Server is running on port 3000
+2024-08-02T12:16:48.322Z info: Server is running on port 3000
+2024-08-02T12:17:27.370Z info: Server is running on port 3000
+2024-08-02T12:17:54.194Z info: Server is running on port 3000
+2024-08-02T12:19:01.837Z info: Server is running on port 3000
+2024-08-02T12:19:51.788Z info: Server is running on port 3000
+2024-08-02T12:20:42.952Z info: Server is running on port 3000
+2024-08-02T12:20:55.123Z info: Server is running on port 3000
+2024-08-02T12:35:37.962Z info: Server is running on port 3000
+2024-08-02T12:36:30.333Z info: Server is running on port 3000
+2024-08-02T12:39:20.531Z info: Server is running on port 3000
+2024-08-02T12:39:47.959Z info: Server is running on port 3000
+2024-08-02T12:42:30.232Z info: Server is running on port 3000
+2024-08-02T12:43:10.752Z info: Server is running on port 3000
+2024-08-02T12:47:13.701Z info: Server is running on port 3000
+2024-08-02T12:48:45.800Z info: Server is running on port 3000
+2024-08-02T13:02:40.426Z info: Server is running on port 3000
+2024-08-02T13:03:52.999Z info: Server is running on port 3000
+2024-08-02T13:11:02.909Z info: Server is running on port 3000
+2024-08-02T13:14:36.912Z info: Server is running on port 3000
+2024-08-02T13:19:55.695Z info: Server is running on port 3000
+2024-08-02T13:33:32.700Z info: Server is running on port 3000
+2024-08-02T13:33:33.054Z error: ReferenceError: UpdateTransferLog is not defined
+    at exports.CheckTransfer (/root/IPS/IPSAPI/services/log-service.js:95:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Server.<anonymous> (/root/IPS/IPSAPI/server.js:44:5)
+2024-08-02T13:33:33.055Z error: Error generating token on startup: Cannot read properties of undefined (reading 'status')
+2024-08-02T13:34:33.023Z info: Server is running on port 3000
+2024-08-02T13:34:33.342Z error: ReferenceError: UpdateTransferLog is not defined
+    at exports.CheckTransfer (/root/IPS/IPSAPI/services/log-service.js:95:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Server.<anonymous> (/root/IPS/IPSAPI/server.js:44:5)
+2024-08-02T13:34:33.342Z error: Error generating token on startup: Cannot read properties of undefined (reading 'status')
+2024-08-02T13:35:56.518Z info: Server is running on port 3000
+2024-08-02T13:35:57.240Z info: Transfer log checked and updated if necessary
+2024-08-02T13:35:57.240Z error: TypeError: Cannot read properties of undefined (reading 'status')
+    at exports.CheckTransfer (/root/IPS/IPSAPI/services/log-service.js:101:9)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Server.<anonymous> (/root/IPS/IPSAPI/server.js:44:5)
+2024-08-02T13:35:57.241Z error: Error generating token on startup: Cannot read properties of undefined (reading 'status')
+2024-08-02T13:37:43.924Z info: Server is running on port 3000
+2024-08-02T13:39:18.318Z info: Server is running on port 3000
+2024-08-02T13:40:41.362Z info: Server is running on port 3000
+2024-08-02T13:43:08.773Z info: Server is running on port 3000
+2024-08-02T13:43:50.287Z info: Server is running on port 3000
+2024-08-02T13:45:33.200Z info: Server is running on port 3000
+2024-08-03T07:45:47.215Z error: Error retrieving token: Request failed with status code 500
+2024-08-03T16:29:48.547Z error: Error retrieving token: Request failed with status code 500
+2024-08-03T17:49:48.792Z error: Error retrieving token: Request failed with status code 500
+2024-08-04T01:13:50.704Z error: Error retrieving token: Request failed with status code 500
+2024-08-04T01:49:50.794Z error: Error retrieving token: Request failed with status code 500
+2024-08-04T11:25:52.247Z error: Error retrieving token: Request failed with status code 500
+2024-08-04T12:25:52.459Z error: Error retrieving token: Request failed with status code 500
+2024-08-04T13:29:52.682Z error: Error retrieving token: Request failed with status code 500
+2024-08-04T21:01:53.541Z error: Error retrieving token: Request failed with status code 500
+2024-08-04T21:49:53.776Z error: Error retrieving token: Request failed with status code 500
+2024-08-04T22:21:53.973Z error: Error retrieving token: Request failed with status code 500
+2024-08-05T03:17:55.183Z error: Error retrieving token: Request failed with status code 500
+2024-08-05T03:25:55.213Z error: Error retrieving token: Request failed with status code 500
+2024-08-05T03:45:55.289Z error: Error retrieving token: Request failed with status code 500
+2024-08-05T04:09:55.354Z error: Error retrieving token: Request failed with status code 500
+2024-08-05T05:49:01.275Z info: Server is running on port 3000
+2024-08-05T06:16:50.549Z info: transfer_log controller
+2024-08-05T06:17:00.312Z info: transaction_log controller
+2024-08-05T06:23:45.426Z info: Server is running on port 3000
+2024-08-05T06:50:21.606Z info: Server is running on port 3000
+2024-08-05T07:14:34.990Z info: Server is running on port 3000
+2024-08-05T07:30:00.208Z info: Server is running on port 3000
+2024-08-05T07:30:57.640Z info: Server is running on port 3000
+2024-08-05T07:43:13.913Z info: Server is running on port 3000
+2024-08-05T07:44:05.681Z info: Server is running on port 3000
+2024-08-05T07:47:46.461Z info: Server is running on port 3000
+2024-08-05T07:48:35.186Z info: Server is running on port 3000
+2024-08-05T07:50:13.979Z info: Server is running on port 3000
+2024-08-05T07:52:45.719Z info: Server is running on port 3000
+2024-08-05T08:00:29.499Z info: Server is running on port 3000
+2024-08-05T08:11:53.462Z info: Server is running on port 3000
+2024-08-05T08:15:03.108Z info: Server is running on port 3000
+2024-08-05T08:16:33.306Z info: Server is running on port 3000
+2024-08-05T08:17:58.599Z info: Server is running on port 3000
+2024-08-05T08:20:29.947Z info: Server is running on port 3000
+2024-08-05T08:37:34.426Z info: Server is running on port 3000
+2024-08-05T08:41:06.660Z info: Server is running on port 3000
+2024-08-05T08:43:18.919Z info: Server is running on port 3000
+2024-08-05T08:53:02.526Z info: Server is running on port 3000
+2024-08-05T08:53:31.143Z info: Server is running on port 3000
+2024-08-05T09:02:24.767Z info: Server is running on port 3000
+2024-08-05T09:04:19.929Z info: Server is running on port 3000
+2024-08-05T09:07:25.407Z info: Server is running on port 3000
+2024-08-05T09:08:35.450Z info: Server is running on port 3000
+2024-08-05T10:01:09.540Z info: Server is running on port 3000
+2024-08-05T10:02:01.328Z info: Server is running on port 3000
+2024-08-05T10:03:39.531Z info: Server is running on port 3000
+2024-08-05T10:05:36.524Z info: Server is running on port 3000
+2024-08-05T10:07:05.586Z info: Server is running on port 3000
+2024-08-05T10:08:01.560Z info: Server is running on port 3000
+2024-08-05T10:22:11.527Z info: Server is running on port 3000
+2024-08-05T10:22:11.796Z error: Error generating token on startup: CheckTransfer is not a function
+2024-08-05T10:26:12.010Z error: Error generating token in interval: CheckTransfer is not a function
+2024-08-05T10:26:40.398Z info: Server is running on port 3000
+2024-08-05T10:26:40.718Z error: Error generating token on startup: CheckTransfer is not a function
+2024-08-05T10:30:40.952Z error: Error generating token in interval: CheckTransfer is not a function
+2024-08-05T10:31:57.969Z info: Server is running on port 3000
+2024-08-05T10:31:58.306Z error: Error generating token on startup: CheckTransfer is not a function
+2024-08-05T10:33:08.637Z info: Server is running on port 3000
+2024-08-05T10:33:08.999Z error: Error generating token on startup: CheckTransfer is not a function
+2024-08-05T10:37:09.381Z error: Error generating token in interval: CheckTransfer is not a function
+2024-08-05T10:38:54.232Z info: Server is running on port 3000
+2024-08-05T10:38:54.552Z error: Error generating token on startup: CheckTransfer is not a function
+2024-08-05T10:39:58.327Z info: Server is running on port 3000
+2024-08-05T10:39:58.618Z error: Error generating token on startup: CheckTransfer is not a function
+2024-08-05T10:40:59.840Z info: Server is running on port 3000
+2024-08-05T10:55:25.658Z info: Server is running on port 3000
+2024-08-05T11:01:24.728Z info: Server is running on port 3000
+2024-08-05T11:02:05.182Z info: Server is running on port 3000
+2024-08-05T11:24:23.635Z info: Server is running on port 3000
+2024-08-05T11:27:47.159Z info: Server is running on port 3000
+2024-08-05T11:30:53.659Z info: Server is running on port 3000
+2024-08-05T11:32:18.362Z info: Server is running on port 3000
+2024-08-05T11:33:18.034Z info: Server is running on port 3000
+2024-08-05T11:40:15.205Z info: Server is running on port 3000
+2024-08-05T11:40:40.098Z info: Server is running on port 3000
+2024-08-05T11:45:02.314Z info: Server is running on port 3000
+2024-08-05T11:46:43.854Z info: Server is running on port 3000
+2024-08-05T11:49:26.312Z info: Server is running on port 3000
+2024-08-05T11:58:58.212Z info: Server is running on port 3000
+2024-08-05T12:01:00.141Z info: Server is running on port 3000
+2024-08-05T12:01:48.273Z info: Server is running on port 3000
+2024-08-05T12:07:13.937Z info: Server is running on port 3000
+2024-08-05T12:12:21.268Z info: Server is running on port 3000
+2024-08-05T12:12:42.527Z info: Server is running on port 3000
+2024-08-05T12:14:28.048Z info: Server is running on port 3000
+2024-08-05T12:16:52.616Z info: Server is running on port 3000
+2024-08-05T12:18:22.815Z info: Server is running on port 3000
+2024-08-05T12:23:47.831Z info: Server is running on port 3000
+2024-08-05T12:27:47.533Z info: Server is running on port 3000
+2024-08-05T12:29:00.587Z info: Server is running on port 3000
+2024-08-05T12:31:33.667Z info: Server is running on port 3000
+2024-08-05T12:31:55.641Z info: Server is running on port 3000
+2024-08-05T12:34:35.361Z info: Server is running on port 3000
+2024-08-05T12:41:01.587Z info: Server is running on port 3000
+2024-08-05T12:59:18.290Z info: Server is running on port 3000
+2024-08-05T13:03:04.902Z info: Server is running on port 3000
+2024-08-05T13:40:32.158Z info: Server is running on port 3000
+2024-08-05T13:40:57.404Z info: Server is running on port 3000
+2024-08-05T13:41:10.492Z info: Server is running on port 3000
+2024-08-05T13:44:22.254Z info: Server is running on port 3000
+2024-08-05T13:50:53.019Z info: Server is running on port 3000
+2024-08-05T13:51:32.189Z info: Server is running on port 3000
+2024-08-05T13:52:21.391Z info: Server is running on port 3000
+2024-08-05T13:54:22.076Z info: Server is running on port 3000
+2024-08-05T13:58:57.848Z info: Server is running on port 3000
+2024-08-05T14:03:54.131Z info: Server is running on port 3000
+2024-08-05T14:04:26.289Z info: Server is running on port 3000
+2024-08-05T14:06:44.160Z info: Server is running on port 3000
+2024-08-06T06:26:24.574Z info: Server is running on port 3000
+2024-08-06T06:37:36.137Z info: Server is running on port 3000
+2024-08-06T06:41:39.146Z info: Server is running on port 3000
+2024-08-06T08:00:03.695Z info: Server is running on port 3000
+2024-08-06T08:13:32.105Z info: Server is running on port 3000
+2024-08-06T08:15:09.200Z info: transfer_log controller
+2024-08-06T08:15:19.507Z info: transaction_log controller
+2024-08-06T11:26:55.528Z info: Server is running on port 3000
+2024-08-06T11:35:59.857Z info: Server is running on port 3000
+2024-08-06T11:36:16.410Z info: transfer_log controller
+2024-08-06T11:38:35.403Z info: Server is running on port 3000
+2024-08-06T11:39:56.473Z info: Server is running on port 3000
+2024-08-06T11:40:53.875Z info: Server is running on port 3000
+2024-08-06T11:44:11.784Z info: Server is running on port 3000
+2024-08-06T11:51:33.744Z info: Server is running on port 3000
+2024-08-06T11:53:15.096Z info: Server is running on port 3000
+2024-08-06T12:07:20.324Z info: Server is running on port 3000
+2024-08-06T12:09:42.557Z info: Server is running on port 3000
+2024-08-06T12:12:32.506Z info: Server is running on port 3000
+2024-08-06T12:15:11.597Z info: Server is running on port 3000
+2024-08-06T12:16:29.598Z info: Server is running on port 3000
+2024-08-06T13:57:39.013Z info: Server is running on port 3000
+2024-08-06T14:06:25.595Z info: Server is running on port 3000
+2024-08-06T15:30:37.060Z error: Error retrieving token: Request failed with status code 500
+2024-08-06T17:22:37.505Z error: Error retrieving token: Request failed with status code 500
+2024-08-07T11:35:41.262Z info: Server is running on port 3000
+2024-08-07T11:35:58.242Z info: Server is running on port 3000
+2024-08-07T12:00:13.019Z info: Server is running on port 3000
+2024-08-07T12:19:46.115Z info: Server is running on port 3000
+2024-08-07T12:38:07.510Z info: Server is running on port 3000
+2024-08-07T12:38:59.280Z info: Server is running on port 3000
+2024-08-07T12:41:27.408Z info: Server is running on port 3000
+2024-08-07T12:42:56.435Z info: Server is running on port 3000
+2024-08-07T12:43:48.880Z info: Server is running on port 3000
+2024-08-07T12:46:12.119Z info: Server is running on port 3000
+2024-08-07T12:46:29.503Z info: Server is running on port 3000
+2024-08-07T12:47:43.560Z info: Server is running on port 3000
+2024-08-07T12:48:09.117Z info: Server is running on port 3000
+2024-08-07T12:49:16.249Z info: Server is running on port 3000
+2024-08-07T12:51:58.586Z info: Server is running on port 3000
+2024-08-07T12:54:13.781Z info: Server is running on port 3000
+2024-08-07T12:55:53.112Z info: Server is running on port 3000
+2024-08-07T12:56:59.579Z info: Server is running on port 3000
+2024-08-07T12:59:38.755Z info: Server is running on port 3000
+2024-08-07T13:03:14.213Z info: Server is running on port 3000
+2024-08-07T13:05:15.755Z info: Server is running on port 3000
+2024-08-07T13:06:33.762Z info: Server is running on port 3000
+2024-08-07T13:07:15.792Z info: Server is running on port 3000
+2024-08-07T13:09:17.517Z info: Server is running on port 3000
+2024-08-07T13:11:58.514Z info: Server is running on port 3000
+2024-08-07T13:12:23.215Z info: Server is running on port 3000
+2024-08-07T13:13:17.551Z info: Server is running on port 3000
+2024-08-07T14:04:26.178Z info: Server is running on port 3000
+2024-08-07T14:04:41.320Z info: Server is running on port 3000
+2024-08-07T14:08:35.600Z info: Server is running on port 3000
+2024-08-07T14:10:05.838Z info: Server is running on port 3000
+2024-08-08T05:48:04.544Z info: Server is running on port 3000
+2024-08-08T06:08:51.405Z info: Server is running on port 3000
+2024-08-08T06:11:17.578Z info: Server is running on port 3000
+2024-08-08T06:12:43.523Z info: Server is running on port 3000
+2024-08-08T06:13:35.320Z info: Server is running on port 3000
+2024-08-08T06:14:47.323Z info: Server is running on port 3000
+2024-08-08T06:15:39.861Z info: Server is running on port 3000
+2024-08-08T06:19:11.384Z info: Server is running on port 3000
+2024-08-08T06:24:13.941Z info: transfer_log controller
+2024-08-08T06:25:34.390Z info: transaction_log controller
+2024-08-08T06:26:51.867Z info: transaction_log controller
+2024-08-08T06:29:49.089Z info: transaction_log controller
+2024-08-08T06:30:06.430Z info: Server is running on port 3000
+2024-08-08T06:48:50.761Z info: Server is running on port 3000
+2024-08-08T06:52:43.590Z info: Server is running on port 3000
+2024-08-08T06:56:38.921Z info: Server is running on port 3000
+2024-08-08T06:58:29.170Z info: Server is running on port 3000
+2024-08-08T07:06:58.422Z info: Server is running on port 3000
+2024-08-08T07:12:07.697Z info: Server is running on port 3000
+2024-08-08T07:43:08.205Z info: Server is running on port 3000
+2024-08-08T07:44:06.142Z info: Server is running on port 3000
+2024-08-08T07:45:50.988Z info: Server is running on port 3000
+2024-08-08T07:47:06.619Z info: Server is running on port 3000
+2024-08-08T07:59:29.211Z info: Server is running on port 3000
+2024-08-08T08:08:08.119Z info: Server is running on port 3000
+2024-08-08T08:09:51.753Z info: Server is running on port 3000
+2024-08-08T08:22:30.247Z info: Server is running on port 3000
+2024-08-08T08:40:38.290Z info: Server is running on port 3000
+2024-08-08T08:46:14.124Z info: Server is running on port 3000
+2024-08-08T08:50:05.807Z info: Server is running on port 3000
+2024-08-08T08:52:39.525Z info: Server is running on port 3000
+2024-08-08T09:00:10.236Z info: Server is running on port 3000
+2024-08-08T09:03:58.819Z info: Server is running on port 3000
+2024-08-08T09:07:30.987Z info: Server is running on port 3000
+2024-08-08T09:11:05.648Z info: Server is running on port 3000
+2024-08-08T10:20:47.069Z info: Server is running on port 3000
+2024-08-08T10:27:14.788Z info: Server is running on port 3000
+2024-08-08T10:28:04.151Z info: Server is running on port 3000
+2024-08-08T10:30:13.435Z info: Server is running on port 3000
+2024-08-08T10:32:26.956Z info: Server is running on port 3000
+2024-08-08T10:40:14.703Z info: Server is running on port 3000
+2024-08-08T10:51:28.533Z info: Server is running on port 3000
+2024-08-08T10:51:58.975Z info: Server is running on port 3000
+2024-08-08T11:05:30.467Z info: Server is running on port 3000
+2024-08-08T11:07:11.039Z info: Server is running on port 3000
+2024-08-08T11:09:33.018Z info: Server is running on port 3000
+2024-08-08T11:12:11.014Z info: Server is running on port 3000
+2024-08-08T11:13:13.792Z info: Server is running on port 3000
+2024-08-08T11:17:36.139Z info: Server is running on port 3000
+2024-08-08T11:23:31.664Z info: Server is running on port 3000
+2024-08-08T11:25:08.537Z info: Server is running on port 3000
+2024-08-08T11:26:23.544Z info: Server is running on port 3000
+2024-08-08T11:33:07.160Z info: Server is running on port 3000
+2024-08-08T11:34:17.190Z info: Server is running on port 3000
+2024-08-08T11:36:13.433Z info: Server is running on port 3000
+2024-08-08T13:08:25.328Z error: Error retrieving token: Request failed with status code 500
+2024-08-08T16:28:26.198Z error: Error retrieving token: Request failed with status code 500
+2024-08-08T20:48:27.115Z error: Error retrieving token: Request failed with status code 500
+2024-08-09T00:56:27.407Z error: Error retrieving token: Request failed with status code 500
+2024-08-09T02:56:27.816Z error: Error retrieving token: Request failed with status code 500
+2024-08-10T06:00:32.743Z error: Error retrieving token: Request failed with status code 500
+2024-08-10T10:00:33.834Z error: Error retrieving token: Request failed with status code 500
+2024-08-10T16:04:34.986Z error: Error retrieving token: Request failed with status code 500
+2024-08-10T18:56:35.216Z error: Error retrieving token: Request failed with status code 500
+2024-08-10T20:36:35.410Z error: Error retrieving token: Request failed with status code 500
+2024-08-10T22:56:36.080Z error: Error retrieving token: Request failed with status code 500
+2024-08-11T11:04:38.137Z error: Error retrieving token: Request failed with status code 500
+2024-08-12T05:38:12.946Z info: Server is running on port 3000
+2024-08-12T05:47:25.433Z info: Server is running on port 3000
+2024-08-12T06:01:41.587Z info: Server is running on port 3000
+2024-08-12T06:09:57.734Z info: Server is running on port 3000
+2024-08-12T06:22:15.536Z info: Server is running on port 3000
+2024-08-12T06:36:26.443Z info: Server is running on port 3000
+2024-08-12T06:40:57.043Z info: Server is running on port 3000
+2024-08-12T06:44:23.135Z info: Server is running on port 3000
+2024-08-12T06:48:16.559Z info: Server is running on port 3000
+2024-08-12T06:50:47.167Z info: Server is running on port 3000
+2024-08-12T06:51:29.217Z info: Server is running on port 3000
+2024-08-12T06:52:57.615Z info: Server is running on port 3000
+2024-08-12T07:24:08.513Z info: Server is running on port 3000
+2024-08-12T07:27:24.749Z info: Server is running on port 3000
+2024-08-12T07:30:03.847Z info: Server is running on port 3000
+2024-08-12T07:34:08.881Z info: Server is running on port 3000
+2024-08-12T07:39:08.958Z info: Server is running on port 3000
+2024-08-12T07:41:00.135Z info: transfer_log controller
+2024-08-12T08:27:25.872Z info: Server is running on port 3000
+2024-08-12T11:27:44.906Z info: Server is running on port 3000
+2024-08-12T11:29:29.727Z info: Server is running on port 3000
+2024-08-12T11:32:44.834Z info: Server is running on port 3000
+2024-08-12T11:42:11.708Z info: Server is running on port 3000
+2024-08-12T11:43:21.845Z info: Server is running on port 3000
+2024-08-12T11:49:03.278Z info: Server is running on port 3000
+2024-08-12T11:49:35.538Z info: Server is running on port 3000
+2024-08-12T11:51:56.965Z info: Server is running on port 3000
+2024-08-12T11:52:37.252Z info: Server is running on port 3000
+2024-08-12T11:54:45.965Z info: Server is running on port 3000
+2024-08-12T11:57:33.601Z info: Server is running on port 3000
+2024-08-12T12:02:20.136Z info: Server is running on port 3000
+2024-08-12T12:06:41.117Z info: Server is running on port 3000
+2024-08-12T12:07:32.341Z info: Server is running on port 3000
+2024-08-12T12:09:13.599Z info: Server is running on port 3000
+2024-08-12T12:10:37.089Z info: Server is running on port 3000
+2024-08-12T12:15:23.091Z info: Server is running on port 3000
+2024-08-12T12:22:15.331Z info: Server is running on port 3000
+2024-08-12T12:22:20.681Z error: Error in account verification: Error parsing XML
+2024-08-12T12:26:49.737Z info: Server is running on port 3000
+2024-08-12T12:26:55.372Z error: Error in account verification: Error parsing XML
+2024-08-12T12:33:21.020Z info: Server is running on port 3000
+2024-08-12T12:33:25.137Z error: Error in account verification: Cannot read properties of undefined (reading 'document:Document')
+2024-08-12T12:33:27.245Z error: Error in account verification: Cannot read properties of undefined (reading 'document:Document')
+2024-08-12T12:38:50.962Z info: Server is running on port 3000
+2024-08-12T12:39:05.258Z error: Error in account verification: Cannot read properties of undefined (reading 'document:Document')
+2024-08-12T12:40:35.742Z info: Server is running on port 3000
+2024-08-12T12:40:38.929Z error: Error in account verification: Cannot read properties of undefined (reading 'document:Document')
+2024-08-12T12:41:22.053Z info: Server is running on port 3000
+2024-08-12T12:42:05.350Z info: Server is running on port 3000
+2024-08-12T12:46:00.691Z info: Server is running on port 3000
+2024-08-12T12:47:11.331Z info: Server is running on port 3000
+2024-08-12T12:48:07.469Z info: Server is running on port 3000
+2024-08-12T12:52:25.896Z info: Server is running on port 3000
+2024-08-12T12:54:06.572Z info: Server is running on port 3000
+2024-08-12T12:57:49.735Z info: Server is running on port 3000
+2024-08-12T12:58:10.945Z info: Server is running on port 3000
+2024-08-12T12:58:16.959Z error: Error in account verification: Cannot read properties of undefined (reading 'document:agt')
+2024-08-12T12:59:00.393Z info: Server is running on port 3000
+2024-08-12T13:00:40.990Z info: Server is running on port 3000
+2024-08-12T13:00:42.068Z error: Error in account verification: Cannot read properties of undefined (reading 'document:agt')
+2024-08-12T13:02:31.981Z info: Server is running on port 3000
+2024-08-12T13:02:35.310Z error: Error in account verification: Cannot read properties of undefined (reading 'document:agt')
+2024-08-12T13:02:37.714Z error: Error in account verification: Cannot read properties of undefined (reading 'document:agt')
+2024-08-12T13:05:56.868Z info: Server is running on port 3000
+2024-08-12T13:05:59.025Z error: Error in account verification: Cannot read properties of undefined (reading 'document:agt')
+2024-08-12T13:07:11.838Z info: Server is running on port 3000
+2024-08-12T13:07:15.211Z error: Error in account verification: Cannot read properties of undefined (reading 'document:agt')
+2024-08-12T13:07:17.357Z error: Error in account verification: Cannot read properties of undefined (reading 'document:agt')
+2024-08-12T13:09:22.977Z info: Server is running on port 3000
+2024-08-12T13:13:47.023Z info: Server is running on port 3000
+2024-08-12T13:14:59.594Z info: Server is running on port 3000
+2024-08-12T13:16:02.389Z info: Server is running on port 3000
+2024-08-12T13:16:28.036Z info: Server is running on port 3000
+2024-08-12T13:18:44.571Z info: Server is running on port 3000
+2024-08-12T13:23:31.185Z info: Server is running on port 3000
+2024-08-12T13:27:03.331Z info: Server is running on port 3000
+2024-08-12T13:28:12.867Z info: Server is running on port 3000
+2024-08-12T13:28:45.168Z info: Server is running on port 3000
+2024-08-12T13:29:52.906Z info: Server is running on port 3000
+2024-08-12T13:34:45.116Z info: Server is running on port 3000
+2024-08-12T13:35:24.551Z info: Server is running on port 3000
+2024-08-12T13:37:00.946Z info: Server is running on port 3000
+2024-08-12T13:57:12.325Z info: Server is running on port 3000
+2024-08-12T13:57:26.887Z info: Server is running on port 3000
+2024-08-14T11:17:48.410Z info: Server is running on port 3000
+2024-08-14T11:23:48.568Z info: Server is running on port 3000
+2024-08-14T11:23:52.130Z error: Error in account verification: generateBizMsgIdr is not defined
+2024-08-14T11:24:43.329Z info: Server is running on port 3000
+2024-08-14T11:24:46.121Z error: Error in account verification: generateVerifcationRequestXml is not defined
+2024-08-14T11:26:06.938Z info: Server is running on port 3000
+2024-08-14T11:26:14.966Z error: Error in account verification: Missing element text. parent: <header:Id>
+2024-08-14T11:27:37.677Z info: Server is running on port 3000
+2024-08-14T11:27:42.499Z error: Error in account verification: Missing element text. parent: <header:Id>
+2024-08-14T11:29:31.135Z info: Server is running on port 3000
+2024-08-14T11:29:33.748Z error: Error in account verification: Missing element text. parent: <header:Id>
+2024-08-14T11:31:22.619Z info: Server is running on port 3000
+2024-08-14T11:31:24.408Z error: Error in account verification: Missing element text. parent: <header:Id>
+2024-08-14T11:31:34.820Z error: Error in account verification: Missing element text. parent: <header:Id>
+2024-08-14T11:32:44.462Z info: Server is running on port 3000
+2024-08-14T11:32:48.761Z error: Error in account verification: Missing element text. parent: <header:Id>
+2024-08-14T11:34:29.964Z info: Server is running on port 3000
+2024-08-14T11:34:33.641Z error: Error in account verification: Missing element text. parent: <header:BizMsgIdr>
+2024-08-14T11:39:39.899Z info: Server is running on port 3000
+2024-08-14T11:40:45.134Z info: Server is running on port 3000
+2024-08-14T11:42:16.727Z info: Server is running on port 3000
+2024-08-14T11:43:26.795Z info: Server is running on port 3000
+2024-08-14T11:54:46.572Z info: Server is running on port 3000
+2024-08-14T11:56:32.153Z info: Server is running on port 3000
+2024-08-14T12:00:52.912Z info: Server is running on port 3000
+2024-08-14T12:08:39.375Z info: Server is running on port 3000
+2024-08-14T12:09:14.014Z info: Server is running on port 3000
+2024-08-14T12:11:27.512Z info: Server is running on port 3000
+2024-08-14T12:12:20.545Z info: Server is running on port 3000
+2024-08-14T12:12:24.023Z error: Error in account verification: IncommingXmlAccountVerification is not a function
+2024-08-14T12:12:52.941Z info: Server is running on port 3000
+2024-08-14T12:21:25.008Z info: Server is running on port 3000
+2024-08-14T12:27:05.491Z info: Server is running on port 3000

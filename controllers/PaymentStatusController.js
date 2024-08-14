@@ -8,6 +8,7 @@ const {getISO8601Date,getEastAfricanISO8601,generateBizMsgIdr,generateMsgId} = r
 const {getAccessToken}=require("../services/token-service");
 const {XsdsValidation} =require("../xmlValidator/xmlValidator");
 const path = require('path');
+
 exports.testAPI = async (req, res) => {
   try {
     const testPlayload = {
@@ -42,21 +43,25 @@ exports.PushStatusInputTest = async (req, res) => {
   };
   
   exports.PaymentStatus = async (req, res) => {
-    const xmlData = convertToXml(req.body); 
-    if (!req.body || Object.keys(req.body).length === 0) {
+     if (!req.body || Object.keys(req.body).length === 0) {
       return res.status(400).json({ error: 'Bad Request: your input is invalid' });
     } 
+    
+    const xmlData = convertToXml(req.body);
     const XSD_PATH = path.resolve(__dirname, '../XSDs/paymentStatus_request.xsd');
     try {
       const isValid = await XsdsValidation(xmlData, XSD_PATH);
       if (!isValid) {
         return res.status(400).json({ error: 'XML payment status request is not valid against XSD' });    
       } 
+      
       const Signedxml = await digestXml(xmlData); 
       const isSignedxmlValid = await XsdsValidation(Signedxml, XSD_PATH);
       if (!isSignedxmlValid) {
         return res.status(400).json({ error: 'Signed payment request xml is not valid against XSD.' });    
       }
+  
+  
       const tokenResult = await getAccessToken();
       if (!tokenResult.status) {
         return res.status(400).json({ error: tokenResult.message });
@@ -81,6 +86,7 @@ exports.PushStatusInputTest = async (req, res) => {
       }
   
     } catch (error) {
+    
       // Check for network error
       if (error.code === 'ECONNABORTED' || error.message.includes('Network Error') || error.message.includes('timeout')) {
         res.status(503).json({ error: 'Service Unavailable: Network error' });
@@ -98,7 +104,6 @@ exports.PushStatusInputTest = async (req, res) => {
     }
   };
   
-
 exports.xmlPaymentStatusRequest = async (req, res) => {
  const xmlData=req.body;  
   if (!req.body || Object.keys(req.body).length === 0) {
@@ -153,66 +158,7 @@ exports.xmlPaymentStatusRequest = async (req, res) => {
 };
 
 
-
-
 // functions 
-const checkPaymentStatus = async (paymentData) => {
-  const xmlData = convertToXml(paymentData); 
-  if (!req.body || Object.keys(req.body).length === 0) {
-    return res.status(400).json({ error: 'Bad Request: your input is invalid' });
-  } 
-  const XSD_PATH = path.resolve(__dirname, '../XSDs/paymentStatus_request.xsd');
-  try {
-    const isValid = await XsdsValidation(xmlData, XSD_PATH);
-    if (!isValid) {
-      return res.status(400).json({ error: 'XML payment status request is not valid against XSD' });    
-    } 
-    const Signedxml = await digestXml(xmlData); 
-    const isSignedxmlValid = await XsdsValidation(Signedxml, XSD_PATH);
-    if (!isSignedxmlValid) {
-      return res.status(400).json({ error: 'Signed payment request xml is not valid against XSD.' });    
-    }
-    const tokenResult = await getAccessToken();
-    if (!tokenResult.status) {
-      return res.status(400).json({ error: tokenResult.message });
-    }         
-    const accessToken = tokenResult.token;
-    const headers = {
-      'Content-Type': 'application/xml',
-      'Connection': 'keep-alive',
-      'Authorization': `Bearer ${accessToken}`
-    };
-    const response = await axios.post(ips_payment_url, Signedxml, { headers });
-      //console.log(response.data);
-      //res.set('Content-Type', 'application/xml');
-      //res.status(200).send(response.data);
-      //return;
-    //xml to json converter  
-    const jsondata = await xmlPushPaymentStatusResponseTojson(response.data);
-    if (response.status == 200) {
-      res.status(200).send(jsondata.data);
-    } else {
-      res.status(response.status).json({ error: response.statusText });
-    }
-
-  } catch (error) {
-    // Check for network error
-    if (error.code === 'ECONNABORTED' || error.message.includes('Network Error') || error.message.includes('timeout')) {
-      res.status(503).json({ error: 'Service Unavailable: Network error' });
-    } else if (error.response) {
-      // The request was made and the server responded with a status code
-      // that falls out of the range of 2xx
-      res.status(error.response.status).json({ error: error.response.data });
-    } else if (error.request) {
-      // The request was made but no response was received
-      res.status(500).json({ error: 'Server did not respond' });
-    } else {
-      // Something happened in setting up the request that triggered an Error
-      res.status(500).json({ error: error.message });
-    }
-  }
-};
-
 const convertToXml = (jsonInput) => {
   const BIC="ABAYETAA";
   const CreDtTm = getEastAfricanISO8601();
