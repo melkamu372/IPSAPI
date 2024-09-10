@@ -195,14 +195,26 @@ Add the following content
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  name: quickstart
+  name: my-elasticsearch
 spec:
-  version: 8.10.0
+  version: 7.10.0
   nodeSets:
   - name: default
     count: 1
     config:
       node.store.allow_mmap: false
+    podTemplate:
+      spec:
+        containers:
+        - name: elasticsearch
+          resources:
+            limits:
+              memory: 2Gi
+              cpu: "1"
+            requests:
+              memory: 1Gi
+              cpu: "500m"
+
 
 ```
 This configuration creates a single-node Elasticsearch cluster. Now apply this configuration:
@@ -228,11 +240,24 @@ apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: quickstart
+  namespace: default
 spec:
-  version: 8.10.0
+  version: "7.10.0"  # Downgraded Kibana version to match Elasticsearch
   count: 1
   elasticsearchRef:
-    name: quickstart
+    name: my-elasticsearch-es-http  # Update this line to match the correct Elasticsearch service
+  podTemplate:
+    spec:
+      containers:
+        - name: kibana
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+
 
 ```
 
@@ -251,6 +276,7 @@ kubectl get pods
 ```
 
 Wait for Kibana to reach the Running status.
+![image](https://github.com/user-attachments/assets/1c7d2b5c-88f8-4fe1-ac74-2c6893ce003e)
 
 5. Access Kibana
 Once the Kibana pod is running, you can access Kibana through port forwarding.
@@ -258,6 +284,8 @@ Run this command to forward port 5601 from the Kibana pod to your local machine:
 ```
 kubectl port-forward service/quickstart-kb-http 5601
 ```
+![image](https://github.com/user-attachments/assets/3af2c3cf-fc5e-458d-ba16-9d0a445348d1)
+
 **Now, you can open your browser and access Kibana at:**
 ```
 http://localhost:5601
@@ -283,6 +311,7 @@ Check the status of Logstash with:
 ```
 kubectl get pods
 ```
+
 7.**Retrieve Elasticsearch Password**
 To get the password for the elastic user, run:
 ```
